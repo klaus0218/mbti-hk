@@ -1,4 +1,4 @@
-FROM node:18-alpine as build
+FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
@@ -12,24 +12,8 @@ RUN npm install --legacy-peer-deps
 # Copy source code
 COPY . .
 
-# Build the app
-RUN npm run build
-
-# Production stage
-FROM nginx:alpine
-
-# Copy build files
-COPY --from=build /app/build /usr/share/nginx/html
-
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 # Expose port
 EXPOSE 3000
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:3000 || exit 1
-
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"] 
+# Start development server with hot reloading
+CMD ["npm", "start"] 
