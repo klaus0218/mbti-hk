@@ -34,4 +34,4 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 # Start the application
 # Use npm start for production, npm run dev for development
 # Can be overridden in docker-compose.yml
-CMD ["npm", "run", "dev"] 
+CMD ["npm", "run", "start"] 
