@@ -1,0 +1,939 @@
+{
+  "sections": [
+    {
+      "sectionId": 1,
+      "title": {
+        "zh": "第一部分",
+        "en": "Section 1"
+      },
+      "subtitle": {
+        "zh": "哪個答案最能貼切地描繪你一般的感受或行為？",
+        "en": "Which answer best describes your general feelings or behavior?"
+      },
+      "questions": [
+        {
+          "questionId": 1,
+          "text": {
+            "zh": "當你要出外一整天，你會不會",
+            "en": "When you are going out for the whole day, do you"
+          },
+          "leftLabel": {
+            "zh": "計劃你要去做什麼和在什麼時候做",
+            "en": "plan what to do and when to do it"
+          },
+          "rightLabel": {
+            "zh": "說走就走",
+            "en": "go with the flow"
+          },
+          "category": "JP",
+          "leftType": "J",
+          "rightType": "P"
+        },
+        {
+          "questionId": 2,
+          "text": {
+            "zh": "假如你是一位老師，你會選教",
+            "en": "If you were a teacher, would you prefer to teach"
+          },
+          "leftLabel": {
+            "zh": "以事實為主的課程",
+            "en": "fact-based courses"
+          },
+          "rightLabel": {
+            "zh": "設計理論的課程",
+            "en": "theory-based courses"
+          },
+          "category": "SN",
+          "leftType": "S",
+          "rightType": "N"
+        },
+        {
+          "questionId": 3,
+          "text": {
+            "zh": "你通常",
+            "en": "Do you usually"
+          },
+          "leftLabel": {
+            "zh": "與人容易混熟，或是",
+            "en": "get along easily with people, or"
+          },
+          "rightLabel": {
+            "zh": "現實的人",
+            "en": "tend to be practical"
+          },
+          "category": "EI",
+          "leftType": "E",
+          "rightType": "I"
+        },
+        {
+          "questionId": 4,
+          "text": {
+            "zh": "你是否經常讓",
+            "en": "Do you often let"
+          },
+          "leftLabel": {
+            "zh": "你的情感支配你的理智",
+            "en": "your emotions rule your reason"
+          },
+          "rightLabel": {
+            "zh": "你的理智主宰你的情感",
+            "en": "your reason govern your emotions"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 5,
+          "text": {
+            "zh": "處理許多事情上，你喜歡",
+            "en": "When dealing with many things, do you like to"
+          },
+          "leftLabel": {
+            "zh": "憑興所至行事",
+            "en": "act on impulse"
+          },
+          "rightLabel": {
+            "zh": "按照計劃行事",
+            "en": "follow a plan"
+          },
+          "category": "JP",
+          "leftType": "P",
+          "rightType": "J"
+        },
+        {
+          "questionId": 6,
+          "text": {
+            "zh": "當你有一份特別的任務，你會喜歡",
+            "en": "When you have a special task, do you like to"
+          },
+          "leftLabel": {
+            "zh": "開始小心組織計劃",
+            "en": "carefully organize a plan"
+          },
+          "rightLabel": {
+            "zh": "邊做邊找需要做什麼",
+            "en": "figure out what needs to be done as you go"
+          },
+          "category": "JP",
+          "leftType": "J",
+          "rightType": "P"
+        },
+        {
+          "questionId": 7,
+          "text": {
+            "zh": "大多數人會說你是一個",
+            "en": "Most people would say that you are"
+          },
+          "leftLabel": {
+            "zh": "重視自我隱私的人",
+            "en": "a private person"
+          },
+          "rightLabel": {
+            "zh": "非常坦率開朗的人",
+            "en": "a very open and candid person"
+          },
+          "category": "EI",
+          "leftType": "I",
+          "rightType": "E"
+        },
+        {
+          "questionId": 8,
+          "text": {
+            "zh": "你寧願被人認為是一個",
+            "en": "Would you rather be seen as"
+          },
+          "leftLabel": {
+            "zh": "實事求是的人",
+            "en": "a realistic person"
+          },
+          "rightLabel": {
+            "zh": "機靈的人",
+            "en": "a clever person"
+          },
+          "category": "SN",
+          "leftType": "S",
+          "rightType": "N"
+        },
+        {
+          "questionId": 9,
+          "text": {
+            "zh": "你比較喜歡",
+            "en": "Do you prefer to"
+          },
+          "leftLabel": {
+            "zh": "靜觀事情發展才作計劃",
+            "en": "observe how things develop before making plans"
+          },
+          "rightLabel": {
+            "zh": "很早就作計劃",
+            "en": "make plans well in advance"
+          },
+          "category": "JP",
+          "leftType": "P",
+          "rightType": "J"
+        },
+        {
+          "questionId": 10,
+          "text": {
+            "zh": "你喜歡花很多的時間",
+            "en": "Do you like to spend a lot of time"
+          },
+          "leftLabel": {
+            "zh": "一個人獨處",
+            "en": "alone"
+          },
+          "rightLabel": {
+            "zh": "和別人在一起",
+            "en": "with others"
+          },
+          "category": "EI",
+          "leftType": "I",
+          "rightType": "E"
+        },
+        {
+          "questionId": 11,
+          "text": {
+            "zh": "計劃一個旅程時，你較喜歡",
+            "en": "When planning a trip, do you prefer to"
+          },
+          "leftLabel": {
+            "zh": "大部分時間都是跟當天的感覺行事",
+            "en": "go with the flow for most of the time"
+          },
+          "rightLabel": {
+            "zh": "事先知道大部分的日子會做什麼",
+            "en": "know what you will be doing for most of the days in advance"
+          },
+          "category": "JP",
+          "leftType": "P",
+          "rightType": "J"
+        },
+        {
+          "questionId": 12,
+          "text": {
+            "zh": "在社交聚會中，你是否",
+            "en": "At social gatherings, do you"
+          },
+          "leftLabel": {
+            "zh": "有時感到煩悶",
+            "en": "sometimes feel bored"
+          },
+          "rightLabel": {
+            "zh": "常常樂在其中？",
+            "en": "often have a great time"
+          },
+          "category": "EI",
+          "leftType": "I",
+          "rightType": "E"
+        },
+        {
+          "questionId": 13,
+          "text": {
+            "zh": "哪些人會更吸引你？",
+            "en": "Which type of person is more attractive to you?"
+          },
+          "leftLabel": {
+            "zh": "一個思想敏捷及非常聰明的人",
+            "en": "someone who is quick-witted and very intelligent"
+          },
+          "rightLabel": {
+            "zh": "實事求是，具豐富常識的人",
+            "en": "someone who is practical and knowledgeable"
+          },
+          "category": "SN",
+          "leftType": "N",
+          "rightType": "S"
+        },
+        {
+          "questionId": 14,
+          "text": {
+            "zh": "你認為別人一般",
+            "en": "Do you think others generally"
+          },
+          "leftLabel": {
+            "zh": "要花很長時間才認識你",
+            "en": "take a long time to get to know you"
+          },
+          "rightLabel": {
+            "zh": "用很短時間便認識你",
+            "en": "get to know you quickly"
+          },
+          "category": "EI",
+          "leftType": "I",
+          "rightType": "E"
+        }
+      ]
+    },
+    {
+      "sectionId": 2,
+      "title": {
+        "zh": "第二部分",
+        "en": "Section 2"
+      },
+      "subtitle": {
+        "zh": "在下列每一對詞語中，哪一個詞語更能反映你？",
+        "en": "In each pair of words below, which word better reflects you?"
+      },
+      "questions": [
+        {
+          "questionId": 15,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "預先安排的",
+            "en": "Pre-arranged"
+          },
+          "rightLabel": {
+            "zh": "無計劃的",
+            "en": "Unplanned"
+          },
+          "category": "JP",
+          "leftType": "J",
+          "rightType": "P"
+        },
+        {
+          "questionId": 16,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "溫柔",
+            "en": "Gentle"
+          },
+          "rightLabel": {
+            "zh": "決定",
+            "en": "Decisive"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 17,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "事實",
+            "en": "Facts"
+          },
+          "rightLabel": {
+            "zh": "意念",
+            "en": "Ideas"
+          },
+          "category": "SN",
+          "leftType": "S",
+          "rightType": "N"
+        },
+        {
+          "questionId": 18,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "熱衷",
+            "en": "Enthusiastic"
+          },
+          "rightLabel": {
+            "zh": "文靜",
+            "en": "Quiet"
+          },
+          "category": "EI",
+          "leftType": "E",
+          "rightType": "I"
+        },
+        {
+          "questionId": 19,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "有系統",
+            "en": "Systematic"
+          },
+          "rightLabel": {
+            "zh": "隨意",
+            "en": "Casual"
+          },
+          "category": "JP",
+          "leftType": "J",
+          "rightType": "P"
+        },
+        {
+          "questionId": 20,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "敏感",
+            "en": "Sensitive"
+          },
+          "rightLabel": {
+            "zh": "公正",
+            "en": "Fair"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 21,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "聲明",
+            "en": "Statement"
+          },
+          "rightLabel": {
+            "zh": "概念",
+            "en": "Concept"
+          },
+          "category": "SN",
+          "leftType": "S",
+          "rightType": "N"
+        },
+        {
+          "questionId": 22,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "矜持",
+            "en": "Reserved"
+          },
+          "rightLabel": {
+            "zh": "健談",
+            "en": "Talkative"
+          },
+          "category": "EI",
+          "leftType": "I",
+          "rightType": "E"
+        },
+        {
+          "questionId": 23,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "有條不紊",
+            "en": "Methodical"
+          },
+          "rightLabel": {
+            "zh": "不拘小節",
+            "en": "Carefree"
+          },
+          "category": "JP",
+          "leftType": "J",
+          "rightType": "P"
+        },
+        {
+          "questionId": 24,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "同情憐憫",
+            "en": "Sympathetic"
+          },
+          "rightLabel": {
+            "zh": "遠見",
+            "en": "Far-sighted"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 25,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "務實的",
+            "en": "Pragmatic"
+          },
+          "rightLabel": {
+            "zh": "理論的",
+            "en": "Theoretical"
+          },
+          "category": "SN",
+          "leftType": "S",
+          "rightType": "N"
+        },
+        {
+          "questionId": 26,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "親切的",
+            "en": "Kind"
+          },
+          "rightLabel": {
+            "zh": "客觀的",
+            "en": "Objective"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 27,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "建造",
+            "en": "Building"
+          },
+          "rightLabel": {
+            "zh": "發明",
+            "en": "Inventing"
+          },
+          "category": "SN",
+          "leftType": "S",
+          "rightType": "N"
+        },
+        {
+          "questionId": 28,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "文靜",
+            "en": "Quiet"
+          },
+          "rightLabel": {
+            "zh": "愛合群",
+            "en": "Sociable"
+          },
+          "category": "EI",
+          "leftType": "I",
+          "rightType": "E"
+        },
+        {
+          "questionId": 29,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "富同情",
+            "en": "Sympathetic"
+          },
+          "rightLabel": {
+            "zh": "合邏輯",
+            "en": "Logical"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 30,
+          "text": {
+            "zh": "你是",
+            "en": "You are"
+          },
+          "leftLabel": {
+            "zh": "合情合理",
+            "en": "Rational"
+          },
+          "rightLabel": {
+            "zh": "令人著迷",
+            "en": "Fascinating"
+          },
+          "category": "SN",
+          "leftType": "S",
+          "rightType": "N"
+        }
+      ]
+    },
+    {
+      "sectionId": 3,
+      "title": {
+        "zh": "第三部分",
+        "en": "Section 3"
+      },
+      "subtitle": {
+        "zh": "哪個答案最能貼切地描繪你一般的感受或行為？",
+        "en": "Which answer best describes your general feelings or behavior?"
+      },
+      "questions": [
+        {
+          "questionId": 31,
+          "text": {
+            "zh": "當你要在一個星期內完成一個大項目，你再開始的時候就會:",
+            "en": "When you have to complete a big project within a week, you will:"
+          },
+          "leftLabel": {
+            "zh": "把要做的不同工作一次列出",
+            "en": "List out the different tasks to be done at once"
+          },
+          "rightLabel": {
+            "zh": "馬上動工",
+            "en": "Start working immediately"
+          },
+          "category": "JP",
+          "leftType": "J",
+          "rightType": "P"
+        },
+        {
+          "questionId": 32,
+          "text": {
+            "zh": "你剛認識的朋友能否說出你的興趣？",
+            "en": "Can your newly made friends tell your interests?"
+          },
+          "leftLabel": {
+            "zh": "馬上可以",
+            "en": "Immediately"
+          },
+          "rightLabel": {
+            "zh": "要待他們真正了解你之後才可以",
+            "en": "After they get to know you well"
+          },
+          "category": "EI",
+          "leftType": "E",
+          "rightType": "I"
+        },
+        {
+          "questionId": 33,
+          "text": {
+            "zh": "你通常比較喜歡的科目是",
+            "en": "Your favorite subject is usually:"
+          },
+          "leftLabel": {
+            "zh": "講授概念和原則的，或是",
+            "en": "One that teaches concepts and principles, or"
+          },
+          "rightLabel": {
+            "zh": "講授事實和數據的？",
+            "en": "One that teaches facts and data?"
+          },
+          "category": "SN",
+          "leftType": "N",
+          "rightType": "S"
+        },
+        {
+          "questionId": 34,
+          "text": {
+            "zh": "哪個是較高的讚譽？",
+            "en": "Which one is a higher compliment?"
+          },
+          "leftLabel": {
+            "zh": "一貫感性的人",
+            "en": "Consistently emotional person"
+          },
+          "rightLabel": {
+            "zh": "一貫理性的人",
+            "en": "Consistently rational person"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 35,
+          "text": {
+            "zh": "在社交聚會中，你會",
+            "en": "In a social gathering, are you:"
+          },
+          "leftLabel": {
+            "zh": "是說話很多的一個，還是",
+            "en": "The one who talks a lot, or"
+          },
+          "rightLabel": {
+            "zh": "讓別人多說話",
+            "en": "Let others talk more"
+          },
+          "category": "EI",
+          "leftType": "E",
+          "rightType": "I"
+        },
+        {
+          "questionId": 36,
+          "text": {
+            "zh": "把在週末期間要完成的事列成清單，這個主意會，",
+            "en": "Creating a to-do list for the weekend will:"
+          },
+          "leftLabel": {
+            "zh": "合你意",
+            "en": "Suit you well"
+          },
+          "rightLabel": {
+            "zh": "使你提不起勁",
+            "en": "Make you feel unenthusiastic"
+          },
+          "category": "JP",
+          "leftType": "J",
+          "rightType": "P"
+        },
+        {
+          "questionId": 37,
+          "text": {
+            "zh": "總的來說，要做一個大型作業時，你會選",
+            "en": "Overall, when doing a large project, you prefer to:"
+          },
+          "leftLabel": {
+            "zh": "邊做邊想該做什麼",
+            "en": "Work and think about what to do at the same time"
+          },
+          "rightLabel": {
+            "zh": "首先把工作按步細分",
+            "en": "First break the work into detailed steps"
+          },
+          "category": "JP",
+          "leftType": "P",
+          "rightType": "J"
+        },
+        {
+          "questionId": 38,
+          "text": {
+            "zh": "你會",
+            "en": "Do you prefer to"
+          },
+          "leftLabel": {
+            "zh": "跟隨一些證明有效的方法，還是",
+            "en": "Follow established and proven methods, or"
+          },
+          "rightLabel": {
+            "zh": "分析還有什麼毛病，及針對尚未解決的難題？",
+            "en": "Analyze and address unresolved problems?"
+          },
+          "category": "EI",
+          "leftType": "E",
+          "rightType": "I"
+        },
+        {
+          "questionId": 39,
+          "text": {
+            "zh": "你寧替那一類上司/老師工作？",
+            "en": "Which type of boss/teacher do you prefer to work for?"
+          },
+          "leftLabel": {
+            "zh": "天性淳良，但通常前後不一的，還是",
+            "en": "Kind-hearted but inconsistent, or"
+          },
+          "rightLabel": {
+            "zh": "言詞尖銳但永遠合邏輯",
+            "en": "Sharp-tongued but always logical"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        }
+      ]
+    },
+    {
+      "sectionId": 4,
+      "title": {
+        "zh": "第四部分",
+        "en": "Section 4"
+      },
+      "subtitle": {
+        "zh": "在下列每一對詞語中，哪一個詞語更能反映你？",
+        "en": "In each pair of words below, which word better reflects you?"
+      },
+      "questions": [
+        {
+          "questionId": 40,
+          "text": {
+            "zh": "你是",
+            "en": "You are:"
+          },
+          "leftLabel": {
+            "zh": "想像的",
+            "en": "Imaginary"
+          },
+          "rightLabel": {
+            "zh": "真實的",
+            "en": "Real"
+          },
+          "category": "SN",
+          "leftType": "N",
+          "rightType": "S"
+        },
+        {
+          "questionId": 41,
+          "text": {
+            "zh": "你是",
+            "en": "You are:"
+          },
+          "leftLabel": {
+            "zh": "仁慈慷慨的",
+            "en": "Generous and kind-hearted"
+          },
+          "rightLabel": {
+            "zh": "意志堅定的",
+            "en": "Strong-willed"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 42,
+          "text": {
+            "zh": "你是",
+            "en": "You are:"
+          },
+          "leftLabel": {
+            "zh": "可能性",
+            "en": "Possibility"
+          },
+          "rightLabel": {
+            "zh": "必然性",
+            "en": "Necessity"
+          },
+          "category": "SN",
+          "leftType": "N",
+          "rightType": "S"
+        },
+        {
+          "questionId": 43,
+          "text": {
+            "zh": "你是",
+            "en": "You are:"
+          },
+          "leftLabel": {
+            "zh": "溫柔",
+            "en": "Gentleness"
+          },
+          "rightLabel": {
+            "zh": "力量",
+            "en": "Strength"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 44,
+          "text": {
+            "zh": "你是",
+            "en": "You are:"
+          },
+          "leftLabel": {
+            "zh": "新穎的",
+            "en": "Novel"
+          },
+          "rightLabel": {
+            "zh": "已知的",
+            "en": "Known"
+          },
+          "category": "SN",
+          "leftType": "N",
+          "rightType": "S"
+        },
+        {
+          "questionId": 45,
+          "text": {
+            "zh": "你是",
+            "en": "You are:"
+          },
+          "leftLabel": {
+            "zh": "同情",
+            "en": "Empathy"
+          },
+          "rightLabel": {
+            "zh": "分析",
+            "en": "Analysis"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 46,
+          "text": {
+            "zh": "你是",
+            "en": "You are:"
+          },
+          "leftLabel": {
+            "zh": "全心投入的",
+            "en": "Fully committed"
+          },
+          "rightLabel": {
+            "zh": "有決心的",
+            "en": "Determined"
+          },
+          "category": "FT",
+          "leftType": "F",
+          "rightType": "T"
+        },
+        {
+          "questionId": 47,
+          "text": {
+            "zh": "你是",
+            "en": "You are:"
+          },
+          "leftLabel": {
+            "zh": "實際",
+            "en": "Practical"
+          },
+          "rightLabel": {
+            "zh": "創新",
+            "en": "Innovative"
+          },
+          "category": "SN",
+          "leftType": "S",
+          "rightType": "N"
+        }
+      ]
+    }
+  ],
+  "scale": {
+    "type": "4-point",
+    "options": [
+      {
+        "value": 1,
+        "label": {
+          "zh": "完全偏向左邊",
+          "en": "Strongly Left"
+        },
+        "score": 1.0
+      },
+      {
+        "value": 2,
+        "label": {
+          "zh": "偏向左邊",
+          "en": "Slightly Left"
+        },
+        "score": 0.5
+      },
+      {
+        "value": 3,
+        "label": {
+          "zh": "偏向右邊",
+          "en": "Slightly Right"
+        },
+        "score": 0.5
+      },
+      {
+        "value": 4,
+        "label": {
+          "zh": "完全偏向右邊",
+          "en": "Strongly Right"
+        },
+        "score": 1.0
+      }
+    ]
+  }
+} 

@@ -1,0 +1,10 @@
+venv/
+.env
+.vscode/
+__pycache__/
+.DS_Store
+.cursorrules
+.idea/
+node_modules/
+postgres_data/
+config.env

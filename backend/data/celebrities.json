@@ -1,0 +1,630 @@
+{
+  "celebrities": {
+    "INTJ": [
+      {
+        "name": "Elon Musk",
+        "profession": "Entrepreneur, CEO",
+        "description": {
+          "zh": "特斯拉和SpaceX的創始人，以其戰略思維和長遠規劃著稱",
+          "en": "Founder of Tesla and SpaceX, known for strategic thinking and long-term planning"
+        },
+        "traits": ["Strategic", "Visionary", "Independent", "Analytical"]
+      },
+      {
+        "name": "Mark Zuckerberg",
+        "profession": "Tech Entrepreneur",
+        "description": {
+          "zh": "Facebook創始人，以其系統化思維和創新能力聞名",
+          "en": "Facebook founder, known for systematic thinking and innovation"
+        },
+        "traits": ["Systematic", "Innovative", "Goal-oriented", "Private"]
+      },
+      {
+        "name": "Isaac Newton",
+        "profession": "Scientist, Mathematician",
+        "description": {
+          "zh": "偉大的物理學家和數學家，以其深度思考和理論構建能力著稱",
+          "en": "Great physicist and mathematician, known for deep thinking and theoretical construction"
+        },
+        "traits": ["Theoretical", "Deep-thinking", "Independent", "Perfectionist"]
+      }
+    ],
+    "INTP": [
+      {
+        "name": "Albert Einstein",
+        "profession": "Theoretical Physicist",
+        "description": {
+          "zh": "相對論之父，以其創新思維和理論探索著稱",
+          "en": "Father of relativity theory, known for innovative thinking and theoretical exploration"
+        },
+        "traits": ["Innovative", "Theoretical", "Curious", "Independent"]
+      },
+      {
+        "name": "Kristen Stewart",
+        "profession": "Actress",
+        "description": {
+          "zh": "以其深思熟慮的表演和獨立精神聞名的演員",
+          "en": "Actress known for thoughtful performances and independent spirit"
+        },
+        "traits": ["Thoughtful", "Independent", "Analytical", "Creative"]
+      },
+      {
+        "name": "Bill Gates",
+        "profession": "Tech Entrepreneur, Philanthropist",
+        "description": {
+          "zh": "微軟創始人，以其邏輯思維和問題解決能力著稱",
+          "en": "Microsoft founder, known for logical thinking and problem-solving abilities"
+        },
+        "traits": ["Logical", "Problem-solver", "Analytical", "Strategic"]
+      }
+    ],
+    "ENTJ": [
+      {
+        "name": "Steve Jobs",
+        "profession": "Tech Entrepreneur",
+        "description": {
+          "zh": "蘋果公司聯合創始人，以其領導力和遠見卓識著稱",
+          "en": "Apple co-founder, known for leadership and visionary thinking"
+        },
+        "traits": ["Visionary", "Leader", "Decisive", "Ambitious"]
+      },
+      {
+        "name": "Oprah Winfrey",
+        "profession": "Media Mogul, Philanthropist",
+        "description": {
+          "zh": "媒體女王，以其影響力和領導才能聞名",
+          "en": "Media queen, known for her influence and leadership abilities"
+        },
+        "traits": ["Influential", "Charismatic", "Ambitious", "Inspiring"]
+      },
+      {
+        "name": "Barack Obama",
+        "profession": "Former President",
+        "description": {
+          "zh": "美國前總統，以其領導力和演講能力著稱",
+          "en": "Former US President, known for leadership and oratory skills"
+        },
+        "traits": ["Leader", "Charismatic", "Strategic", "Inspiring"]
+      }
+    ],
+    "ENTP": [
+      {
+        "name": "Leonardo da Vinci",
+        "profession": "Artist, Inventor",
+        "description": {
+          "zh": "文藝復興時期的天才，以其創新精神和多才多藝著稱",
+          "en": "Renaissance genius, known for innovative spirit and versatility"
+        },
+        "traits": ["Creative", "Innovative", "Versatile", "Curious"]
+      },
+      {
+        "name": "Robert Downey Jr.",
+        "profession": "Actor",
+        "description": {
+          "zh": "以其機智幽默和創新表演風格聞名的演員",
+          "en": "Actor known for wit, humor, and innovative performance style"
+        },
+        "traits": ["Witty", "Charismatic", "Adaptable", "Creative"]
+      },
+      {
+        "name": "Walt Disney",
+        "profession": "Animator, Entrepreneur",
+        "description": {
+          "zh": "迪士尼創始人，以其創新精神和想像力著稱",
+          "en": "Disney founder, known for innovative spirit and imagination"
+        },
+        "traits": ["Creative", "Visionary", "Optimistic", "Innovative"]
+      }
+    ],
+    "INFJ": [
+      {
+        "name": "Nelson Mandela",
+        "profession": "Political Leader, Activist",
+        "description": {
+          "zh": "南非前總統，以其理想主義和人道精神著稱",
+          "en": "Former South African President, known for idealism and humanitarianism"
+        },
+        "traits": ["Idealistic", "Compassionate", "Determined", "Inspiring"]
+      },
+      {
+        "name": "Mahatma Gandhi",
+        "profession": "Activist, Leader",
+        "description": {
+          "zh": "和平主義領袖，以其理想主義和道德品格著稱",
+          "en": "Peaceful leader, known for idealism and moral character"
+        },
+        "traits": ["Peaceful", "Idealistic", "Principled", "Compassionate"]
+      },
+      {
+        "name": "Martin Luther King Jr.",
+        "profession": "Civil Rights Leader",
+        "description": {
+          "zh": "民權運動領袖，以其理想主義和演講才能著稱",
+          "en": "Civil rights leader, known for idealism and oratory skills"
+        },
+        "traits": ["Idealistic", "Inspiring", "Peaceful", "Visionary"]
+      }
+    ],
+    "INFP": [
+      {
+        "name": "Johnny Depp",
+        "profession": "Actor",
+        "description": {
+          "zh": "以其獨特的表演風格和藝術追求聞名的演員",
+          "en": "Actor known for unique performance style and artistic pursuits"
+        },
+        "traits": ["Creative", "Authentic", "Sensitive", "Artistic"]
+      },
+      {
+        "name": "William Shakespeare",
+        "profession": "Playwright, Poet",
+        "description": {
+          "zh": "偉大的劇作家和詩人，以其深度的人性洞察著稱",
+          "en": "Great playwright and poet, known for deep human insights"
+        },
+        "traits": ["Creative", "Insightful", "Emotional", "Artistic"]
+      },
+      {
+        "name": "Kurt Cobain",
+        "profession": "Musician",
+        "description": {
+          "zh": "Nirvana樂隊主唱，以其藝術才華和敏感性格著稱",
+          "en": "Nirvana frontman, known for artistic talent and sensitive nature"
+        },
+        "traits": ["Artistic", "Sensitive", "Authentic", "Passionate"]
+      }
+    ],
+    "ENFJ": [
+      {
+        "name": "Maya Angelou",
+        "profession": "Writer, Activist",
+        "description": {
+          "zh": "著名作家和活動家，以其啟發性和同理心著稱",
+          "en": "Famous writer and activist, known for inspiration and empathy"
+        },
+        "traits": ["Inspiring", "Empathetic", "Charismatic", "Principled"]
+      },
+      {
+        "name": "John F. Kennedy",
+        "profession": "Former President",
+        "description": {
+          "zh": "美國前總統，以其魅力和理想主義著稱",
+          "en": "Former US President, known for charisma and idealism"
+        },
+        "traits": ["Charismatic", "Idealistic", "Inspiring", "Leader"]
+      },
+      {
+        "name": "Pope Francis",
+        "profession": "Religious Leader",
+        "description": {
+          "zh": "羅馬教皇，以其同理心和改革精神著稱",
+          "en": "Pope, known for empathy and reformist spirit"
+        },
+        "traits": ["Compassionate", "Reformist", "Inspiring", "Humble"]
+      }
+    ],
+    "ENFP": [
+      {
+        "name": "Robin Williams",
+        "profession": "Actor, Comedian",
+        "description": {
+          "zh": "著名演員和喜劇演員，以其創造力和熱情著稱",
+          "en": "Famous actor and comedian, known for creativity and enthusiasm"
+        },
+        "traits": ["Creative", "Enthusiastic", "Empathetic", "Spontaneous"]
+      },
+      {
+        "name": "Ellen DeGeneres",
+        "profession": "TV Host, Comedian",
+        "description": {
+          "zh": "電視主持人，以其積極樂觀和幽默感著稱",
+          "en": "TV host, known for positivity and sense of humor"
+        },
+        "traits": ["Optimistic", "Humorous", "Empathetic", "Energetic"]
+      },
+      {
+        "name": "Will Smith",
+        "profession": "Actor, Rapper",
+        "description": {
+          "zh": "演員和說唱歌手，以其魅力和積極態度著稱",
+          "en": "Actor and rapper, known for charisma and positive attitude"
+        },
+        "traits": ["Charismatic", "Optimistic", "Energetic", "Versatile"]
+      }
+    ],
+    "ISTJ": [
+      {
+        "name": "Warren Buffett",
+        "profession": "Investor, Business Magnate",
+        "description": {
+          "zh": "著名投資者，以其穩健的投資策略和可靠性著稱",
+          "en": "Famous investor, known for steady investment strategy and reliability"
+        },
+        "traits": ["Reliable", "Methodical", "Patient", "Practical"]
+      },
+      {
+        "name": "George Washington",
+        "profession": "First US President",
+        "description": {
+          "zh": "美國首任總統，以其責任感和領導力著稱",
+          "en": "First US President, known for sense of duty and leadership"
+        },
+        "traits": ["Dutiful", "Leader", "Reliable", "Traditional"]
+      },
+      {
+        "name": "Queen Elizabeth II",
+        "profession": "British Monarch",
+        "description": {
+          "zh": "英國女王，以其責任感和傳統價值觀著稱",
+          "en": "British Queen, known for sense of duty and traditional values"
+        },
+        "traits": ["Dutiful", "Traditional", "Reliable", "Dignified"]
+      }
+    ],
+    "ISFJ": [
+      {
+        "name": "Taylor Swift",
+        "profession": "Singer-Songwriter",
+        "description": {
+          "zh": "著名歌手，以其關懷粉絲和細膩情感表達著稱",
+          "en": "Famous singer, known for caring for fans and delicate emotional expression"
+        },
+        "traits": ["Caring", "Loyal", "Creative", "Supportive"]
+      },
+      {
+        "name": "Beyoncé",
+        "profession": "Singer, Performer",
+        "description": {
+          "zh": "世界級歌手，以其完美主義和對家庭的重視著稱",
+          "en": "World-class singer, known for perfectionism and family values"
+        },
+        "traits": ["Perfectionist", "Loyal", "Hardworking", "Caring"]
+      },
+      {
+        "name": "Kate Middleton",
+        "profession": "Duchess of Cambridge",
+        "description": {
+          "zh": "英國王妃，以其優雅和對慈善事業的投入著稱",
+          "en": "British Duchess, known for grace and dedication to charity"
+        },
+        "traits": ["Graceful", "Caring", "Traditional", "Supportive"]
+      }
+    ],
+    "ESTJ": [
+      {
+        "name": "Gordon Ramsay",
+        "profession": "Chef, TV Personality",
+        "description": {
+          "zh": "著名廚師，以其高標準和直接的領導風格著稱",
+          "en": "Famous chef, known for high standards and direct leadership style"
+        },
+        "traits": ["Leader", "Direct", "High-standards", "Organized"]
+      },
+      {
+        "name": "Judge Judy",
+        "profession": "TV Judge",
+        "description": {
+          "zh": "電視法官，以其公正和決斷力著稱",
+          "en": "TV judge, known for fairness and decisiveness"
+        },
+        "traits": ["Fair", "Decisive", "Direct", "Organized"]
+      },
+      {
+        "name": "Vince Lombardi",
+        "profession": "Football Coach",
+        "description": {
+          "zh": "傳奇橄欖球教練，以其領導力和紀律著稱",
+          "en": "Legendary football coach, known for leadership and discipline"
+        },
+        "traits": ["Leader", "Disciplined", "Goal-oriented", "Motivating"]
+      }
+    ],
+    "ESFJ": [
+      {
+        "name": "Jennifer Garner",
+        "profession": "Actress",
+        "description": {
+          "zh": "演員，以其友善和對家庭的重視著稱",
+          "en": "Actress, known for friendliness and family values"
+        },
+        "traits": ["Friendly", "Caring", "Family-oriented", "Supportive"]
+      },
+      {
+        "name": "Hugh Jackman",
+        "profession": "Actor, Singer",
+        "description": {
+          "zh": "演員和歌手，以其熱情和合作精神著稱",
+          "en": "Actor and singer, known for enthusiasm and collaborative spirit"
+        },
+        "traits": ["Enthusiastic", "Collaborative", "Caring", "Energetic"]
+      },
+      {
+        "name": "Taylor Lautner",
+        "profession": "Actor",
+        "description": {
+          "zh": "演員，以其友善和團隊合作精神著稱",
+          "en": "Actor, known for friendliness and team spirit"
+        },
+        "traits": ["Friendly", "Team-player", "Supportive", "Loyal"]
+      }
+    ],
+    "ISTP": [
+      {
+        "name": "Clint Eastwood",
+        "profession": "Actor, Director",
+        "description": {
+          "zh": "演員導演，以其冷靜和實用主義著稱",
+          "en": "Actor and director, known for coolness and pragmatism"
+        },
+        "traits": ["Cool", "Practical", "Independent", "Skilled"]
+      },
+      {
+        "name": "Bruce Lee",
+        "profession": "Martial Artist, Actor",
+        "description": {
+          "zh": "武術家和演員，以其專注和身體技能著稱",
+          "en": "Martial artist and actor, known for focus and physical skills"
+        },
+        "traits": ["Focused", "Skilled", "Adaptable", "Independent"]
+      },
+      {
+        "name": "Kobe Bryant",
+        "profession": "Basketball Player",
+        "description": {
+          "zh": "籃球運動員，以其專注和技術精湛著稱",
+          "en": "Basketball player, known for focus and technical excellence"
+        },
+        "traits": ["Focused", "Skilled", "Determined", "Practical"]
+      }
+    ],
+    "ISFP": [
+      {
+        "name": "Rihanna",
+        "profession": "Singer, Entrepreneur",
+        "description": {
+          "zh": "歌手和企業家，以其藝術才華和真實性著稱",
+          "en": "Singer and entrepreneur, known for artistic talent and authenticity"
+        },
+        "traits": ["Artistic", "Authentic", "Creative", "Independent"]
+      },
+      {
+        "name": "Michael Jackson",
+        "profession": "Singer, Dancer",
+        "description": {
+          "zh": "流行之王，以其藝術天賦和敏感性格著稱",
+          "en": "King of Pop, known for artistic genius and sensitive nature"
+        },
+        "traits": ["Artistic", "Sensitive", "Creative", "Perfectionist"]
+      },
+      {
+        "name": "Avril Lavigne",
+        "profession": "Singer-Songwriter",
+        "description": {
+          "zh": "歌手，以其真實個性和藝術表達著稱",
+          "en": "Singer, known for authentic personality and artistic expression"
+        },
+        "traits": ["Authentic", "Creative", "Independent", "Artistic"]
+      }
+    ],
+    "ESTP": [
+      {
+        "name": "Ernest Hemingway",
+        "profession": "Writer",
+        "description": {
+          "zh": "著名作家，以其冒險精神和直接的寫作風格著稱",
+          "en": "Famous writer, known for adventurous spirit and direct writing style"
+        },
+        "traits": ["Adventurous", "Direct", "Spontaneous", "Bold"]
+      },
+      {
+        "name": "Donald Trump",
+        "profession": "Former President, Businessman",
+        "description": {
+          "zh": "前總統和商人，以其直接和果斷的風格著稱",
+          "en": "Former president and businessman, known for direct and decisive style"
+        },
+        "traits": ["Direct", "Decisive", "Bold", "Spontaneous"]
+      },
+      {
+        "name": "Madonna",
+        "profession": "Singer, Performer",
+        "description": {
+          "zh": "流行巨星，以其大膽和適應能力著稱",
+          "en": "Pop superstar, known for boldness and adaptability"
+        },
+        "traits": ["Bold", "Adaptable", "Energetic", "Charismatic"]
+      }
+    ],
+    "ESFP": [
+      {
+        "name": "Adele",
+        "profession": "Singer",
+        "description": {
+          "zh": "著名歌手，以其情感表達和親和力著稱",
+          "en": "Famous singer, known for emotional expression and warmth"
+        },
+        "traits": ["Emotional", "Warm", "Authentic", "Expressive"]
+      },
+      {
+        "name": "Justin Bieber",
+        "profession": "Singer",
+        "description": {
+          "zh": "流行歌手，以其活力和與粉絲的互動著稱",
+          "en": "Pop singer, known for energy and fan interaction"
+        },
+        "traits": ["Energetic", "Social", "Spontaneous", "Expressive"]
+      },
+      {
+        "name": "Serena Williams",
+        "profession": "Tennis Player",
+        "description": {
+          "zh": "網球運動員，以其熱情和競爭精神著稱",
+          "en": "Tennis player, known for passion and competitive spirit"
+        },
+        "traits": ["Passionate", "Competitive", "Energetic", "Expressive"]
+      }
+    ]
+  },
+  "typeDescriptions": {
+    "INTJ": {
+      "title": {
+        "zh": "建築師",
+        "en": "The Architect"
+      },
+      "description": {
+        "zh": "富有想像力和戰略性的思想家，對一切事物都有計劃。",
+        "en": "Imaginative and strategic thinkers, with a plan for everything."
+      }
+    },
+    "INTP": {
+      "title": {
+        "zh": "思想家",
+        "en": "The Thinker"
+      },
+      "description": {
+        "zh": "創新的發明家，對知識有著永不滿足的渴望。",
+        "en": "Innovative inventors with an unquenchable thirst for knowledge."
+      }
+    },
+    "ENTJ": {
+      "title": {
+        "zh": "指揮官",
+        "en": "The Commander"
+      },
+      "description": {
+        "zh": "大膽、富有想像力、意志強烈的領導者，總能找到或創造解決方法。",
+        "en": "Bold, imaginative and strong-willed leaders, always finding a way – or making one."
+      }
+    },
+    "ENTP": {
+      "title": {
+        "zh": "辯論家",
+        "en": "The Debater"
+      },
+      "description": {
+        "zh": "聰明好奇的思想家，不會拒絕接受智力上的挑戰。",
+        "en": "Smart and curious thinkers who cannot resist an intellectual challenge."
+      }
+    },
+    "INFJ": {
+      "title": {
+        "zh": "提倡者",
+        "en": "The Advocate"
+      },
+      "description": {
+        "zh": "安靜而神秘，同時鼓舞他人的理想主義者。",
+        "en": "Quiet and mystical, yet very inspiring and tireless idealists."
+      }
+    },
+    "INFP": {
+      "title": {
+        "zh": "調停者",
+        "en": "The Mediator"
+      },
+      "description": {
+        "zh": "詩意、善良、利他，總是熱切地為正義事業服務。",
+        "en": "Poetic, kind and altruistic people, always eager to help a good cause."
+      }
+    },
+    "ENFJ": {
+      "title": {
+        "zh": "主人公",
+        "en": "The Protagonist"
+      },
+      "description": {
+        "zh": "富有魅力、鼓舞人心的領導者，能夠吸引聽眾。",
+        "en": "Charismatic and inspiring leaders, able to mesmerize their listeners."
+      }
+    },
+    "ENFP": {
+      "title": {
+        "zh": "競選者",
+        "en": "The Campaigner"
+      },
+      "description": {
+        "zh": "熱情、有創造力、社交能力強，總能找到微笑的理由。",
+        "en": "Enthusiastic, creative and sociable free spirits, who can always find a reason to smile."
+      }
+    },
+    "ISTJ": {
+      "title": {
+        "zh": "物流師",
+        "en": "The Logistician"
+      },
+      "description": {
+        "zh": "實際而注重事實的人，可靠性不容置疑。",
+        "en": "Practical and fact-minded, reliability cannot be doubted."
+      }
+    },
+    "ISFJ": {
+      "title": {
+        "zh": "守護者",
+        "en": "The Protector"
+      },
+      "description": {
+        "zh": "非常專注、溫暖的守護者，隨時準備保護愛的人。",
+        "en": "Very dedicated and warm protectors, always ready to defend their loved ones."
+      }
+    },
+    "ESTJ": {
+      "title": {
+        "zh": "總經理",
+        "en": "The Executive"
+      },
+      "description": {
+        "zh": "出色的管理者，在管理事物或人員方面無與倫比。",
+        "en": "Excellent administrators, unsurpassed at managing things or people."
+      }
+    },
+    "ESFJ": {
+      "title": {
+        "zh": "執政官",
+        "en": "The Consul"
+      },
+      "description": {
+        "zh": "極具同情心、受歡迎、總是熱心助人。",
+        "en": "Extraordinarily caring, social and popular people, always eager to help."
+      }
+    },
+    "ISTP": {
+      "title": {
+        "zh": "鑑賞家",
+        "en": "The Virtuoso"
+      },
+      "description": {
+        "zh": "大膽而實際的實驗家，是各種工具的大師。",
+        "en": "Bold and practical experimenters, masters of all kinds of tools."
+      }
+    },
+    "ISFP": {
+      "title": {
+        "zh": "探險家",
+        "en": "The Adventurer"
+      },
+      "description": {
+        "zh": "靈活、有魅力的藝術家，隨時準備探索新的可能性。",
+        "en": "Flexible and charming artists, always ready to explore new possibilities."
+      }
+    },
+    "ESTP": {
+      "title": {
+        "zh": "企業家",
+        "en": "The Entrepreneur"
+      },
+      "description": {
+        "zh": "聰明、精力充沛、善於感知的人，真正享受生活在邊緣。",
+        "en": "Smart, energetic and very perceptive people, who truly enjoy living on the edge."
+      }
+    },
+    "ESFP": {
+      "title": {
+        "zh": "娛樂家",
+        "en": "The Entertainer"
+      },
+      "description": {
+        "zh": "自發、精力充沛、熱情的人，生活對他們來說從不無聊。",
+        "en": "Spontaneous, energetic and enthusiastic people – life is never boring around them."
+      }
+    }
+  }
+} 
