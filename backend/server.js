@@ -54,8 +54,11 @@ if (process.env.FRONTEND_URL) {
   allowedOrigins.push(process.env.FRONTEND_URL);
 }
 
-// Allow all Render.com subdomains (for flexibility)
+// Add custom domain (production)
 if (process.env.NODE_ENV === 'production') {
+  allowedOrigins.push('https://hkmbti.com');
+  allowedOrigins.push('https://www.hkmbti.com');
+  // Allow all Render.com subdomains (for flexibility)
   allowedOrigins.push(/^https:\/\/.*\.onrender\.com$/);
 }
 
