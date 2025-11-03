@@ -17,15 +17,28 @@ import {
 } from '@mui/material';
 import { Delete as DeleteIcon } from '@mui/icons-material';
 import { useAdmin } from '../../contexts/AdminContext';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { adminApi } from '../../services/api';
 
 const AdminRecordDetail = () => {
   const { sessionId } = useParams();
   const navigate = useNavigate();
   const { token } = useAdmin();
+  const { language } = useLanguage();
   const [record, setRecord] = useState(null);
   const [loading, setLoading] = useState(true);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+
+  // Helper function to extract multilingual text
+  const getMultilingualText = (text, fallback = '-') => {
+    if (!text) return fallback;
+    if (typeof text === 'string') return text;
+    if (typeof text === 'object') {
+      // Try current language first, then fallback to 'en', then any value
+      return text[language] || text[language.toLowerCase()] || text.en || text.zh || Object.values(text)[0] || fallback;
+    }
+    return fallback;
+  };
 
   useEffect(() => {
     const fetchRecordDetail = async () => {
@@ -131,11 +144,11 @@ const AdminRecordDetail = () => {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Typography color="textSecondary">Type Title</Typography>
-                  <Typography variant="h5">{record.typeInfo?.title || '-'}</Typography>
+                  <Typography variant="h5">{getMultilingualText(record.typeInfo?.title)}</Typography>
                 </Grid>
                 <Grid item xs={12}>
                   <Typography color="textSecondary">Description</Typography>
-                  <Typography variant="body1">{record.typeInfo?.description || '-'}</Typography>
+                  <Typography variant="body1">{getMultilingualText(record.typeInfo?.description)}</Typography>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <Typography color="textSecondary">Type Strength</Typography>
@@ -258,20 +271,20 @@ const AdminRecordDetail = () => {
                         Question {index + 1} - Category: {question.category}
                       </Typography>
                       <Typography color="textSecondary" gutterBottom>
-                        {question.text}
+                        {getMultilingualText(question.text)}
                       </Typography>
                       <Typography>
-                        Selected Option: {question.answer.selectedOption.text}
-                        (Value: {question.answer.selectedOption.value})
+                        Selected Option: {getMultilingualText(question.answer?.selectedOption?.text)}
+                        (Value: {question.answer?.selectedOption?.value})
                       </Typography>
                       <Typography color="textSecondary" variant="body2">
-                        Score: {question.answer.score}
+                        Score: {question.answer?.score || 0}
                       </Typography>
                       <Typography color="textSecondary" variant="body2">
-                        Response Time: {question.answer.responseTime}ms
+                        Response Time: {question.answer?.responseTime || 0}ms
                       </Typography>
                       <Typography color="textSecondary" variant="body2">
-                        Answered at: {new Date(question.answer.timestamp).toLocaleString()}
+                        Answered at: {question.answer?.timestamp ? new Date(question.answer.timestamp).toLocaleString() : '-'}
                       </Typography>
                     </Paper>
                   </Grid>

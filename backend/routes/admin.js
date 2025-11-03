@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const Admin = require('../models/Admin');
 const Result = require('../models/Result');
 const WebsiteStat = require('../models/WebsiteStat');
+const Response = require('../models/Response');
+const Question = require('../models/Question');
 const adminAuth = require('../middleware/adminAuth');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
@@ -136,7 +138,8 @@ router.get('/records', adminAuth, async (req, res) => {
         mbtiType: r.mbtiType,
         statistics: r.statistics,
         demographics: r.demographics,
-        createdAt: r.createdAt
+        createdAt: r.createdAt,
+        isComplete: !!r.mbtiType && (r.statistics?.completionPercentage === 100 || !r.statistics?.completionPercentage)
       })),
       total: count,
       pages: Math.ceil(count / limit)
@@ -154,7 +157,86 @@ router.get('/records/:sessionId', adminAuth, async (req, res) => {
     if (!result) {
       return res.status(404).json({ message: 'Test result not found' });
     }
+
+    // Fetch responses and questions
+    const responses = await Response.findBySessionId(req.params.sessionId);
+    const questionIds = responses.map(r => r.questionId);
+    const questions = await Question.findAll({
+      where: { questionId: questionIds },
+      order: [['questionId', 'ASC']]
+    });
+
+    // Create a map of questionId to question
+    const questionMap = {};
+    questions.forEach(q => {
+      questionMap[q.questionId] = q;
+    });
+
+    // Combine responses with questions
+    const questionsWithAnswers = responses.map(response => {
+      const question = questionMap[response.questionId];
+      if (!question) {
+        return null;
+      }
+
+      // Determine which option was selected based on answer (1-4)
+      // Options are typically stored as an array in the question
+      const options = question.options || [];
+      let selectedOption = null;
+      
+      // Find the option that matches the answer value
+      if (options.length > 0) {
+        // Try to find option by value match
+        const matchedOption = options.find(opt => opt.value === response.answer);
+        
+        if (matchedOption) {
+          // Handle different option structures: {text: "...", value: ...} or {label: {zh: "...", en: "..."}, value: ...}
+          const optionText = matchedOption.text || matchedOption.label || `Option ${response.answer}`;
+          selectedOption = {
+            text: optionText,
+            value: matchedOption.value || response.answer
+          };
+        } else {
+          // Fallback to index-based access (answer 1-4 maps to index 0-3)
+          const optionByIndex = options[response.answer - 1];
+          if (optionByIndex) {
+            const optionText = optionByIndex.text || optionByIndex.label || `Option ${response.answer}`;
+            selectedOption = {
+              text: optionText,
+              value: optionByIndex.value || response.answer
+            };
+          } else {
+            // Final fallback
+            selectedOption = { 
+              text: `Answer ${response.answer}`, 
+              value: response.answer 
+            };
+          }
+        }
+      } else {
+        // Fallback if options structure is different
+        selectedOption = { 
+          text: `Answer ${response.answer}`, 
+          value: response.answer 
+        };
+      }
+
+      return {
+        questionId: question.questionId,
+        category: question.category || response.category,
+        text: question.text || '',
+        answer: {
+          selectedOption: selectedOption,
+          score: parseFloat(response.strength || 0),
+          responseTime: response.responseTime || 0,
+          timestamp: response.createdAt || response.updatedAt
+        }
+      };
+    }).filter(q => q !== null);
+
     // Format result manually
+    const isComplete = !!result.mbtiType && (result.statistics?.completionPercentage === 100 || !result.statistics?.completionPercentage);
+
     res.json({
       sessionId: result.sessionId,
       mbtiType: result.mbtiType,
@@ -169,7 +251,9 @@ router.get('/records/:sessionId', adminAuth, async (req, res) => {
       compatibility: result.getCompatibility(),
       createdAt: result.createdAt,
       demographics: result.demographics,
-      premium: result.premium
+      premium: result.premium,
+      isComplete: isComplete,
+      questions: questionsWithAnswers
     });
   } catch (error) {
     console.error('Error fetching test result:', error);

@@ -8,3 +8,5 @@ __pycache__/
 node_modules/
 postgres_data/
 config.env
+ac.txt
+frontend/build/

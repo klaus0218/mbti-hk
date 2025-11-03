@@ -8,6 +8,7 @@
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "create-admin": "node scripts/createAdmin.js",
+    "seed-admins": "node scripts/seedAdmins.js",
     "extract-pdfs": "node scripts/extractPdfs.js",
     "extract-pdfs-ocr": "node scripts/extractPdfsOCR.js",
     "extract-pdfs-enhanced": "node scripts/extractPdfsSimple.js",
