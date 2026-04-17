@@ -100,9 +100,6 @@ router.post('/calculate/:sessionId', validateSession, trackTestComplete, async (
         processingTime
       }
     };
-
-    console.log(resultData)
-    console.log(resultData.dimensions)
     
     // Save or update result
     const [result, created] = await Result.findOrCreate({

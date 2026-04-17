@@ -110,9 +110,6 @@ const calculateMBTI = (responses, questionsData) => {
   const typeCelebrities = celebrities.celebrities[type] || [];
   const typeInfo = celebrities.typeDescriptions[type] || {};
 
-  console.log(scores)
-  console.log(confidence)
-  console.log(dimensions)
   return {
     type,
     scores: normalizedScores,

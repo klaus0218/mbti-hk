@@ -18,10 +18,9 @@ let serviceInitialized = false;
   try {
     await enhancedAIService.initialize();
     serviceInitialized = true;
-    console.log('✅ Enhanced AI Service initialized in routes');
+    // Service initialized successfully
   } catch (error) {
-    console.warn('⚠️ Enhanced AI Service not initialized (categorized content file may be missing):', error.message);
-    console.warn('   The application will continue to run, but AI analysis features will be unavailable.');
+    // Service initialization failed - app will continue without AI features
     serviceInitialized = false;
     // Don't throw - allow app to continue without AI service
   }
@@ -100,8 +99,6 @@ router.post('/generate-report', async (req, res) => {
       });
     }
 
-    console.log('📄 Generating PDF report for:', mbtiType, 'Session:', sessionId, 'Language:', language);
-    
     // Get MBTI result from database
     const Result = require('../models/Result');
     const mbtiResult = await Result.findOne({ where: { sessionId } });
@@ -132,8 +129,6 @@ router.post('/generate-report', async (req, res) => {
 
     // Generate PDF report from existing analysis with language
     const htmlReport = await htmlReportGenerator.generateHTMLFromAnalysis(mbtiResult, analysis, language);
-    
-    console.log(`✅ HTMl report generated successfully!`);
     
     res.json({
       success: true,
@@ -182,7 +177,6 @@ router.get('/download/:filename', async (req, res) => {
     fileStream.on('end', async () => {
       try {
         await fs.remove(filePath);
-        console.log(`🗑️ Cleaned up temporary report: ${filename}`);
       } catch (cleanupError) {
         console.error('Error cleaning up file:', cleanupError);
       }
@@ -239,9 +233,6 @@ router.get('/status', async (req, res) => {
 
 // Test route without validation
 router.post('/create-package-test', async (req, res) => {
-  console.log('🔍 POST /create-package-test route hit (no validation)');
-  console.log('📝 Request body:', req.body);
-  
   res.json({
     success: true,
     message: 'Test route working without validation',
@@ -255,7 +246,6 @@ router.post('/create-package', checkServiceInitialized, validateMBTIResults, asy
     const { mbtiResult, sessionId, userId } = req.body;
     
     if (!mbtiResult) {
-      console.log('❌ No mbtiResult in request body');
       return res.status(400).json({
         success: false,
         message: 'MBTI results are required'
@@ -320,8 +310,6 @@ router.post('/unlock-premium', async (req, res) => {
       });
     }
 
-    console.log(`🔓 Unlocking premium for session: ${sessionId}, type: ${mbtiType}`);
-
     // Update the Result model directly with premium status
     const updatedResult = await Result.findOneAndUpdate(
       { sessionId, mbtiType },
@@ -335,13 +323,10 @@ router.post('/unlock-premium', async (req, res) => {
     );
 
     if (!updatedResult) {
-      console.log(`❌ No result found for session: ${sessionId}, type: ${mbtiType}`);
       return res.status(404).json({ 
         error: 'MBTI result not found' 
       });
     }
-
-    console.log(`✅ Premium unlocked successfully for session: ${sessionId}`);
     
     res.json({ 
       success: true, 
@@ -369,8 +354,6 @@ router.get('/get-full-report/:sessionId/:mbtiType', async (req, res) => {
         message: 'Session ID and MBTI type are required'
       });
     }
-
-    console.log(`📄 Getting full report for session: ${sessionId}, type: ${mbtiType}`);
     
     // First check if premium is unlocked in the MBTI result
     const Result = require('../models/Result');
@@ -526,7 +509,6 @@ router.get('/download/:filename', async (req, res) => {
     fileStream.on('end', async () => {
       try {
         await fs.remove(filePath);
-        console.log(`🗑️ Cleaned up temporary report: ${filename}`);
       } catch (cleanupError) {
         console.error('Error cleaning up file:', cleanupError);
       }

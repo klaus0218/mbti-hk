@@ -12,10 +12,7 @@ class HTMLReportGenerator {
 
   async generateHTMLFromAnalysis(mbtiResult, analysis, language = 'en') {    
     try {
-      console.log('Starting HTML generation...');
-      
       const htmlContent = this.generateHTMLContent(mbtiResult, analysis, language);
-      console.log('✅ HTML content generated, length:', htmlContent.length);
       
       if (!htmlContent || htmlContent.length < 100) {
         throw new Error('Generated HTML content is too short or empty');
@@ -1074,7 +1071,6 @@ class HTMLReportGenerator {
     
     // Generate individual section for each key in the full report
     for (const key in fullReport) {
-      console.log(key)
       const currentDate = new Date().toLocaleDateString('zh-TW', { year: 'numeric', month: '2-digit', day: '2-digit' });
       fullReport[key] = fullReport[key].replace(/\[當前日期\]/g, currentDate); // Alternative Chinese format
       fullReport[key] = fullReport[key].replace(/\[Current Date\]/g, currentDate); // Alternative Chinese format

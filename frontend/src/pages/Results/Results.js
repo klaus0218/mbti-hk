@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRedo, faDownload, faShare, faEnvelope, faLock, faUnlock, faCrown, faBrain, faSpinner, faExternalLinkAlt, faFilePdf, faFileCode, faLightbulb, faBriefcase, faHeartPulse, faChartLine, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faRedo, faDownload, faShare, faEnvelope, faLock, faUnlock, faCrown, faBrain, faSpinner, faExternalLinkAlt, faFilePdf, faFileCode, faLightbulb, faBriefcase, faHeartPulse, faChartLine, faSearch, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { Container, Section, Button } from '../../styles/theme';
 import { useSession } from '../../contexts/SessionContext';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -23,7 +23,7 @@ const ResultsPage = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing['3xl']};
   /* Fix mobile scrolling and prevent horizontal overflow */
   -webkit-overflow-scrolling: touch;
-  overflow-y: auto;
+  overflow-y: visible;
   overflow-x: hidden !important;
   width: 100vw;
   max-width: 100%;
@@ -43,7 +43,7 @@ const ResultsPage = styled.div`
     /* Ensure mobile scrolling works */
     touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
-    overflow-y: scroll !important;
+    overflow-y: visible;
     height: auto;
     min-height: calc(100vh + 200px);
   }
@@ -362,7 +362,7 @@ const StatLabel = styled.div`
 const CelebsSection = styled.div`
   padding: ${({ theme }) => theme.spacing['2xl']};
   background: ${({ theme }) => theme.colors.gray50};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => theme.spacing.lg};
   }
@@ -443,6 +443,43 @@ const ActionsSection = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => theme.spacing.lg};
   }
+`;
+
+const ConsultationBanner = styled.div`
+  padding: ${({ theme }) => theme.spacing['2xl']};
+  background: ${({ theme }) => theme.colors.white};
+  border-top: 1px solid ${({ theme }) => theme.colors.gray200};
+  border-bottom: 3px solid #d2691e;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ theme }) => theme.spacing.lg};
+  }
+`;
+
+const ConsultationTitle = styled.h3`
+  color: ${({ theme }) => theme.colors.gray900};
+  margin: 0 0 ${({ theme }) => theme.spacing.sm} 0;
+  font-size: ${({ theme }) => theme.typography.xl};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+  flex-wrap: wrap;
+  text-align: center;
+`;
+
+const ConsultationDescription = styled.p`
+  color: ${({ theme }) => theme.colors.gray600};
+  margin: 0 auto ${({ theme }) => theme.spacing.lg};
+  max-width: 520px;
+  line-height: 1.6;
+`;
+
+const ConsultationLinkButton = styled(Button)`
+  text-decoration: none;
+  display: inline-flex;
 `;
 
 const ActionButtons = styled.div`
@@ -1980,6 +2017,20 @@ const Results = () => {
               )}
             </AIAnalysisContent>
           </AIAnalysisSection>
+
+          <ConsultationBanner>
+            <ConsultationTitle>
+              <FontAwesomeIcon icon={faUserTie} />
+              {t.results.contactConsultantTitle}
+            </ConsultationTitle>
+            <ConsultationDescription>
+              {t.results.contactConsultantDescription}
+            </ConsultationDescription>
+            <ConsultationLinkButton as={Link} to="/contact" variant="secondary">
+              {t.results.contactConsultantButton}
+            </ConsultationLinkButton>
+          </ConsultationBanner>
+
           {/* Celebrities */}
           <CelebsSection>
             <CelebsTitle>{language === 'zh' ? '名家名人' : 'Famous People'}</CelebsTitle>

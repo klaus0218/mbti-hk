@@ -1,34 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { forceWindowScrollTop } from '../../utils/forceScrollTop';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
   const location = useLocation();
 
-  // Auto scroll to top on route change (mobile)
+  // Prevent the browser from restoring the previous route’s scroll after we reset.
   useEffect(() => {
-    // More robust mobile detection
-    const isMobile = () => {
-      return (
-        window.innerWidth <= 768 || 
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-        ('ontouchstart' in window)
-      );
-    };
-    
-    if (isMobile()) {
-      // Small delay to ensure page has started loading
-      const scrollTimer = setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: 'auto' // Use 'auto' for immediate scroll on page change
-        });
-      }, 50);
-      
-      return () => clearTimeout(scrollTimer);
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
     }
-  }, [location.pathname]); // Trigger when route changes
+  }, []);
+
+  // Run before paint so the new page is not briefly shown at the old offset.
+  useLayoutEffect(() => {
+    forceWindowScrollTop();
+    const raf = window.requestAnimationFrame(() => {
+      forceWindowScrollTop();
+    });
+    const t0 = window.setTimeout(forceWindowScrollTop, 0);
+    const t1 = window.setTimeout(forceWindowScrollTop, 100);
+
+    return () => {
+      window.cancelAnimationFrame(raf);
+      window.clearTimeout(t0);
+      window.clearTimeout(t1);
+    };
+  }, [location.pathname, location.key]);
 
   useEffect(() => {
     // Remove any existing test buttons
@@ -90,10 +89,7 @@ const ScrollToTop = () => {
     };
 
     const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      forceWindowScrollTop();
     };
 
     // Hover effects

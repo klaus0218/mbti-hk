@@ -88,7 +88,6 @@ app.use(express.urlencoded({ extended: true }));
       : { alter: true };   // Safe to alter in development
     
     await sequelize.sync(syncOptions);
-    console.log('✅ Database synchronized');
     
     // Create GIN index for demographics JSONB field (if it doesn't exist)
     try {
@@ -105,7 +104,6 @@ app.use(express.urlencoded({ extended: true }));
           CREATE INDEX results_demographics_idx ON results 
           USING GIN (demographics jsonb_path_ops)
         `);
-        console.log('✅ Created GIN index on results.demographics');
       }
     } catch (error) {
       console.warn('⚠️ Could not create GIN index on demographics (may already exist):', error.message);
@@ -127,10 +125,8 @@ app.use('/api/results', require('./routes/results'));
 app.use('/api/articles', require('./routes/articles'));
 app.use('/api/admin', require('./routes/admin'));
 
-// AI Analysis routes with debugging
-console.log('🔧 Loading AI Analysis routes...');
+// AI Analysis routes
 const aiAnalysisRoutes = require('./routes/aiAnalysis');
-console.log('✅ AI Analysis routes loaded successfully');
 app.use('/api/ai-analysis', aiAnalysisRoutes);
 
 // Add stats tracking to specific routes
@@ -170,7 +166,7 @@ app.use('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  // Server started successfully
 });
 
 module.exports = app; 

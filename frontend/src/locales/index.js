@@ -168,7 +168,11 @@ const translations = {
       relationships: 'In Relationships',
       share: 'Share Results',
       retake: 'Retake Test',
-      downloadReport: 'Download Report'
+      downloadReport: 'Download Report',
+      contactConsultantTitle: 'Want personalised guidance?',
+      contactConsultantDescription:
+        'Our MBTI consultants can help you interpret your results in depth and plan practical next steps.',
+      contactConsultantButton: 'Contact us'
     },
 
     // Articles
@@ -198,28 +202,22 @@ const translations = {
     // Contact
     contact: {
       title: "Contact Us",
-      subtitle: "Get in touch with us for any questions about MBTI testing",
+      subtitle: "Speak with our MBTI consultants and get clear guidance for your personal or professional growth.",
       email: "Email",
-      emailPlaceholder: "info@hkmbti.com",
-      salutation: "Salutation",
-      mr: "Mr.",
-      ms: "Ms.",
-      nameCompany: "Name / Company Name",
-      nameCompanyPlaceholder: "Enter your name or company name",
-      nameRequired: "Name is required",
-      phone: "Contact Phone",
-      phonePlaceholder: "Enter your phone number",
-      emailAddress: "Email Address", 
-      emailAddressPlaceholder: "Enter your email address",
-      emailAddressRequired: "Email address is required",
-      emailInvalid: "Please enter a valid email address",
-      inquiry: "Inquiry Content",
-      inquiryPlaceholder: "Please describe your inquiry in detail...",
-      inquiryRequired: "Inquiry content is required",
-      submit: "Submit",
-      submitting: "Submitting...",
-      submitSuccess: "Your message has been sent successfully! We will get back to you soon.",
-      submitError: "Failed to send message. Please try again later."
+      serviceTitle: "Professional MBTI Consultation Services",
+      serviceDescription: "Our experienced consultants help you interpret your MBTI profile in depth and turn insights into practical action. Whether you prefer a face-to-face session or a phone consultation, we provide reliable guidance tailored to your goals.",
+      servicePoint1: "In-depth interpretation of your MBTI type, strengths, blind spots, and communication style.",
+      servicePoint2: "One-on-one consultation for career planning, team collaboration, leadership, and relationship development.",
+      servicePoint3: "Flexible consultation format available both in person and by phone for your convenience.",
+      reachUsTitle: "Contact Our Team",
+      reachUsDescription: "Ready to talk? Reach us through your preferred channel and our team will respond as soon as possible.",
+      emailTapToCopy: "Tap to copy",
+      emailCopied: "Email copied to clipboard. You can paste it into your mail app.",
+      emailCopyFailed: "Could not copy. Please select and copy the address manually.",
+      contactEmail: "info@hkmbti.com",
+      whatsappNumber: "85294179844",
+      instagramHandle: "@hkmbti",
+      instagramUrl: "https://instagram.com/hkmbti"
     },
 
     // Footer
@@ -420,7 +418,11 @@ const translations = {
       relationships: '在關係中',
       share: '分享結果',
       retake: '重新測試',
-      downloadReport: '下載報告'
+      downloadReport: '下載報告',
+      contactConsultantTitle: '想獲得個人化指導？',
+      contactConsultantDescription:
+        '我們的 MBTI 顧問可協助你更深入解讀結果，並規劃實際可行的下一步。',
+      contactConsultantButton: '聯絡我們'
     },
 
     // Articles
@@ -450,28 +452,22 @@ const translations = {
     // Contact
     contact: {
       title: "聯絡我們",
-      subtitle: "如有任何關於MBTI測試的問題，請與我們聯繫",
+      subtitle: "由專業 MBTI 顧問為你提供深入分析與清晰方向，助你在個人與職涯上持續成長。",
       email: "電郵",
-      emailPlaceholder: "info@hkmbti.com",
-      salutation: "請填寫以下表格",
-      mr: "先生",
-      ms: "小姐",
-      nameCompany: "貴名/公司名稱",
-      nameCompanyPlaceholder: "請輸入您的姓名或公司名稱",
-      nameRequired: "姓名為必填項",
-      phone: "聯絡電話",
-      phonePlaceholder: "請輸入您的聯絡電話",
-      emailAddress: "電郵地址",
-      emailAddressPlaceholder: "請輸入您的電郵地址",
-      emailAddressRequired: "電郵地址為必填項",
-      emailInvalid: "請輸入有效的電郵地址",
-      inquiry: "查詢內容",
-      inquiryPlaceholder: "請詳細描述您的查詢內容...",
-      inquiryRequired: "查詢內容為必填項",
-      submit: "提交",
-      submitting: "提交中...",
-      submitSuccess: "您的訊息已成功發送！我們將盡快回覆您。",
-      submitError: "發送訊息失敗，請稍後再試。"
+      serviceTitle: "專業 MBTI 諮詢服務",
+      serviceDescription: "我們的資深顧問會深入解讀你的 MBTI 結果，並轉化為可實踐的建議。不論你偏好面談或電話諮詢，我們都能提供可靠且貼合需要的專業支援。",
+      servicePoint1: "深入分析你的 MBTI 類型、優勢、盲點與溝通風格。",
+      servicePoint2: "一對一諮詢涵蓋職涯規劃、團隊協作、領導發展與關係提升。",
+      servicePoint3: "提供面談及電話兩種彈性諮詢方式，配合你的時間安排。",
+      reachUsTitle: "聯絡我們",
+      reachUsDescription: "想進一步了解或預約服務？透過你最方便的渠道聯絡我們，我們會盡快回覆。",
+      emailTapToCopy: "點按即可複製",
+      emailCopied: "電郵地址已複製到剪貼簿，你可貼上到郵件應用程式。",
+      emailCopyFailed: "無法複製，請手動選取並複製電郵地址。",
+      contactEmail: "info@hkmbti.com",
+      whatsappNumber: "85294179844",
+      instagramHandle: "@hkmbti",
+      instagramUrl: "https://instagram.com/hkmbti"
     },
 
     // Footer

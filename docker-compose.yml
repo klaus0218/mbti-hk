@@ -14,9 +14,7 @@ services:
       POSTGRES_DB: mbti_db
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - type: volume
-        source: postgres_data
-        target: /var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql/data
     networks:
       - mbti-network
     deploy:
@@ -64,7 +62,7 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     container_name: hkmbti-frontend
     restart: always
     ports:
@@ -83,14 +81,6 @@ services:
       - /app/node_modules
     stdin_open: true
     tty: true
-
-volumes:
-  postgres_data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: ${PWD}/postgres_data
 
 networks:
   mbti-network:

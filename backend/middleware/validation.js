@@ -133,17 +133,6 @@ const validateMBTIResults = (req, res, next) => {
     });
   }
   
-  // Log demographics details if present
-  if (req.body.mbtiResult.demographics) {
-    console.log('📧 Demographics details:', {
-      name: req.body.mbtiResult.demographics.name,
-      ageRange: req.body.mbtiResult.demographics.ageRange,
-      gender: req.body.mbtiResult.demographics.gender,
-      industry: req.body.mbtiResult.demographics.industry,
-      email: req.body.mbtiResult.demographics.email
-      // Only log the essential fields
-    });
-  }
 
   const schema = Joi.object({
     mbtiResult: Joi.object({
@@ -220,8 +209,6 @@ const validateMBTIResults = (req, res, next) => {
     userId: Joi.any().optional(),    // Allow any value including undefined
     includeAnalysis: Joi.boolean().optional()
   });
-  
-  console.log('✅ Schema built successfully');
 
   try {
     const validationResult = schema.validate(req.body, {
@@ -231,8 +218,6 @@ const validateMBTIResults = (req, res, next) => {
     });
     
     if (validationResult.error) {
-      console.log('❌ Validation failed:', validationResult.error.details[0].message);
-      console.log('❌ Validation error details:', JSON.stringify(validationResult.error.details, null, 2));
       return res.status(400).json({ 
         message: 'Validation error', 
         details: validationResult.error.details[0].message 
@@ -248,7 +233,6 @@ const validateMBTIResults = (req, res, next) => {
     });
   }
 
-  console.log('✅ Validation passed');
   next();
 };
 

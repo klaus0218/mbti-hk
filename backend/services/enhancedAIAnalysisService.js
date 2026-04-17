@@ -42,10 +42,6 @@ class EnhancedAIAnalysisService {
       if (await fs.pathExists(categorizedPath)) {
         this.categorizedContent = await fs.readJson(categorizedPath);
         this.initialized = true;
-        console.log('✅ Enhanced AI Analysis Service initialized with categorized content');
-        
-        const typesWithContent = Object.values(this.categorizedContent).filter(t => t.chunks.length > 0).length;
-        console.log(`   MBTI types with content: ${typesWithContent}/16`);
         
       } else {
         throw new Error('Categorized content not found. Please run the categorization script first.');
@@ -107,16 +103,10 @@ class EnhancedAIAnalysisService {
   async createCompleteAnalysisPackage(mbtiResult, sessionId, userId = null) {
     try {      
       // First, update the MBTI result in MongoDB to ensure user email is saved
-      const mbtiUpdateResult = await this.updateMBTIResultInDatabase(mbtiResult, sessionId);
-      if (mbtiUpdateResult) {
-        console.log(`✅ MBTI result updated successfully before analysis generation`);
-      } else {
-        console.log(`⚠️ MBTI result update failed, but continuing with analysis generation`);
-      }
+      await this.updateMBTIResultInDatabase(mbtiResult, sessionId);
       
       // Generate full report content in a single AI request
       const consolidatedContent = await this.generateConsolidatedContent(mbtiResult);
-      console.log("✅ MBTI analysis result generated successfully");
 
       // Create analysis package (no preview, only full report)
       const analysisPackage = {
@@ -131,7 +121,6 @@ class EnhancedAIAnalysisService {
       
       // Save to database
       await this.saveAnalysisToDatabase(analysisPackage, sessionId, userId, mbtiResult.type);
-      console.log("✅ Analysis package saved to database");
       return analysisPackage;
       
     } catch (error) {
@@ -192,7 +181,6 @@ IMPORTANT: **TRANSLATION QUALITY**: When translating to Traditional Chinese, ens
 IMPORTANT: Ensure the response is valid JSON. Do not include any text before or after the JSON object. Do not use markdown formatting. Return ONLY the JSON object.`;
 
       const grokResponse = await this.callGrokAPI(prompt);
-      console.log("✅ Received response from Grok API");
       
       let cleanedResponseText = this.cleanAIResponse(grokResponse.content);
       
@@ -205,8 +193,6 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
 
       // Merge with predefined content to ensure sufficient word count
       consolidatedContent = await this.mergeWithPredefinedContent(consolidatedContent, type);
-
-      console.log("✅ Complete generate consolidated MBTI content with predefined content merged");
 
       return {
         type,
@@ -286,7 +272,7 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
         return parsed;
       }
     } catch (error) {
-      console.log('⚠️ Strategy 1 failed:', error.message);
+      // Strategy 1 failed, try next strategy
     }
 
     // Strategy 2: Fix common JSON issues and retry
@@ -297,7 +283,7 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
         return parsed;
       }
     } catch (error) {
-      console.log('⚠️ Strategy 2 failed:', error.message);
+      // Strategy 2 failed, try next strategy
     }
 
     // Strategy 3: Extract JSON from text using regex
@@ -310,7 +296,7 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
         }
       }
     } catch (error) {
-      console.log('⚠️ Strategy 3 failed:', error.message);
+      // Strategy 3 failed
     }
   }
 
@@ -410,7 +396,6 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
         mergedContent.fullReport.zh[field] = `${aiText}\n\n${predefinedText}`;
       });
 
-      console.log(`✅ Successfully merged predefined content with AI content for ${mbtiType}`);
       return mergedContent;
 
     } catch (error) {
@@ -518,7 +503,6 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
         return data;
       }
       
-      console.log(`❌ No analysis found for ${mbtiType} in database`);
       return null;
       
     } catch (error) {
@@ -529,11 +513,8 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
 
   async unlockPremiumContent(sessionId, mbtiType) {
     try {
-      console.log(`🔓 Unlocking premium content for ${mbtiType}...`);
-      
       // Validate sessionId is present
       if (!sessionId) {
-        console.log('⚠️ No sessionId provided, cannot unlock premium content');
         return false;
       }
       
@@ -543,11 +524,9 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
         analysis.isPremiumUnlocked = true;
         analysis.unlockedAt = new Date();
         await analysis.save();
-        console.log(`✅ Premium content unlocked for ${mbtiType} with full report`);
         return true;
       }
       
-      console.log(`❌ No analysis found to unlock premium content for ${mbtiType}`);
       return false;
       
     } catch (error) {
@@ -558,27 +537,21 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
 
   async getFullReport(sessionId, mbtiType) {
     try {
-      console.log(`📄 Getting full report for ${mbtiType}...`);
-      
       // Validate sessionId is present
       if (!sessionId) {
-        console.log('⚠️ No sessionId provided, cannot get full report');
         return null;
       }
       
       const analysis = await AIAnalysis.findByUserAndType(sessionId, mbtiType);
       
       if (analysis && analysis.isPremiumUnlocked && analysis.fullReport) {
-        console.log(`✅ Full report retrieved for ${mbtiType}`);
         return {
           fullReport: analysis.fullReport,
           timestamp: analysis.updatedAt.toISOString()
         };
       } else if (analysis && !analysis.isPremiumUnlocked) {
-        console.log(`🔒 Premium content not unlocked for ${mbtiType}`);
         return { error: 'Premium content not unlocked' };
       } else {
-        console.log(`❌ No analysis found for ${mbtiType}`);
         return null;
       }
       
@@ -590,11 +563,8 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
 
   async updateMBTIResultInDatabase(mbtiResult, sessionId) {
     try {
-      console.log(`💾 Updating MBTI result in database for session ${sessionId}...`);
-      
       // Validate sessionId is present
       if (!sessionId) {
-        console.log('⚠️ No sessionId provided, cannot update MBTI result');
         return false;
       }
 
@@ -609,15 +579,12 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
         if (mbtiResult.demographics?.email) {
           const demographics = existingResult.demographics || {};
           demographics.email = mbtiResult.demographics.email.trim().toLowerCase();
-          console.log(`📧 Updated email in MBTI result: ${demographics.email}`);
           
           await existingResult.update({ demographics });
         }
         
-        console.log(`✅ MBTI result updated successfully for session ${sessionId}`);
         return true;
       } else {
-        console.log(`⚠️ No MBTI result found for session ${sessionId}, cannot update`);
         return false;
       }
       

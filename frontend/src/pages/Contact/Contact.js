@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useRef, useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPaperPlane, faUser, faPhone, faBuilding, faCommentDots } from '@fortawesome/free-solid-svg-icons';
-import { Container, Section, Button } from '../../styles/theme';
+import { faEnvelope, faPhone, faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { Container, Section } from '../../styles/theme';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useTranslations } from '../../locales';
+import { forceWindowScrollTop } from '../../utils/forceScrollTop';
 
 const ContactPage = styled.div`
   min-height: 100vh;
@@ -58,292 +60,180 @@ const HeaderSubtitle = styled.p`
   margin-top: ${({ theme }) => theme.spacing.lg};
 `;
 
-const ContactInfo = styled.div`
-  background: ${({ theme }) => theme.colors.gray50};
-  padding: ${({ theme }) => theme.spacing.lg};
-  margin: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing['2xl']};
-  border-radius: ${({ theme }) => theme.borderRadius.lg};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: ${({ theme }) => theme.spacing.md};
-  border-left: 4px solid ${({ theme }) => theme.colors.primary};
-`;
-
-const ContactInfoIcon = styled.div`
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: ${({ theme }) => theme.typography.lg};
-`;
-
-const ContactInfoText = styled.div`
-  color: ${({ theme }) => theme.colors.gray700};
-  font-weight: ${({ theme }) => theme.typography.medium};
-`;
-
-const FormContainer = styled.div`
+const ContentContainer = styled.div`
   padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing['2xl']} ${({ theme }) => theme.spacing['2xl']};
-  
+  display: grid;
+  gap: ${({ theme }) => theme.spacing.lg};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => theme.spacing.md} ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing.lg};
   }
 `;
 
-const Form = styled.form`
-  display: grid;
-  gap: ${({ theme }) => theme.spacing.lg};
+const InfoSection = styled.div`
+  background: ${({ theme }) => theme.colors.gray50};
+  border-radius: ${({ theme }) => theme.borderRadius.lg};
+  border: 1px solid ${({ theme }) => theme.colors.gray100};
+  padding: ${({ theme }) => theme.spacing.xl};
 `;
 
-const FormGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const Label = styled.label`
-  font-weight: ${({ theme }) => theme.typography.medium};
-  color: ${({ theme }) => theme.colors.gray700};
-  font-size: ${({ theme }) => theme.typography.base};
+const SectionTitle = styled.h2`
+  margin: 0 0 ${({ theme }) => theme.spacing.md} 0;
+  font-size: ${({ theme }) => theme.typography.xl};
+  color: ${({ theme }) => theme.colors.gray900};
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
 `;
 
-const LabelIcon = styled.div`
-  color: ${({ theme }) => theme.colors.primary};
-  font-size: ${({ theme }) => theme.typography.sm};
-`;
-
-const RequiredMark = styled.span`
-  color: ${({ theme }) => theme.colors.error};
-  margin-left: ${({ theme }) => theme.spacing.xs};
-`;
-
-const RadioGroup = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.lg};
-  margin-top: ${({ theme }) => theme.spacing.sm};
-`;
-
-const RadioOption = styled.label`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.sm};
-  cursor: pointer;
-  font-weight: ${({ theme }) => theme.typography.regular};
+const SectionDescription = styled.p`
+  margin: 0 0 ${({ theme }) => theme.spacing.md} 0;
+  line-height: 1.7;
   color: ${({ theme }) => theme.colors.gray700};
-  
-  &:hover {
-    color: ${({ theme }) => theme.colors.primary};
-  }
 `;
 
-const RadioInput = styled.input`
-  width: 18px;
-  height: 18px;
-  border: 2px solid ${({ theme }) => theme.colors.gray300};
-  border-radius: 50%;
-  position: relative;
+const BulletList = styled.ul`
   margin: 0;
+  padding-left: ${({ theme }) => theme.spacing.xl};
+  color: ${({ theme }) => theme.colors.gray700};
+  line-height: 1.8;
+`;
+
+const ContactGrid = styled.div`
+  display: grid;
+  gap: ${({ theme }) => theme.spacing.md};
+`;
+
+const ContactItem = styled.a`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  padding: ${({ theme }) => theme.spacing.md};
+  border: 1px solid ${({ theme }) => theme.colors.gray200};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.gray800};
+  background: ${({ theme }) => theme.colors.white};
+  transition: ${({ theme }) => theme.transitions.default};
   cursor: pointer;
-  
-  &:checked {
+
+  &:hover {
     border-color: ${({ theme }) => theme.colors.primary};
-    
-    &:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 8px;
-      height: 8px;
-      background: ${({ theme }) => theme.colors.primary};
-      border-radius: 50%;
-    }
-  }
-  
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}20;
-  }
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: ${({ theme }) => theme.spacing.md};
-  border: 1px solid ${({ theme }) => theme.colors.gray300};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  font-size: ${({ theme }) => theme.typography.base};
-  transition: ${({ theme }) => theme.transitions.default};
-  
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.primary};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}20;
-  }
-  
-  ${({ $hasError, theme }) => $hasError && `
-    border-color: ${theme.colors.error};
-    
-    &:focus {
-      border-color: ${theme.colors.error};
-      box-shadow: 0 0 0 3px ${theme.colors.error}20;
-    }
-  `}
-`;
-
-const TextArea = styled.textarea`
-  width: 100%;
-  min-height: 120px;
-  padding: ${({ theme }) => theme.spacing.md};
-  border: 1px solid ${({ theme }) => theme.colors.gray300};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  font-size: ${({ theme }) => theme.typography.base};
-  font-family: inherit;
-  resize: vertical;
-  transition: ${({ theme }) => theme.transitions.default};
-  
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.primary};
-    box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary}20;
-  }
-  
-  ${({ $hasError, theme }) => $hasError && `
-    border-color: ${theme.colors.error};
-    
-    &:focus {
-      border-color: ${theme.colors.error};
-      box-shadow: 0 0 0 3px ${theme.colors.error}20;
-    }
-  `}
-`;
-
-const ErrorText = styled.span`
-  color: ${({ theme }) => theme.colors.error};
-  font-size: ${({ theme }) => theme.typography.sm};
-  margin-top: ${({ theme }) => theme.spacing.xs};
-`;
-
-const SubmitButton = styled(Button)`
-  margin-top: ${({ theme }) => theme.spacing.xl};
-  font-size: ${({ theme }) => theme.typography.lg};
-  padding: ${({ theme }) => theme.spacing.lg} ${({ theme }) => theme.spacing['2xl']};
-  background: ${({ theme }) => theme.colors.warning};
-  color: ${({ theme }) => theme.colors.white};
-  
-  &:hover:not(:disabled) {
-    background: ${({ theme }) => theme.colors.warning}dd;
+    color: ${({ theme }) => theme.colors.primary};
     transform: translateY(-1px);
   }
+
+  &[type='button'] {
+    width: 100%;
+    font: inherit;
+    font-family: inherit;
+    text-align: left;
+    appearance: none;
+    -webkit-appearance: none;
+  }
 `;
 
-const SuccessMessage = styled(motion.div)`
-  background: ${({ theme }) => theme.colors.success};
-  color: ${({ theme }) => theme.colors.white};
-  padding: ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  margin-bottom: ${({ theme }) => theme.spacing.lg};
-  text-align: center;
+/** Lets clicks reach the anchor; SVG icons otherwise steal the activation in some browsers. */
+const ContactItemInner = styled.span`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  width: 100%;
+  pointer-events: none;
+`;
+
+const ContactLabel = styled.span`
   font-weight: ${({ theme }) => theme.typography.medium};
+`;
+
+const EmailRowWrapper = styled.div`
+  display: grid;
+  gap: ${({ theme }) => theme.spacing.sm};
+`;
+
+const CopyFeedback = styled.p`
+  margin: 0;
+  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  font-size: ${({ theme }) => theme.typography.sm};
+  line-height: 1.5;
+  background: ${({ theme }) => theme.colors.gray100};
+  color: ${({ theme }) => theme.colors.gray800};
+  border: 1px solid ${({ theme }) => theme.colors.gray200};
+  border-left-width: 4px;
+  border-left-color: ${({ $variant, theme }) =>
+    $variant === 'success' ? theme.colors.success : theme.colors.error};
+`;
+
+const TapHint = styled.span`
+  font-weight: ${({ theme }) => theme.typography.regular};
+  opacity: 0.75;
 `;
 
 const Contact = () => {
   const { language } = useLanguage();
   const t = useTranslations(language);
-  
-  const [formData, setFormData] = useState({
-    salutation: '',
-    name: '',
-    phone: '',
-    email: '',
-    inquiry: ''
-  });
-  
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const contactEmail = String(t.contact?.contactEmail ?? '').trim();
+  const [copyStatus, setCopyStatus] = useState(null);
+  const copyFeedbackTimeoutRef = useRef(null);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-    
-    // Clear error when user starts typing
-    if (errors[name]) {
-      setErrors(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-    }
-  };
+  useLayoutEffect(() => {
+    const scrollNow = () => {
+      forceWindowScrollTop();
+      document
+        .getElementById('hkmbti-contact-page-top')
+        ?.scrollIntoView({ block: 'start', inline: 'nearest' });
+    };
+    scrollNow();
+    const t0 = window.setTimeout(scrollNow, 0);
+    const t1 = window.setTimeout(scrollNow, 100);
+    return () => {
+      window.clearTimeout(t0);
+      window.clearTimeout(t1);
+    };
+  }, []);
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  const scheduleClearCopyStatus = useCallback(() => {
+    if (copyFeedbackTimeoutRef.current != null) {
+      window.clearTimeout(copyFeedbackTimeoutRef.current);
+    }
+    copyFeedbackTimeoutRef.current = window.setTimeout(() => {
+      setCopyStatus(null);
+      copyFeedbackTimeoutRef.current = null;
+    }, 3500);
+  }, []);
 
-  const validateForm = () => {
-    const newErrors = {};
-    
-    if (!formData.name.trim()) {
-      newErrors.name = t.contact.nameRequired;
-    }
-    
-    if (!formData.email.trim()) {
-      newErrors.email = t.contact.emailAddressRequired;
-    } else if (!validateEmail(formData.email)) {
-      newErrors.email = t.contact.emailInvalid;
-    }
-    
-    if (!formData.inquiry.trim()) {
-      newErrors.inquiry = t.contact.inquiryRequired;
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const handleCopyEmail = useCallback(async () => {
+    if (!contactEmail) return;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    if (!validateForm()) {
-      return;
-    }
+    const write = async () => {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(contactEmail);
+        return;
+      }
+      const ta = document.createElement('textarea');
+      ta.value = contactEmail;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (!ok) throw new Error('execCommand copy failed');
+    };
 
     try {
-      setIsSubmitting(true);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Show success message
-      setShowSuccess(true);
-      
-      // Reset form
-      setFormData({
-        salutation: '',
-        name: '',
-        phone: '',
-        email: '',
-        inquiry: ''
-      });
-      
-      // Hide success message after 5 seconds
-      setTimeout(() => setShowSuccess(false), 5000);
-      
-    } catch (error) {
-      console.error('Failed to submit contact form:', error);
-      alert(t.contact.submitError);
-    } finally {
-      setIsSubmitting(false);
+      await write();
+      setCopyStatus('success');
+    } catch {
+      setCopyStatus('error');
     }
-  };
+    scheduleClearCopyStatus();
+  }, [contactEmail, scheduleClearCopyStatus]);
 
   return (
-    <ContactPage>
+    <ContactPage id="hkmbti-contact-page-top">
       <ContactSection>
         <Container>
           <ContactCard
@@ -355,148 +245,72 @@ const Contact = () => {
               <HeaderTitle>{t.contact.title}</HeaderTitle>
               <HeaderSubtitle>{t.contact.subtitle}</HeaderSubtitle>
             </Header>
-            
-            <ContactInfo>
-              <ContactInfoIcon>
-                <FontAwesomeIcon icon={faEnvelope} />
-              </ContactInfoIcon>
-              <ContactInfoText>
-                {t.contact.email}: {t.contact.emailPlaceholder}
-              </ContactInfoText>
-            </ContactInfo>
-            
-            <FormContainer>
-              {showSuccess && (
-                <SuccessMessage
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <FontAwesomeIcon icon={faPaperPlane} style={{ marginRight: '8px' }} />
-                  {t.contact.submitSuccess}
-                </SuccessMessage>
-              )}
-              
-              <Form onSubmit={handleSubmit}>
-                <FormGroup>
-                  <Label>
-                    <LabelIcon>
-                      <FontAwesomeIcon icon={faUser} />
-                    </LabelIcon>
-                    {t.contact.salutation}
-                  </Label>
-                  <RadioGroup>
-                    <RadioOption>
-                      <RadioInput
-                        type="radio"
-                        name="salutation"
-                        value="mr"
-                        checked={formData.salutation === 'mr'}
-                        onChange={handleInputChange}
-                      />
-                      {t.contact.mr}
-                    </RadioOption>
-                    <RadioOption>
-                      <RadioInput
-                        type="radio"
-                        name="salutation"
-                        value="ms"
-                        checked={formData.salutation === 'ms'}
-                        onChange={handleInputChange}
-                      />
-                      {t.contact.ms}
-                    </RadioOption>
-                  </RadioGroup>
-                </FormGroup>
 
-                <FormGroup>
-                  <Label htmlFor="name">
-                    <LabelIcon>
-                      <FontAwesomeIcon icon={faBuilding} />
-                    </LabelIcon>
-                    {t.contact.nameCompany}
-                    <RequiredMark>*</RequiredMark>
-                  </Label>
-                  <Input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    $hasError={!!errors.name}
-                    placeholder={t.contact.nameCompanyPlaceholder}
-                  />
-                  {errors.name && <ErrorText>{errors.name}</ErrorText>}
-                </FormGroup>
+            <ContentContainer>
+              <InfoSection>
+                <SectionTitle>
+                  <FontAwesomeIcon icon={faUserTie} />
+                  {t.contact.serviceTitle}
+                </SectionTitle>
+                <SectionDescription>{t.contact.serviceDescription}</SectionDescription>
+                <BulletList>
+                  <li>{t.contact.servicePoint1}</li>
+                  <li>{t.contact.servicePoint2}</li>
+                  <li>{t.contact.servicePoint3}</li>
+                </BulletList>
+              </InfoSection>
 
-                <FormGroup>
-                  <Label htmlFor="phone">
-                    <LabelIcon>
-                      <FontAwesomeIcon icon={faPhone} />
-                    </LabelIcon>
-                    {t.contact.phone}
-                  </Label>
-                  <Input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder={t.contact.phonePlaceholder}
-                  />
-                </FormGroup>
-
-                <FormGroup>
-                  <Label htmlFor="email">
-                    <LabelIcon>
-                      <FontAwesomeIcon icon={faEnvelope} />
-                    </LabelIcon>
-                    {t.contact.emailAddress}
-                    <RequiredMark>*</RequiredMark>
-                  </Label>
-                  <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    $hasError={!!errors.email}
-                    placeholder={t.contact.emailAddressPlaceholder}
-                  />
-                  {errors.email && <ErrorText>{errors.email}</ErrorText>}
-                </FormGroup>
-
-                <FormGroup>
-                  <Label htmlFor="inquiry">
-                    <LabelIcon>
-                      <FontAwesomeIcon icon={faCommentDots} />
-                    </LabelIcon>
-                    {t.contact.inquiry}
-                    <RequiredMark>*</RequiredMark>
-                  </Label>
-                  <TextArea
-                    id="inquiry"
-                    name="inquiry"
-                    value={formData.inquiry}
-                    onChange={handleInputChange}
-                    $hasError={!!errors.inquiry}
-                    placeholder={t.contact.inquiryPlaceholder}
-                    rows={5}
-                  />
-                  {errors.inquiry && <ErrorText>{errors.inquiry}</ErrorText>}
-                </FormGroup>
-
-                <SubmitButton
-                  type="submit"
-                  disabled={isSubmitting}
-                  size="lg"
-                  fullWidth
-                >
-                  <FontAwesomeIcon icon={faPaperPlane} />
-                  {isSubmitting ? t.contact.submitting : t.contact.submit}
-                </SubmitButton>
-              </Form>
-            </FormContainer>
+              <InfoSection>
+                <SectionTitle>
+                  <FontAwesomeIcon icon={faPhone} />
+                  {t.contact.reachUsTitle}
+                </SectionTitle>
+                <SectionDescription>{t.contact.reachUsDescription}</SectionDescription>
+                <ContactGrid>
+                  <EmailRowWrapper>
+                    <ContactItem
+                      as="button"
+                      type="button"
+                      onClick={handleCopyEmail}
+                      aria-label={`${t.contact.emailTapToCopy}: ${contactEmail}`}
+                    >
+                      <ContactItemInner>
+                        <FontAwesomeIcon icon={faEnvelope} />
+                        <ContactLabel>
+                          {t.contact.email}: {contactEmail}
+                          <TapHint>
+                            {' '}
+                            · {t.contact.emailTapToCopy}
+                          </TapHint>
+                        </ContactLabel>
+                      </ContactItemInner>
+                    </ContactItem>
+                    {copyStatus === 'success' && (
+                      <CopyFeedback $variant="success" role="status">
+                        {t.contact.emailCopied}
+                      </CopyFeedback>
+                    )}
+                    {copyStatus === 'error' && (
+                      <CopyFeedback $variant="error" role="alert">
+                        {t.contact.emailCopyFailed}
+                      </CopyFeedback>
+                    )}
+                  </EmailRowWrapper>
+                  <ContactItem href={`https://wa.me/${t.contact.whatsappNumber}`}>
+                    <ContactItemInner>
+                      <FontAwesomeIcon icon={faWhatsapp} />
+                      <ContactLabel>WhatsApp: +{t.contact.whatsappNumber}</ContactLabel>
+                    </ContactItemInner>
+                  </ContactItem>
+                  <ContactItem href={t.contact.instagramUrl} target="_blank" rel="noopener noreferrer">
+                    <ContactItemInner>
+                      <FontAwesomeIcon icon={faInstagram} />
+                      <ContactLabel>Instagram: {t.contact.instagramHandle}</ContactLabel>
+                    </ContactItemInner>
+                  </ContactItem>
+                </ContactGrid>
+              </InfoSection>
+            </ContentContainer>
           </ContactCard>
         </Container>
       </ContactSection>

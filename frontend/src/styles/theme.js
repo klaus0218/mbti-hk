@@ -262,12 +262,13 @@ export const GlobalStyle = createGlobalStyle`
     border: 0;
   }
   
-  /* Root element fixes */
+  /* Root: do not create a second vertical scrollport (html/body own scroll).
+     Nested overflow-y:auto on #root breaks SPA scroll-to-top after route changes. */
   #root {
     min-height: 100vh;
     min-height: -webkit-fill-available;
     overflow-x: hidden !important;
-    overflow-y: auto;
+    overflow-y: visible !important;
     -webkit-overflow-scrolling: touch;
     width: 100vw;
     max-width: 100%;
@@ -286,8 +287,8 @@ export const GlobalStyle = createGlobalStyle`
     overscroll-behavior: auto;
   }
   
-  /* Force scrolling behavior */
-  html, body, #root {
+  /* Vertical scroll on document only; #root grows with content (see #root block above). */
+  html, body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
     overscroll-behavior: contain;
@@ -328,7 +329,7 @@ export const GlobalStyle = createGlobalStyle`
       width: 100vw !important;
       max-width: 100vw !important;
       overflow-x: hidden !important;
-      overflow-y: auto !important;
+      overflow-y: visible !important;
       -webkit-overflow-scrolling: touch;
       touch-action: pan-y;
     }
@@ -356,7 +357,7 @@ export const GlobalStyle = createGlobalStyle`
   
   /* Force scrolling on responsive/mobile view in desktop browsers */
   @media (hover: none) and (pointer: coarse) {
-    body, #root {
+    body {
       overflow-y: scroll !important;
       -webkit-overflow-scrolling: touch;
     }
