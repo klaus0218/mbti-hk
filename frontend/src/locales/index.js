@@ -203,21 +203,18 @@ const translations = {
     contact: {
       title: "Contact Us",
       subtitle: "Speak with our MBTI consultants and get clear guidance for your personal or professional growth.",
-      email: "Email",
       serviceTitle: "Professional MBTI Consultation Services",
       serviceDescription: "Our experienced consultants help you interpret your MBTI profile in depth and turn insights into practical action. Whether you prefer a face-to-face session or a phone consultation, we provide reliable guidance tailored to your goals.",
       servicePoint1: "In-depth interpretation of your MBTI type, strengths, blind spots, and communication style.",
       servicePoint2: "One-on-one consultation for career planning, team collaboration, leadership, and relationship development.",
       servicePoint3: "Flexible consultation format available both in person and by phone for your convenience.",
-      reachUsTitle: "Contact Our Team",
-      reachUsDescription: "Ready to talk? Reach us through your preferred channel and our team will respond as soon as possible.",
-      emailTapToCopy: "Tap to copy",
-      emailCopied: "Email copied to clipboard. You can paste it into your mail app.",
-      emailCopyFailed: "Could not copy. Please select and copy the address manually.",
-      contactEmail: "info@hkmbti.com",
-      whatsappNumber: "85294179844",
-      instagramHandle: "@hkmbti",
-      instagramUrl: "https://instagram.com/hkmbti"
+      reachUsTitle: "WhatsApp",
+      reachUsDescription:
+        "We are available on WhatsApp. Please tap the button below to open WhatsApp and message us. We will reply as soon as we can.",
+      whatsappNumber: "85262387745",
+      whatsappLabel: "WhatsApp",
+      whatsappDisplay: "+852 6238 7745",
+      whatsappTapHint: "Tap to chat"
     },
 
     // Footer
@@ -453,21 +450,18 @@ const translations = {
     contact: {
       title: "聯絡我們",
       subtitle: "由專業 MBTI 顧問為你提供深入分析與清晰方向，助你在個人與職涯上持續成長。",
-      email: "電郵",
       serviceTitle: "專業 MBTI 諮詢服務",
       serviceDescription: "我們的資深顧問會深入解讀你的 MBTI 結果，並轉化為可實踐的建議。不論你偏好面談或電話諮詢，我們都能提供可靠且貼合需要的專業支援。",
       servicePoint1: "深入分析你的 MBTI 類型、優勢、盲點與溝通風格。",
       servicePoint2: "一對一諮詢涵蓋職涯規劃、團隊協作、領導發展與關係提升。",
       servicePoint3: "提供面談及電話兩種彈性諮詢方式，配合你的時間安排。",
-      reachUsTitle: "聯絡我們",
-      reachUsDescription: "想進一步了解或預約服務？透過你最方便的渠道聯絡我們，我們會盡快回覆。",
-      emailTapToCopy: "點按即可複製",
-      emailCopied: "電郵地址已複製到剪貼簿，你可貼上到郵件應用程式。",
-      emailCopyFailed: "無法複製，請手動選取並複製電郵地址。",
-      contactEmail: "info@hkmbti.com",
-      whatsappNumber: "85294179844",
-      instagramHandle: "@hkmbti",
-      instagramUrl: "https://instagram.com/hkmbti"
+      reachUsTitle: "WhatsApp",
+      reachUsDescription:
+        "請點按下方按鈕開啟 WhatsApp 與我們聯絡。我們會盡快回覆。",
+      whatsappNumber: "85262387745",
+      whatsappLabel: "WhatsApp",
+      whatsappDisplay: "+852 6238 7745",
+      whatsappTapHint: "點按開啟對話"
     },
 
     // Footer

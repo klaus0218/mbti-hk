@@ -1,9 +1,9 @@
-import React, { useState, useCallback, useRef, useLayoutEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faUserTie } from '@fortawesome/free-solid-svg-icons';
-import { faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { Container, Section } from '../../styles/theme';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useTranslations } from '../../locales';
@@ -40,7 +40,7 @@ const HeaderTitle = styled.h1`
   margin-bottom: ${({ theme }) => theme.spacing.sm};
   position: relative;
   display: inline-block;
-  
+
   &:after {
     content: '';
     position: absolute;
@@ -122,18 +122,8 @@ const ContactItem = styled.a`
     color: ${({ theme }) => theme.colors.primary};
     transform: translateY(-1px);
   }
-
-  &[type='button'] {
-    width: 100%;
-    font: inherit;
-    font-family: inherit;
-    text-align: left;
-    appearance: none;
-    -webkit-appearance: none;
-  }
 `;
 
-/** Lets clicks reach the anchor; SVG icons otherwise steal the activation in some browsers. */
 const ContactItemInner = styled.span`
   display: flex;
   align-items: center;
@@ -146,25 +136,6 @@ const ContactLabel = styled.span`
   font-weight: ${({ theme }) => theme.typography.medium};
 `;
 
-const EmailRowWrapper = styled.div`
-  display: grid;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const CopyFeedback = styled.p`
-  margin: 0;
-  padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  font-size: ${({ theme }) => theme.typography.sm};
-  line-height: 1.5;
-  background: ${({ theme }) => theme.colors.gray100};
-  color: ${({ theme }) => theme.colors.gray800};
-  border: 1px solid ${({ theme }) => theme.colors.gray200};
-  border-left-width: 4px;
-  border-left-color: ${({ $variant, theme }) =>
-    $variant === 'success' ? theme.colors.success : theme.colors.error};
-`;
-
 const TapHint = styled.span`
   font-weight: ${({ theme }) => theme.typography.regular};
   opacity: 0.75;
@@ -173,9 +144,8 @@ const TapHint = styled.span`
 const Contact = () => {
   const { language } = useLanguage();
   const t = useTranslations(language);
-  const contactEmail = String(t.contact?.contactEmail ?? '').trim();
-  const [copyStatus, setCopyStatus] = useState(null);
-  const copyFeedbackTimeoutRef = useRef(null);
+  const waDigits = String(t.contact?.whatsappNumber ?? '').replace(/\D/g, '');
+  const waHref = waDigits ? `https://wa.me/${waDigits}` : undefined;
 
   useLayoutEffect(() => {
     const scrollNow = () => {
@@ -192,45 +162,6 @@ const Contact = () => {
       window.clearTimeout(t1);
     };
   }, []);
-
-  const scheduleClearCopyStatus = useCallback(() => {
-    if (copyFeedbackTimeoutRef.current != null) {
-      window.clearTimeout(copyFeedbackTimeoutRef.current);
-    }
-    copyFeedbackTimeoutRef.current = window.setTimeout(() => {
-      setCopyStatus(null);
-      copyFeedbackTimeoutRef.current = null;
-    }, 3500);
-  }, []);
-
-  const handleCopyEmail = useCallback(async () => {
-    if (!contactEmail) return;
-
-    const write = async () => {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(contactEmail);
-        return;
-      }
-      const ta = document.createElement('textarea');
-      ta.value = contactEmail;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'fixed';
-      ta.style.left = '-9999px';
-      document.body.appendChild(ta);
-      ta.select();
-      const ok = document.execCommand('copy');
-      document.body.removeChild(ta);
-      if (!ok) throw new Error('execCommand copy failed');
-    };
-
-    try {
-      await write();
-      setCopyStatus('success');
-    } catch {
-      setCopyStatus('error');
-    }
-    scheduleClearCopyStatus();
-  }, [contactEmail, scheduleClearCopyStatus]);
 
   return (
     <ContactPage id="hkmbti-contact-page-top">
@@ -262,50 +193,26 @@ const Contact = () => {
 
               <InfoSection>
                 <SectionTitle>
-                  <FontAwesomeIcon icon={faPhone} />
+                  <FontAwesomeIcon icon={faWhatsapp} />
                   {t.contact.reachUsTitle}
                 </SectionTitle>
                 <SectionDescription>{t.contact.reachUsDescription}</SectionDescription>
                 <ContactGrid>
-                  <EmailRowWrapper>
-                    <ContactItem
-                      as="button"
-                      type="button"
-                      onClick={handleCopyEmail}
-                      aria-label={`${t.contact.emailTapToCopy}: ${contactEmail}`}
-                    >
-                      <ContactItemInner>
-                        <FontAwesomeIcon icon={faEnvelope} />
-                        <ContactLabel>
-                          {t.contact.email}: {contactEmail}
-                          <TapHint>
-                            {' '}
-                            · {t.contact.emailTapToCopy}
-                          </TapHint>
-                        </ContactLabel>
-                      </ContactItemInner>
-                    </ContactItem>
-                    {copyStatus === 'success' && (
-                      <CopyFeedback $variant="success" role="status">
-                        {t.contact.emailCopied}
-                      </CopyFeedback>
-                    )}
-                    {copyStatus === 'error' && (
-                      <CopyFeedback $variant="error" role="alert">
-                        {t.contact.emailCopyFailed}
-                      </CopyFeedback>
-                    )}
-                  </EmailRowWrapper>
-                  <ContactItem href={`https://wa.me/${t.contact.whatsappNumber}`}>
+                  <ContactItem
+                    href={waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${t.contact.whatsappTapHint}: ${t.contact.whatsappDisplay}`}
+                  >
                     <ContactItemInner>
                       <FontAwesomeIcon icon={faWhatsapp} />
-                      <ContactLabel>WhatsApp: +{t.contact.whatsappNumber}</ContactLabel>
-                    </ContactItemInner>
-                  </ContactItem>
-                  <ContactItem href={t.contact.instagramUrl} target="_blank" rel="noopener noreferrer">
-                    <ContactItemInner>
-                      <FontAwesomeIcon icon={faInstagram} />
-                      <ContactLabel>Instagram: {t.contact.instagramHandle}</ContactLabel>
+                      <ContactLabel>
+                        {t.contact.whatsappLabel}: {t.contact.whatsappDisplay}
+                        <TapHint>
+                          {' '}
+                          · {t.contact.whatsappTapHint}
+                        </TapHint>
+                      </ContactLabel>
                     </ContactItemInner>
                   </ContactItem>
                 </ContactGrid>
@@ -318,4 +225,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;

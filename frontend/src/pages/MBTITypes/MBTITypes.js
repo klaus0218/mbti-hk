@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faShare, faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Container, Section, Button, Card } from '../../styles/theme';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useTranslations } from '../../locales';
@@ -185,18 +185,6 @@ const BackButton = styled(Button)`
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
-const ActionButtons = styled.div`
-  display: flex;
-  gap: ${({ theme }) => theme.spacing.md};
-  justify-content: center;
-  margin-top: ${({ theme }) => theme.spacing.xl};
-  
-  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
 const mbtiTypesKeys = [
   'INTJ', 'INTP', 'ENTJ', 'ENTP',
   'INFJ', 'INFP', 'ENFJ', 'ENFP', 
@@ -368,17 +356,6 @@ const MBTITypes = () => {
                 {language === 'zh' ? typeData.summary.zh : typeData.summary.en}
               </TraitDescription>
             </TraitSection>
-
-            <ActionButtons>
-              <Button variant="primary">
-                <FontAwesomeIcon icon={faShare} />
-                {language === 'zh' ? '分享此類型' : 'Share This Type'}
-              </Button>
-              <Button variant="outline">
-                <FontAwesomeIcon icon={faDownload} />
-                {language === 'zh' ? '下載詳情' : 'Download Details'}
-              </Button>
-            </ActionButtons>
           </DetailCard>
         </DetailedTypeView>
       </Container>
