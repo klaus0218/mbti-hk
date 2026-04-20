@@ -15,6 +15,13 @@ const ScrollToTop = () => {
 
   // Run before paint so the new page is not briefly shown at the old offset.
   useLayoutEffect(() => {
+    // Defensive reset: if any page left body/html overflow locked, re-enable
+    // document scrolling after route changes.
+    document.body.style.overflow = '';
+    document.body.style.overflowY = '';
+    document.documentElement.style.overflow = '';
+    document.documentElement.style.overflowY = '';
+
     forceWindowScrollTop();
     const raf = window.requestAnimationFrame(() => {
       forceWindowScrollTop();

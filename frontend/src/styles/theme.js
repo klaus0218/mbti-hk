@@ -149,8 +149,8 @@ export const GlobalStyle = createGlobalStyle`
     /* Fix mobile scrolling and prevent horizontal overflow */
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden !important;
-    overflow-y: scroll !important;
-    width: 100vw;
+    overflow-y: auto !important;
+    width: 100%;
     max-width: 100%;
     /* Removed position: relative to fix fixed positioning */
     min-height: 100vh;
@@ -291,9 +291,9 @@ export const GlobalStyle = createGlobalStyle`
   html, body {
     overflow-x: hidden !important;
     overflow-y: auto !important;
-    overscroll-behavior: contain;
+    overscroll-behavior: auto;
     scroll-behavior: smooth;
-    max-width: 100vw;
+    max-width: 100%;
   }
   
   /* Additional mobile scroll fixes */
@@ -303,8 +303,8 @@ export const GlobalStyle = createGlobalStyle`
     }
     
     html, body {
-      width: 100vw !important;
-      max-width: 100vw !important;
+      width: 100% !important;
+      max-width: 100% !important;
       overflow-x: hidden !important;
       /* Removed position: relative to fix fixed positioning on mobile */
     }
@@ -317,21 +317,19 @@ export const GlobalStyle = createGlobalStyle`
       overflow-y: scroll !important;
       overflow-x: hidden !important;
       /* Fix viewport issues */
-      width: 100vw;
+      width: 100%;
       max-width: 100%;
       /* Enable touch scrolling */
-      touch-action: pan-y;
-      /* Prevent zoom on double tap */
-      touch-action: manipulation;
+      touch-action: auto;
     }
     
     #root {
-      width: 100vw !important;
-      max-width: 100vw !important;
+      width: 100% !important;
+      max-width: 100% !important;
       overflow-x: hidden !important;
       overflow-y: visible !important;
       -webkit-overflow-scrolling: touch;
-      touch-action: pan-y;
+      touch-action: auto;
     }
     
     /* Disable tap highlight */
