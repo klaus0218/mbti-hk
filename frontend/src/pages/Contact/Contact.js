@@ -1,8 +1,8 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserTie } from '@fortawesome/free-solid-svg-icons';
+import { faUserTie, faEnvelope, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { Container, Section } from '../../styles/theme';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -124,6 +124,29 @@ const ContactItem = styled.a`
   }
 `;
 
+const ContactButton = styled.button`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.md};
+  width: 100%;
+  padding: ${({ theme }) => theme.spacing.md};
+  border: 1px solid ${({ theme }) => theme.colors.gray200};
+  border-radius: ${({ theme }) => theme.borderRadius.md};
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.gray800};
+  background: ${({ theme }) => theme.colors.white};
+  transition: ${({ theme }) => theme.transitions.default};
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
+    transform: translateY(-1px);
+  }
+`;
+
 const ContactItemInner = styled.span`
   display: flex;
   align-items: center;
@@ -144,8 +167,32 @@ const TapHint = styled.span`
 const Contact = () => {
   const { language } = useLanguage();
   const t = useTranslations(language);
+  const [isEmailCopied, setIsEmailCopied] = useState(false);
   const waDigits = String(t.contact?.whatsappNumber ?? '').replace(/\D/g, '');
   const waHref = waDigits ? `https://wa.me/${waDigits}` : undefined;
+  const consultantEmail = t.contact?.consultantEmail || 'cpspatrick@mbtihk.com';
+
+  const handleEmailCopy = async () => {
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(consultantEmail);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = consultantEmail;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+      setIsEmailCopied(true);
+      window.setTimeout(() => setIsEmailCopied(false), 1800);
+    } catch (error) {
+      setIsEmailCopied(false);
+    }
+  };
 
   useLayoutEffect(() => {
     const scrollNow = () => {
@@ -188,6 +235,7 @@ const Contact = () => {
                   <li>{t.contact.servicePoint1}</li>
                   <li>{t.contact.servicePoint2}</li>
                   <li>{t.contact.servicePoint3}</li>
+                  <li>{t.contact.servicePoint4}</li>
                 </BulletList>
               </InfoSection>
 
@@ -215,6 +263,22 @@ const Contact = () => {
                       </ContactLabel>
                     </ContactItemInner>
                   </ContactItem>
+                  <ContactButton
+                    type="button"
+                    onClick={handleEmailCopy}
+                    aria-label={`${t.contact.emailCopyHint}: ${consultantEmail}`}
+                  >
+                    <ContactItemInner>
+                      <FontAwesomeIcon icon={isEmailCopied ? faCheck : faEnvelope} />
+                      <ContactLabel>
+                        {t.contact.emailLabel}: {consultantEmail}
+                        <TapHint>
+                          {' '}
+                          · {isEmailCopied ? t.contact.emailCopiedHint : t.contact.emailCopyHint}
+                        </TapHint>
+                      </ContactLabel>
+                    </ContactItemInner>
+                  </ContactButton>
                 </ContactGrid>
               </InfoSection>
             </ContentContainer>

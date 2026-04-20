@@ -204,17 +204,22 @@ const translations = {
       title: "Contact Us",
       subtitle: "Speak with our MBTI consultants and get clear guidance for your personal or professional growth.",
       serviceTitle: "Professional MBTI Consultation Services",
-      serviceDescription: "Our experienced consultants help you interpret your MBTI profile in depth and turn insights into practical action. Whether you prefer a face-to-face session or a phone consultation, we provide reliable guidance tailored to your goals.",
+      serviceDescription: "Our consultant team has extensive professional experience and delivers practical MBTI guidance for real-life growth. We regularly host consultation events and have supported over 300 clients through one-on-one sessions, while also providing structured group-class learning for teams and communities.",
       servicePoint1: "In-depth interpretation of your MBTI type, strengths, blind spots, and communication style.",
-      servicePoint2: "One-on-one consultation for career planning, team collaboration, leadership, and relationship development.",
-      servicePoint3: "Flexible consultation format available both in person and by phone for your convenience.",
+      servicePoint2: "One-on-one consultation experience with more than 300 clients across career planning, team collaboration, leadership, and relationship development.",
+      servicePoint3: "Regular consultation events and workshops designed to help participants apply MBTI insights with confidence.",
+      servicePoint4: "Group class facilitation experience, with clear frameworks for communication, conflict handling, and stronger team understanding.",
       reachUsTitle: "WhatsApp",
       reachUsDescription:
-        "We are available on WhatsApp. Please tap the button below to open WhatsApp and message us. We will reply as soon as we can.",
+        "We are available on WhatsApp and email. Please feel free to contact us anytime. We are happy to support your next step with professional and practical advice.",
       whatsappNumber: "85262387745",
       whatsappLabel: "WhatsApp",
       whatsappDisplay: "+852 6238 7745",
-      whatsappTapHint: "Tap to chat"
+      whatsappTapHint: "Tap to chat",
+      consultantEmail: "cpspatrick@mbtihk.com",
+      emailLabel: "Email",
+      emailCopyHint: "Tap to copy",
+      emailCopiedHint: "Copied"
     },
 
     // Footer
@@ -451,17 +456,22 @@ const translations = {
       title: "聯絡我們",
       subtitle: "由專業 MBTI 顧問為你提供深入分析與清晰方向，助你在個人與職涯上持續成長。",
       serviceTitle: "專業 MBTI 諮詢服務",
-      serviceDescription: "我們的資深顧問會深入解讀你的 MBTI 結果，並轉化為可實踐的建議。不論你偏好面談或電話諮詢，我們都能提供可靠且貼合需要的專業支援。",
+      serviceDescription: "我們的顧問團隊具備豐富專業經驗，能把 MBTI 分析轉化為實際可行的成長方向。我們定期舉辦顧問活動，並已為超過 300 位客戶提供一對一諮詢，同時亦具備小組課程帶領經驗，協助不同背景人士深入理解人格特質與溝通模式。",
       servicePoint1: "深入分析你的 MBTI 類型、優勢、盲點與溝通風格。",
-      servicePoint2: "一對一諮詢涵蓋職涯規劃、團隊協作、領導發展與關係提升。",
-      servicePoint3: "提供面談及電話兩種彈性諮詢方式，配合你的時間安排。",
+      servicePoint2: "一對一諮詢經驗超過 300 位客戶，涵蓋職涯規劃、團隊協作、領導發展與關係提升。",
+      servicePoint3: "定期舉辦顧問活動與工作坊，幫助你更有系統地應用 MBTI 洞察。",
+      servicePoint4: "具備小組課程帶領經驗，協助團隊提升溝通效率、理解差異並建立更佳合作。",
       reachUsTitle: "WhatsApp",
       reachUsDescription:
-        "請點按下方按鈕開啟 WhatsApp 與我們聯絡。我們會盡快回覆。",
+        "歡迎透過 WhatsApp 或電郵與我們聯絡。你可放心提出需求，我們會以專業、務實的方式盡快回覆並提供建議。",
       whatsappNumber: "85262387745",
       whatsappLabel: "WhatsApp",
       whatsappDisplay: "+852 6238 7745",
-      whatsappTapHint: "點按開啟對話"
+      whatsappTapHint: "點按開啟對話",
+      consultantEmail: "cpspatrick@mbtihk.com",
+      emailLabel: "電郵",
+      emailCopyHint: "點按複製",
+      emailCopiedHint: "已複製"
     },
 
     // Footer
