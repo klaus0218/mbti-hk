@@ -212,6 +212,12 @@ const translations = {
       reachUsTitle: "WhatsApp",
       reachUsDescription:
         "We are available on WhatsApp and email. Please feel free to contact us anytime. We are happy to support your next step with professional and practical advice.",
+      reachUsPoint1:
+        "You can enroll in one-on-one MBTI consultation directly on WhatsApp, and we will guide you to the most suitable format based on your needs.",
+      reachUsPoint2:
+        "You can also ask about MBTI classes and workshop schedules, including options for individuals, teams, and small groups.",
+      reachUsPoint3:
+        "If you feel stuck in work, communication, or relationships, share your current situation in chat and our consultant will suggest a clear first step.",
       whatsappNumber: "85262387745",
       whatsappLabel: "WhatsApp",
       whatsappDisplay: "+852 6238 7745",
@@ -464,6 +470,12 @@ const translations = {
       reachUsTitle: "WhatsApp",
       reachUsDescription:
         "歡迎透過 WhatsApp 或電郵與我們聯絡。你可放心提出需求，我們會以專業、務實的方式盡快回覆並提供建議。",
+      reachUsPoint1:
+        "你可直接透過 WhatsApp 報名一對一 MBTI 顧問服務，我們會按你的需要建議最合適的諮詢形式。",
+      reachUsPoint2:
+        "你亦可查詢 MBTI 課程與工作坊時間，包括個人、團隊與小組學習安排。",
+      reachUsPoint3:
+        "若你在職涯、溝通或關係上感到卡住，歡迎先在對話中描述情況，我們的專業顧問會先給你清晰可行的第一步建議。",
       whatsappNumber: "85262387745",
       whatsappLabel: "WhatsApp",
       whatsappDisplay: "+852 6238 7745",

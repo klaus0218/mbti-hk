@@ -99,9 +99,14 @@ const BulletList = styled.ul`
   line-height: 1.8;
 `;
 
+const ReachUsBulletList = styled(BulletList)`
+  margin-top: ${({ theme }) => theme.spacing.xs};
+`;
+
 const ContactGrid = styled.div`
   display: grid;
   gap: ${({ theme }) => theme.spacing.md};
+  margin-top: ${({ theme }) => theme.spacing.lg};
 `;
 
 const ContactItem = styled.a`
@@ -245,6 +250,11 @@ const Contact = () => {
                   {t.contact.reachUsTitle}
                 </SectionTitle>
                 <SectionDescription>{t.contact.reachUsDescription}</SectionDescription>
+                <ReachUsBulletList>
+                  <li>{t.contact.reachUsPoint1}</li>
+                  <li>{t.contact.reachUsPoint2}</li>
+                  <li>{t.contact.reachUsPoint3}</li>
+                </ReachUsBulletList>
                 <ContactGrid>
                   <ContactItem
                     href={waHref}
