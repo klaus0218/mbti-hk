@@ -6,7 +6,8 @@ const LanguageContext = createContext();
 // Supported languages
 export const LANGUAGES = {
   EN: 'en',
-  ZH: 'zh'
+  ZH: 'zh',
+  ZH_CN: 'zh-CN'
 };
 
 // Language provider component
@@ -14,7 +15,9 @@ export const LanguageProvider = ({ children }) => {
   const [language, setLanguage] = useState(() => {
     // Get saved language from localStorage or default to English
     const savedLanguage = localStorage.getItem('mbti_language');
-    return savedLanguage || LANGUAGES.EN;
+    return savedLanguage && Object.values(LANGUAGES).includes(savedLanguage)
+      ? savedLanguage
+      : LANGUAGES.EN;
   });
 
   // Save language to localStorage when it changes
@@ -23,7 +26,11 @@ export const LanguageProvider = ({ children }) => {
   }, [language]);
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === LANGUAGES.EN ? LANGUAGES.ZH : LANGUAGES.EN);
+    setLanguage(prev => {
+      if (prev === LANGUAGES.EN) return LANGUAGES.ZH;
+      if (prev === LANGUAGES.ZH) return LANGUAGES.ZH_CN;
+      return LANGUAGES.EN;
+    });
   };
 
   const switchToLanguage = (lang) => {
@@ -37,7 +44,9 @@ export const LanguageProvider = ({ children }) => {
     setLanguage: switchToLanguage,
     toggleLanguage,
     isEnglish: language === LANGUAGES.EN,
-    isChinese: language === LANGUAGES.ZH
+    isChinese: language === LANGUAGES.ZH || language === LANGUAGES.ZH_CN,
+    isTraditionalChinese: language === LANGUAGES.ZH,
+    isSimplifiedChinese: language === LANGUAGES.ZH_CN
   };
 
   return (

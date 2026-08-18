@@ -10,17 +10,30 @@ const path = require('path');
 // Base directory for predefined reports
 const BASE_DIR = __dirname;
 
+function normalizeLang(language) {
+  if (!language) return 'EN';
+  const upper = language.toString().toUpperCase().replace('-', '_');
+  if (upper === 'ZH_CN' || upper === 'CN' || upper === 'ZH_HANS' || upper === 'ZH_SG') return 'ZH_CN';
+  if (upper === 'ZH' || upper === 'ZH_TW' || upper === 'ZH_HK' || upper === 'ZH_HANT') return 'ZH';
+  return upper;
+}
+
 /**
  * Get content for a specific field of a specific MBTI type in a specific language
- * @param {string} language - Language code ('en' or 'zh')
+ * @param {string} language - Language code ('en', 'zh', or 'zh-CN')
  * @param {string} mbtiType - MBTI type (e.g., 'ENFJ', 'INTJ')
  * @param {string} field - Field name (e.g., 'coverPage', 'executiveSummary')
  * @returns {string} The content for the specified field
  */
 function getFieldContent(language, mbtiType, field) {
   try {
-    const filePath = path.join(BASE_DIR, language.toUpperCase(), mbtiType, `${field}.js`);
+    const langCode = normalizeLang(language);
+    let filePath = path.join(BASE_DIR, langCode, mbtiType, `${field}.js`);
     
+    if (!fs.existsSync(filePath) && langCode === 'ZH_CN') {
+      filePath = path.join(BASE_DIR, 'ZH', mbtiType, `${field}.js`);
+    }
+
     if (!fs.existsSync(filePath)) {
       console.warn(`File not found: ${filePath}`);
       return null;
@@ -100,8 +113,9 @@ function getAllLanguageContent(language) {
  * @returns {boolean} True if the field exists, false otherwise
  */
 function fieldExists(language, mbtiType, field) {
-  const filePath = path.join(BASE_DIR, language.toUpperCase(), mbtiType, `${field}.js`);
-  return fs.existsSync(filePath);
+  const langCode = normalizeLang(language);
+  const filePath = path.join(BASE_DIR, langCode, mbtiType, `${field}.js`);
+  return fs.existsSync(filePath) || (langCode === 'ZH_CN' && fs.existsSync(path.join(BASE_DIR, 'ZH', mbtiType, `${field}.js`)));
 }
 
 /**
@@ -114,9 +128,9 @@ function getAvailableLanguages() {
       .filter(item => {
         const itemPath = path.join(BASE_DIR, item);
         return fs.statSync(itemPath).isDirectory() && 
-               ['EN', 'ZH'].includes(item.toUpperCase());
+               ['EN', 'ZH', 'ZH_CN'].includes(item.toUpperCase());
       })
-      .map(lang => lang.toLowerCase());
+      .map(lang => lang.toLowerCase().replace('_', '-'));
     
     return languages;
   } catch (error) {
@@ -127,19 +141,20 @@ function getAvailableLanguages() {
 
 /**
  * Get available MBTI types for a specific language
- * @param {string} language - Language code ('en' or 'zh')
+ * @param {string} language - Language code ('en', 'zh', or 'zh-CN')
  * @returns {Array} Array of available MBTI types
  */
 function getAvailableMBTITypes(language) {
   try {
-    const languageDir = path.join(BASE_DIR, language.toUpperCase());
+    const langCode = normalizeLang(language);
+    const languageDir = path.join(BASE_DIR, langCode);
     if (!fs.existsSync(languageDir)) {
       return [];
     }
     
     const mbtiTypes = fs.readdirSync(languageDir)
       .filter(item => {
-        const itemPath = path.join(BASE_DIR, language.toUpperCase(), item);
+        const itemPath = path.join(BASE_DIR, langCode, item);
         return fs.statSync(itemPath).isDirectory();
       });
     
@@ -152,13 +167,14 @@ function getAvailableMBTITypes(language) {
 
 /**
  * Get available fields for a specific MBTI type and language
- * @param {string} language - Language code ('en' or 'zh')
+ * @param {string} language - Language code ('en', 'zh', or 'zh-CN')
  * @param {string} mbtiType - MBTI type (e.g., 'ENFJ', 'INTJ')
  * @returns {Array} Array of available field names
  */
 function getAvailableFields(language, mbtiType) {
   try {
-    const mbtiDir = path.join(BASE_DIR, language.toUpperCase(), mbtiType);
+    const langCode = normalizeLang(language);
+    const mbtiDir = path.join(BASE_DIR, langCode, mbtiType);
     if (!fs.existsSync(mbtiDir)) {
       return [];
     }

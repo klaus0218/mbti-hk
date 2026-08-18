@@ -730,7 +730,7 @@ const Questions = () => {
     if (!scaleInfo) return value;
     
     const option = scaleInfo.options.find(opt => opt.value === value);
-    return option ? option.label[language] || option.label.zh : value;
+    return option ? (option.label[language] || option.label['zh-CN'] || option.label.zh) : value;
   };
 
   const closeIncompleteModal = () => {
@@ -824,10 +824,10 @@ const Questions = () => {
             
             <Header>
               <SectionInfo>
-                {currentSection.title[language] || currentSection.title.zh}：{currentSection.subtitle[language] || currentSection.subtitle.zh}
+                {currentSection.title[language] || currentSection.title['zh-CN'] || currentSection.title.zh}：{currentSection.subtitle[language] || currentSection.subtitle['zh-CN'] || currentSection.subtitle.zh}
               </SectionInfo>
               <SectionTitle>
-                {language === 'zh' ? 
+                {language.startsWith('zh') ? 
                   `${t.questions.section}${currentSectionIndex + 1}${t.questions.of}，${t.questions.total}${sections.length}${t.questions.parts}` :
                   `${t.questions.section} ${currentSectionIndex + 1} ${t.questions.of} ${sections.length} ${t.questions.parts}`
                 }
@@ -836,7 +836,7 @@ const Questions = () => {
 
             <QuestionsContainer>
               {currentSection.questions.map((question, index) => {
-                let questionText = question.text[language] || question.text.zh;
+                let questionText = question.text[language] || question.text['zh-CN'] || question.text.zh;
                 return (
                   <QuestionItem key={question.questionId}>
                     <QuestionHeader>
@@ -846,8 +846,8 @@ const Questions = () => {
                     
                     <ScaleContainer>
                       <ScaleLabels>
-                        <ScaleLabel>{question.leftLabel[language] || question.leftLabel.zh}</ScaleLabel>
-                        <ScaleLabel>{question.rightLabel[language] || question.rightLabel.zh}</ScaleLabel>
+                        <ScaleLabel>{question.leftLabel[language] || question.leftLabel['zh-CN'] || question.leftLabel.zh}</ScaleLabel>
+                        <ScaleLabel>{question.rightLabel[language] || question.rightLabel['zh-CN'] || question.rightLabel.zh}</ScaleLabel>
                       </ScaleLabels>
                       
                       <ScalePoints>
@@ -874,7 +874,7 @@ const Questions = () => {
                     {responses[question.questionId] && (
                       <QuestionStatus>
                         <FontAwesomeIcon icon={faCheck} />
-                        {language === 'zh' ? '已選擇答案' : 'Answer selected'}
+                        {language === 'zh-CN' ? '已选择答案' : (language === 'zh' ? '已選擇答案' : 'Answer selected')}
                       </QuestionStatus>
                     )}
                   </QuestionItem>
@@ -893,7 +893,7 @@ const Questions = () => {
               </NavButton>
 
               <SectionProgress>
-                {currentSectionAnswered} / {currentSection.questions.length} {language === 'zh' ? '已完成' : 'completed'}
+                {currentSectionAnswered} / {currentSection.questions.length} {language === 'zh-CN' ? '已完成' : (language === 'zh' ? '已完成' : 'completed')}
               </SectionProgress>
 
               <NavButton

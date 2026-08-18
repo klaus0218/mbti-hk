@@ -11,6 +11,7 @@ import { useTranslations } from '../../locales';
 import { mbtiPopulationData } from '../../data/mbtiPopulationData';
 import mbtiImages from '../../data/mbtiImages';
 import mbtiPreviewContent from '../../data/mbtiPreviewContent';
+import mbtiTypesData from '../../data/mbtiTypesData';
 import { getAnalysisFromDatabase, updateResultEmail, generateHTMLFromAnalysis, generatePDFFromHTML, unlockPremiumContent } from '../../services/enhancedAIAnalysisService';
 import PaymentModal from '../../components/PaymentModal/PaymentModal';
 import { Typography } from '@mui/material'; // Added Typography import
@@ -21,31 +22,18 @@ const ResultsPage = styled.div`
   background: ${({ theme }) => theme.colors.gray50};
   padding-top: ${({ theme }) => theme.spacing.xl};
   padding-bottom: ${({ theme }) => theme.spacing['3xl']};
-  /* Fix mobile scrolling and prevent horizontal overflow */
   -webkit-overflow-scrolling: touch;
-  overflow-y: visible;
-  overflow-x: hidden !important;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
   position: relative;
   box-sizing: border-box;
   
-  /* Enable mouse wheel scrolling */
-  overscroll-behavior: contain;
-  scroll-behavior: smooth;
-  
-  /* Force scrollable content */
-  min-height: calc(100vh + 100px);
-  
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     padding-top: ${({ theme }) => theme.spacing.lg};
     padding-bottom: ${({ theme }) => theme.spacing['2xl']};
-    /* Ensure mobile scrolling works */
     touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
-    overflow-y: visible;
     height: auto;
-    min-height: calc(100vh + 200px);
   }
 `;
 
@@ -1115,7 +1103,7 @@ const Results = () => {
 
   const handleEmailSubmit = () => {
     if (email.trim()) {
-      alert(language === 'zh' ? '已發送到您的電子郵件！' : 'Sent to your email!');
+      alert(language === 'zh-CN' ? '已发送到您的电子邮件！' : (language === 'zh' ? '已發送到您的電子郵件！' : 'Sent to your email!'));
       setEmail('');
     }
   };
@@ -1175,17 +1163,17 @@ const Results = () => {
   const handlePDFDownload = async () => {
     if (!ENABLE_PREMIUM_MODE) return;
     if (!displayResult?.premium) {
-      const message = language === 'zh' 
-        ? '請先解鎖高級內容以生成完整報告'
-        : 'Please unlock premium content first to generate the full report';
+      const message = language === 'zh-CN'
+        ? '请先解锁高级内容以生成完整报告'
+        : (language === 'zh' ? '請先解鎖高級內容以生成完整報告' : 'Please unlock premium content first to generate the full report');
       alert(message);
       return;
     }
 
     if (!analysisGenerationComplete) {
-      const message = language === 'zh' 
-        ? 'AI分析報告正在生成中，請稍候'
-        : 'AI analysis report is being generated, please wait';
+      const message = language === 'zh-CN'
+        ? 'AI分析报告正在生成中，请稍候'
+        : (language === 'zh' ? 'AI分析報告正在生成中，請稍候' : 'AI analysis report is being generated, please wait');
       alert(message);
       return;
     }
@@ -1203,7 +1191,7 @@ const Results = () => {
       }
     } catch (error) {
       console.error('Failed to generate PDF report:', error);
-      alert(language === 'zh' ? 'PDF生成失敗，請重試' : 'PDF generation failed, please try again');
+      alert(language === 'zh-CN' ? 'PDF生成失败，请重试' : (language === 'zh' ? 'PDF生成失敗，請重試' : 'PDF generation failed, please try again'));
     } finally {
       setIsPDFGenerating(false);
     }
@@ -1212,17 +1200,17 @@ const Results = () => {
   const handleHTMLDownload = async () => {
     if (!ENABLE_PREMIUM_MODE) return;
     if (!displayResult?.premium) {
-      const message = language === 'zh' 
-        ? '請先解鎖高級內容以生成完整報告'
-        : 'Please unlock premium content first to generate the full report';
+      const message = language === 'zh-CN'
+        ? '请先解锁高级内容以生成完整报告'
+        : (language === 'zh' ? '請先解鎖高級內容以生成完整報告' : 'Please unlock premium content first to generate the full report');
       alert(message);
       return;
     }
 
     if (!analysisGenerationComplete) {
-      const message = language === 'zh' 
-        ? 'AI分析報告正在生成中，請稍候'
-        : 'AI analysis report is being generated, please wait';
+      const message = language === 'zh-CN'
+        ? 'AI分析报告正在生成中，请稍候'
+        : (language === 'zh' ? 'AI分析報告正在生成中，請稍候' : 'AI analysis report is being generated, please wait');
       alert(message);
       return;
     }
@@ -1249,7 +1237,7 @@ const Results = () => {
       }
     } catch (error) {
       console.error('Failed to generate HTML report:', error);
-      alert(language === 'zh' ? 'HTML生成失敗，請重試' : 'HTML generation failed, please try again');
+      alert(language === 'zh-CN' ? 'HTML生成失败，请重试' : (language === 'zh' ? 'HTML生成失敗，請重試' : 'HTML generation failed, please try again'));
     } finally {
       setIsHTMLGenerating(false);
     }
@@ -1260,9 +1248,9 @@ const Results = () => {
     if (!ENABLE_PREMIUM_MODE) return;
     if (!analysisGenerationComplete) {
       // If analysis is not ready, show a message
-      const message = language === 'zh' 
-        ? 'AI分析報告正在生成中，請稍候'
-        : 'AI analysis report is being generated, please wait';
+      const message = language === 'zh-CN'
+        ? 'AI分析报告正在生成中，请稍候'
+        : (language === 'zh' ? 'AI分析報告正在生成中，請稍候' : 'AI analysis report is being generated, please wait');
       alert(message);
       return;
     }
@@ -1280,7 +1268,7 @@ const Results = () => {
       }
     } catch (error) {
       console.error('Failed to open report:', error);
-      alert(language === 'zh' ? '無法打開報告，請重試' : 'Failed to open report, please try again');
+      alert(language === 'zh-CN' ? '无法打开报告，请重试' : (language === 'zh' ? '無法打開報告，請重試' : 'Failed to open report, please try again'));
     }
   };
 
@@ -1588,7 +1576,7 @@ const Results = () => {
           {/* Header */}
           <Header>
             <TypeTitle>
-              {language === 'zh' ? `你的MBTI是: ${displayResult.type}` : `Your MBTI Type: ${displayResult.type}`}
+              {language.startsWith('zh') ? `你的MBTI是: ${displayResult.type}` : `Your MBTI Type: ${displayResult.type}`}
             </TypeTitle>
           </Header>
 
@@ -1603,28 +1591,44 @@ const Results = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}>
               <LargeTypeText>{displayResult.type}</LargeTypeText>
               <TypeSubtitle>
-                {displayResult.typeName && typeof displayResult.typeName === 'object' 
-                  ? (displayResult.typeName[language.toLowerCase()] || displayResult.typeName.en || '')
-                  : displayResult.typeName || ''}
+                {(() => {
+                  const type = displayResult.type;
+                  if (type && mbtiTypesData[type]?.name) {
+                    const nameObj = mbtiTypesData[type].name;
+                    return nameObj[language] || (language === 'zh-CN' ? nameObj['zh-CN'] : (language === 'zh' ? nameObj.zh : nameObj.en)) || nameObj.zh || nameObj.en || '';
+                  }
+                  if (displayResult.typeName && typeof displayResult.typeName === 'object') {
+                    return displayResult.typeName[language] || (language === 'zh-CN' ? displayResult.typeName['zh-CN'] : (language === 'zh' ? displayResult.typeName.zh : displayResult.typeName.en)) || displayResult.typeName.zh || displayResult.typeName.en || '';
+                  }
+                  return displayResult.typeName || '';
+                })()}
               </TypeSubtitle>
               <TypeDescription>
-                {displayResult.description && typeof displayResult.description === 'object'
-                  ? (displayResult.description[language.toLowerCase()] || displayResult.description.en || '')
-                  : displayResult.description || ''}
+                {(() => {
+                  const type = displayResult.type;
+                  if (type && mbtiTypesData[type]?.shortDescription) {
+                    const descObj = mbtiTypesData[type].shortDescription;
+                    return descObj[language] || (language === 'zh-CN' ? descObj['zh-CN'] : (language === 'zh' ? descObj.zh : descObj.en)) || descObj.zh || descObj.en || '';
+                  }
+                  if (displayResult.description && typeof displayResult.description === 'object') {
+                    return displayResult.description[language] || (language === 'zh-CN' ? displayResult.description['zh-CN'] : (language === 'zh' ? displayResult.description.zh : displayResult.description.en)) || displayResult.description.zh || displayResult.description.en || '';
+                  }
+                  return displayResult.description || '';
+                })()}
               </TypeDescription>
             </div>
             <LearnMoreButton 
               variant="primary"
               onClick={() => navigate(`/mbti-types/${displayResult.type.toLowerCase()}`)}
             >
-              {language === 'zh' ? `了解更多${displayResult.type}` : `Learn More About ${displayResult.type}`}
+              {language.startsWith('zh') ? `了解更多${displayResult.type}` : `Learn More About ${displayResult.type}`}
             </LearnMoreButton>
           </TypeDisplay>
 
           {/* Scores Section */}
           <ScoresSection>
             <ScoresTitle>
-              {language === 'zh' ? '你的維度分數' : 'Your Dimension Scores'}
+              {language === 'zh-CN' ? '你的维度分数' : (language === 'zh' ? '你的維度分數' : 'Your Dimension Scores')}
             </ScoresTitle>
             
             {/* E-I Dimension */}
@@ -1762,7 +1766,7 @@ const Results = () => {
 
           {/* Statistics */}
           <StatsSection>
-            <StatsTitle>{language === 'zh' ? '人口占比' : 'Population Statistics'}</StatsTitle>
+            <StatsTitle>{language.startsWith('zh') ? '人口占比' : 'Population Statistics'}</StatsTitle>
             <StatsGrid>
                              <StatCard>
                  <CircularProgress>
@@ -1778,7 +1782,7 @@ const Results = () => {
                    </CircularProgressSvg>
                    <CircularProgressText>{displayResult.stats.totalPopulation}%</CircularProgressText>
                  </CircularProgress>
-                 <StatLabel>{language === 'zh' ? '佔總人口' : 'Total Population'}</StatLabel>
+                 <StatLabel>{language === 'zh-CN' ? '占总人口' : (language === 'zh' ? '佔總人口' : 'Total Population')}</StatLabel>
                </StatCard>
                
                <StatCard>
@@ -1795,7 +1799,7 @@ const Results = () => {
                    </CircularProgressSvg>
                    <CircularProgressText>{displayResult.stats.maleRatio}%</CircularProgressText>
                  </CircularProgress>
-                 <StatLabel>{language === 'zh' ? '佔男性比例' : 'Male Ratio'}</StatLabel>
+                 <StatLabel>{language === 'zh-CN' ? '占男性比例' : (language === 'zh' ? '佔男性比例' : 'Male Ratio')}</StatLabel>
                </StatCard>
                
                <StatCard>
@@ -1812,7 +1816,7 @@ const Results = () => {
                    </CircularProgressSvg>
                    <CircularProgressText>{displayResult.stats.femaleRatio}%</CircularProgressText>
                  </CircularProgress>
-                 <StatLabel>{language === 'zh' ? '佔女性比例' : 'Female Ratio'}</StatLabel>
+                 <StatLabel>{language === 'zh-CN' ? '占女性比例' : (language === 'zh' ? '佔女性比例' : 'Female Ratio')}</StatLabel>
                </StatCard>
             </StatsGrid>
           </StatsSection>
@@ -1822,11 +1826,11 @@ const Results = () => {
             <AIAnalysisHeader>
               <AIAnalysisTitle>
                 <FontAwesomeIcon icon={faBrain} />
-                {language === 'zh' ? 'AI 深度分析' : 'AI Deep Analysis'}
+                {language === 'zh-CN' ? 'AI 深度分析' : (language === 'zh' ? 'AI 深度分析' : 'AI Deep Analysis')}
                 {ENABLE_PREMIUM_MODE && (
                   <PremiumBadge>
                     <FontAwesomeIcon icon={faCrown} />
-                    {language === 'zh' ? ' PREMIUM' : ' PREMIUM'}
+                    {language.startsWith('zh') ? ' PREMIUM' : ' PREMIUM'}
                   </PremiumBadge>
                 )}
               </AIAnalysisTitle>
@@ -1835,126 +1839,106 @@ const Results = () => {
             <AIAnalysisContent>
                 <div>
                   {/* Show preview content from JSON file */}
-                  {displayResult?.type && mbtiPreviewContent[displayResult.type] && (
-                    <AnalysisPreview>
-                      <PreviewSection>
-                        <PreviewSectionTitle>
-                          <FontAwesomeIcon icon={faCrown} />
-                          {language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.title
-                            : mbtiPreviewContent[displayResult.type].en.title
-                          }
-                        </PreviewSectionTitle>
-                        <PreviewSectionContent>
-                          {language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.summary
-                            : mbtiPreviewContent[displayResult.type].en.summary
-                          }
-                        </PreviewSectionContent>
-                      </PreviewSection>
+                  {(() => {
+                    const previewData = displayResult?.type && mbtiPreviewContent[displayResult.type]
+                      ? (mbtiPreviewContent[displayResult.type][language] ||
+                         (language === 'zh-CN' ? mbtiPreviewContent[displayResult.type]['zh-CN'] : (language === 'zh' ? mbtiPreviewContent[displayResult.type].zh : mbtiPreviewContent[displayResult.type].en)) ||
+                         mbtiPreviewContent[displayResult.type].en)
+                      : null;
 
-                      <PreviewSection>
-                        <PreviewSectionTitle>
-                          <FontAwesomeIcon icon={faLightbulb} />
-                          {language === 'zh' ? '核心洞察' : 'Key Insights'}
-                        </PreviewSectionTitle>
-                        <PreviewInsightsList>
-                          {(language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.keyInsights
-                            : mbtiPreviewContent[displayResult.type].en.keyInsights
-                          ).map((insight, index) => (
-                            <li key={index}>
-                              {insight}
-                            </li>
-                          ))}
-                        </PreviewInsightsList>
-                      </PreviewSection>
+                    if (!previewData) return null;
 
-                      <PreviewSection>
-                        <PreviewSectionTitle>
-                          <FontAwesomeIcon icon={faBriefcase} />
-                          {language === 'zh' ? '職業發展' : 'Career Development'}
-                        </PreviewSectionTitle>
-                        <PreviewSectionContent>
-                          {language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.careerPath
-                            : mbtiPreviewContent[displayResult.type].en.careerPath
-                          }
-                        </PreviewSectionContent>
-                      </PreviewSection>
+                    return (
+                      <AnalysisPreview>
+                        <PreviewSection>
+                          <PreviewSectionTitle>
+                            <FontAwesomeIcon icon={faCrown} />
+                            {previewData.title}
+                          </PreviewSectionTitle>
+                          <PreviewSectionContent>
+                            {previewData.summary}
+                          </PreviewSectionContent>
+                        </PreviewSection>
 
-                      <PreviewSection>
-                        <PreviewSectionTitle>
-                          <FontAwesomeIcon icon={faShare} />
-                          {language === 'zh' ? '人際關係' : 'Relationships'}
-                        </PreviewSectionTitle>
-                        <PreviewSectionContent>
-                          <strong>{language === 'zh' ? '友誼相容性：' : 'Friendship Compatibility: '}</strong>
-                          {language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.friendshipCompatibility
-                            : mbtiPreviewContent[displayResult.type].en.friendshipCompatibility
-                          }
-                        </PreviewSectionContent>
-                        <PreviewSectionContent style={{ marginTop: '1rem' }}>
-                          <strong>{language === 'zh' ? '戀愛相容性：' : 'Romantic Compatibility: '}</strong>
-                          {language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.romanticCompatibility
-                            : mbtiPreviewContent[displayResult.type].en.romanticCompatibility
-                          }
-                        </PreviewSectionContent>
-                      </PreviewSection>
+                        <PreviewSection>
+                          <PreviewSectionTitle>
+                            <FontAwesomeIcon icon={faLightbulb} />
+                            {language === 'zh-CN' ? '核心洞察' : (language === 'zh' ? '核心洞察' : 'Key Insights')}
+                          </PreviewSectionTitle>
+                          <PreviewInsightsList>
+                            {(previewData.keyInsights || []).map((insight, index) => (
+                              <li key={index}>
+                                {insight}
+                              </li>
+                            ))}
+                          </PreviewInsightsList>
+                        </PreviewSection>
 
-                      <PreviewSection>
-                        <PreviewSectionTitle>
-                          <FontAwesomeIcon icon={faHeartPulse} />
-                          {language === 'zh' ? '心理健康洞察' : 'Mental Health Insights'}
-                        </PreviewSectionTitle>
-                        <PreviewSectionContent>
-                          {language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.mentalHealthInsights
-                            : mbtiPreviewContent[displayResult.type].en.mentalHealthInsights
-                          }
-                        </PreviewSectionContent>
-                      </PreviewSection>
+                        <PreviewSection>
+                          <PreviewSectionTitle>
+                            <FontAwesomeIcon icon={faBriefcase} />
+                            {language === 'zh-CN' ? '职业发展' : (language === 'zh' ? '職業發展' : 'Career Development')}
+                          </PreviewSectionTitle>
+                          <PreviewSectionContent>
+                            {previewData.careerPath}
+                          </PreviewSectionContent>
+                        </PreviewSection>
 
-                      <PreviewSection>
-                        <PreviewSectionTitle>
-                          <FontAwesomeIcon icon={faChartLine} />
-                          {language === 'zh' ? '自我提升' : 'Self Improvement'}
-                        </PreviewSectionTitle>
-                        <PreviewSectionContent>
-                          {language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.selfImprovement
-                            : mbtiPreviewContent[displayResult.type].en.selfImprovement
-                          }
-                        </PreviewSectionContent>
-                      </PreviewSection>
+                        <PreviewSection>
+                          <PreviewSectionTitle>
+                            <FontAwesomeIcon icon={faShare} />
+                            {language === 'zh-CN' ? '人际关系' : (language === 'zh' ? '人際關係' : 'Relationships')}
+                          </PreviewSectionTitle>
+                          <PreviewSectionContent>
+                            <strong>{language === 'zh-CN' ? '友谊兼容性：' : (language === 'zh' ? '友誼相容性：' : 'Friendship Compatibility: ')}</strong>
+                            {previewData.friendshipCompatibility}
+                          </PreviewSectionContent>
+                          <PreviewSectionContent style={{ marginTop: '1rem' }}>
+                            <strong>{language === 'zh-CN' ? '恋爱兼容性：' : (language === 'zh' ? '戀愛相容性：' : 'Romantic Compatibility: ')}</strong>
+                            {previewData.romanticCompatibility}
+                          </PreviewSectionContent>
+                        </PreviewSection>
 
-                      <PreviewSection>
-                        <PreviewSectionTitle>
-                          <FontAwesomeIcon icon={faSearch} />
-                          {language === 'zh' ? '深度分析' : 'Deep Analysis'}
-                        </PreviewSectionTitle>
-                        <PreviewSectionContent>
-                          {language === 'zh' 
-                            ? mbtiPreviewContent[displayResult.type].zh.coreAnalysisPreview
-                            : mbtiPreviewContent[displayResult.type].en.coreAnalysisPreview
-                          }
-                        </PreviewSectionContent>
-                      </PreviewSection>
+                        <PreviewSection>
+                          <PreviewSectionTitle>
+                            <FontAwesomeIcon icon={faHeartPulse} />
+                            {language === 'zh-CN' ? '心理健康洞察' : (language === 'zh' ? '心理健康洞察' : 'Mental Health Insights')}
+                          </PreviewSectionTitle>
+                          <PreviewSectionContent>
+                            {previewData.mentalHealthInsights}
+                          </PreviewSectionContent>
+                        </PreviewSection>
 
-                      {ENABLE_PREMIUM_MODE && !isPremiumUnlocked && (
-                        <PreviewCallToAction>
-                          <p>
-                            {language === 'zh' 
-                              ? mbtiPreviewContent[displayResult.type].zh.callToAction
-                              : mbtiPreviewContent[displayResult.type].en.callToAction
-                            }
-                          </p>
-                        </PreviewCallToAction>
-                      )}
-                    </AnalysisPreview>
-                  )}
+                        <PreviewSection>
+                          <PreviewSectionTitle>
+                            <FontAwesomeIcon icon={faChartLine} />
+                            {language === 'zh-CN' ? '自我提升' : (language === 'zh' ? '自我提升' : 'Self Improvement')}
+                          </PreviewSectionTitle>
+                          <PreviewSectionContent>
+                            {previewData.selfImprovement}
+                          </PreviewSectionContent>
+                        </PreviewSection>
+
+                        <PreviewSection>
+                          <PreviewSectionTitle>
+                            <FontAwesomeIcon icon={faSearch} />
+                            {language === 'zh-CN' ? '深度分析' : (language === 'zh' ? '深度分析' : 'Deep Analysis')}
+                          </PreviewSectionTitle>
+                          <PreviewSectionContent>
+                            {previewData.coreAnalysisPreview}
+                          </PreviewSectionContent>
+                        </PreviewSection>
+
+                        {ENABLE_PREMIUM_MODE && !isPremiumUnlocked && (
+                          <PreviewCallToAction>
+                            <p>
+                              {previewData.callToAction}
+                            </p>
+                          </PreviewCallToAction>
+                        )}
+                      </AnalysisPreview>
+                    );
+                  })()}
                 </div>
                 {/* Only show premium actions if premium mode is enabled */}
                 {ENABLE_PREMIUM_MODE && (
@@ -1963,7 +1947,7 @@ const Results = () => {
                       {!isPremiumUnlocked ? (
                         <PremiumButton onClick={handlePremiumUnlock}>
                           <FontAwesomeIcon icon={faLock} />
-                          {language === 'zh' ? '解鎖完整報告' : 'Unlock Full Report'}
+                          {language === 'zh-CN' ? '解锁完整报告' : (language === 'zh' ? '解鎖完整報告' : 'Unlock Full Report')}
                         </PremiumButton>
                       ) : (
                           <div style={{ width: '100%', textAlign: 'center' }}>
@@ -1971,7 +1955,7 @@ const Results = () => {
                               <div>
                                 <div style={{ marginBottom: '1rem' }}>
                                   <Typography variant="body2" color="text.secondary">
-                                    {language === 'zh' ? '正在生成AI分析報告...' : 'Generating AI Analysis Report...'}
+                                    {language === 'zh-CN' ? '正在生成AI分析报告...' : (language === 'zh' ? '正在生成AI分析報告...' : 'Generating AI Analysis Report...')}
                                   </Typography>
                                   <Typography variant="h6" color="primary" style={{ marginTop: '0.5rem' }}>
                                     {Math.round(analysisProgress)}%
@@ -1985,11 +1969,11 @@ const Results = () => {
                               <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginBottom: '10px' }}>
                                 <DownloadButton onClick={handleDownloadClick}>
                                   <FontAwesomeIcon icon={faDownload} />
-                                  {language === 'zh' ? '下載完整報告' : 'Download Full Report'}
+                                  {language === 'zh-CN' ? '下载完整报告' : (language === 'zh' ? '下載完整報告' : 'Download Full Report')}
                                 </DownloadButton>
                                 <ViewReportButton onClick={handleViewReport}>
                                   <FontAwesomeIcon icon={faExternalLinkAlt} />
-                                  {language === 'zh' ? '查看報告' : 'View Report'}
+                                  {language === 'zh-CN' ? '查看报告' : (language === 'zh' ? '查看報告' : 'View Report')}
                                 </ViewReportButton>
                               </div>
                             ) : (
@@ -2001,7 +1985,7 @@ const Results = () => {
                                   disabled={isGeneratingAnalysis}
                                 >
                                   <FontAwesomeIcon icon={faBrain} />
-                                  {language === 'zh' ? '生成AI分析' : 'Generate AI Analysis'}
+                                  {language === 'zh-CN' ? '生成AI分析' : (language === 'zh' ? '生成AI分析' : 'Generate AI Analysis')}
                                 </Button>
                               </div>
                             )}
@@ -2033,7 +2017,7 @@ const Results = () => {
 
           {/* Celebrities */}
           <CelebsSection>
-            <CelebsTitle>{language === 'zh' ? '名家名人' : 'Famous People'}</CelebsTitle>
+            <CelebsTitle>{language.startsWith('zh') ? '名家名人' : 'Famous People'}</CelebsTitle>
             {displayResult.celebrities && displayResult.celebrities.map((celeb, index) => (
               <CelebCard key={index}>
                 <CelebAvatar>{celeb.name ? celeb.name.charAt(0) : ''}</CelebAvatar>
@@ -2041,7 +2025,7 @@ const Results = () => {
                   <CelebName>{celeb.name}</CelebName>
                   <CelebDescription>
                     {celeb.description && typeof celeb.description === 'object'
-                      ? (celeb.description[language.toLowerCase()] || celeb.description.en)
+                      ? (celeb.description[language] || celeb.description['zh-CN'] || celeb.description[language.toLowerCase()] || celeb.description.zh || celeb.description.en)
                       : celeb.description}
                   </CelebDescription>
                 </CelebInfo>
@@ -2083,7 +2067,7 @@ const Results = () => {
             textAlign: 'center'
           }}>
             <h3 style={{ marginBottom: '1rem', color: '#D2691E' }}>
-              {language === 'zh' ? '電子郵件確認' : 'Email Confirmation'}
+              {language === 'zh-CN' ? '电子邮件确认' : (language === 'zh' ? '電子郵件確認' : 'Email Confirmation')}
             </h3>
             <p style={{ marginBottom: '1.5rem', color: '#666' }}>
               {language === 'zh' 
@@ -2093,7 +2077,7 @@ const Results = () => {
             </p>
             <input
               type="email"
-              placeholder={language === 'zh' ? '輸入您的電子郵件' : 'Enter your email'}
+              placeholder={language.startsWith('zh') ? '输入您的电子邮件' : 'Enter your email'}
               value={analysisEmail}
               onChange={(e) => setAnalysisEmail(e.target.value)}
               style={{
@@ -2116,7 +2100,7 @@ const Results = () => {
                   cursor: 'pointer'
                 }}
               >
-                {language === 'zh' ? '取消' : 'Cancel'}
+                {language.startsWith('zh') ? '取消' : 'Cancel'}
               </button>
               <button
                 onClick={handleAnalysisEmailSubmit}
@@ -2131,7 +2115,7 @@ const Results = () => {
                   opacity: analysisEmail.trim() ? 1 : 0.5
                 }}
               >
-                {language === 'zh' ? '生成分析' : 'Generate Analysis'}
+                {language === 'zh-CN' ? '生成分析' : (language === 'zh' ? '生成分析' : 'Generate Analysis')}
               </button>
             </div>
           </div>
@@ -2143,7 +2127,7 @@ const Results = () => {
         <DownloadModal>
           <DownloadModalContent>
             <DownloadModalTitle>
-              {language === 'zh' ? '選擇下載格式' : 'Choose Download Format'}
+              {language === 'zh-CN' ? '选择下载格式' : (language === 'zh' ? '選擇下載格式' : 'Choose Download Format')}
             </DownloadModalTitle>
             
             <DownloadOptions>
@@ -2164,11 +2148,11 @@ const Results = () => {
                 </PDFIcon>
                 <DownloadOptionText>
                   <DownloadOptionTitle>
-                    {language === 'zh' ? 'PDF 格式' : 'PDF Format'}
+                    {language.startsWith('zh') ? 'PDF 格式' : 'PDF Format'}
                   </DownloadOptionTitle>
                   <DownloadOptionDescription>
                     {isPDFGenerating 
-                      ? (language === 'zh' ? '正在生成PDF...' : 'Generating PDF...')
+                      ? (language.startsWith('zh') ? '正在生成PDF...' : 'Generating PDF...')
                       : (language === 'zh' 
                           ? '適合打印和離線閱讀，保持格式完整'
                           : 'Perfect for printing and offline reading, maintains formatting'
@@ -2195,11 +2179,11 @@ const Results = () => {
                 </HTMLIcon>
                 <DownloadOptionText>
                   <DownloadOptionTitle>
-                    {language === 'zh' ? 'HTML 格式' : 'HTML Format'}
+                    {language.startsWith('zh') ? 'HTML 格式' : 'HTML Format'}
                   </DownloadOptionTitle>
                   <DownloadOptionDescription>
                     {isHTMLGenerating 
-                      ? (language === 'zh' ? '正在生成HTML...' : 'Generating HTML...')
+                      ? (language.startsWith('zh') ? '正在生成HTML...' : 'Generating HTML...')
                       : (language === 'zh' 
                           ? '可在瀏覽器中打開，支持互動元素'
                           : 'Open in browser, supports interactive elements'
@@ -2219,7 +2203,7 @@ const Results = () => {
                   cursor: (isPDFGenerating || isHTMLGenerating) ? 'not-allowed' : 'pointer'
                 }}
               >
-                {language === 'zh' ? '取消' : 'Cancel'}
+                {language.startsWith('zh') ? '取消' : 'Cancel'}
               </CancelButton>
             </ModalButtons>
           </DownloadModalContent>

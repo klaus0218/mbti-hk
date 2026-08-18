@@ -62,7 +62,7 @@ const Response = sequelize.define('Response', {
     allowNull: false
   },
   language: {
-    type: DataTypes.ENUM('zh', 'en'),
+    type: DataTypes.ENUM('zh', 'en', 'zh-CN'),
     defaultValue: 'zh'
   },
   isRevised: {
@@ -170,10 +170,10 @@ Response.calculateSessionScores = async function(sessionId) {
 // Instance methods
 Response.prototype.getAnswerDescription = function(language = 'zh') {
   const descriptions = {
-    1: { zh: '強烈偏向左邊', en: 'Strongly Left' },
-    2: { zh: '輕微偏向左邊', en: 'Slightly Left' },
-    3: { zh: '輕微偏向右邊', en: 'Slightly Right' },
-    4: { zh: '強烈偏向右邊', en: 'Strongly Right' }
+    1: { zh: '強烈偏向左邊', 'zh-CN': '强烈偏向左边', en: 'Strongly Left' },
+    2: { zh: '輕微偏向左邊', 'zh-CN': '轻微偏向左边', en: 'Slightly Left' },
+    3: { zh: '輕微偏向右邊', 'zh-CN': '轻微偏向右边', en: 'Slightly Right' },
+    4: { zh: '強烈偏向右邊', 'zh-CN': '强烈偏向右边', en: 'Strongly Right' }
   };
   
   return descriptions[this.answer]?.[language] || descriptions[this.answer]?.zh || 'Unknown';

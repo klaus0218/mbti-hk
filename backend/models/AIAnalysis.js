@@ -56,7 +56,7 @@ const AIAnalysis = sequelize.define('AIAnalysis', {
     allowNull: true
   },
   userLanguage: {
-    type: DataTypes.ENUM('en', 'zh'),
+    type: DataTypes.ENUM('en', 'zh', 'zh-CN'),
     defaultValue: 'en'
   },
   userEmail: {

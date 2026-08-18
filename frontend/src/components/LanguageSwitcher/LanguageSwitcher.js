@@ -48,7 +48,13 @@ const LanguageSwitcher = () => {
         $active={language === LANGUAGES.ZH}
         onClick={() => setLanguage(LANGUAGES.ZH)}
       >
-        中文
+        繁體
+      </LanguageButton>
+      <LanguageButton
+        $active={language === LANGUAGES.ZH_CN}
+        onClick={() => setLanguage(LANGUAGES.ZH_CN)}
+      >
+        简体
       </LanguageButton>
     </SwitcherContainer>
   );

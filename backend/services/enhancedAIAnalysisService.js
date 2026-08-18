@@ -366,9 +366,10 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
    */
   async mergeWithPredefinedContent(aiContent, mbtiType) {
     try {
-      // Get predefined content for both languages
+      // Get predefined content for all languages
       const predefinedEN = getMBTIContent('en', mbtiType);
       const predefinedZH = getMBTIContent('zh', mbtiType);
+      const predefinedZH_CN = getMBTIContent('zh-CN', mbtiType);
       
       if (!predefinedEN || !predefinedZH || Object.keys(predefinedEN).length === 0) {
         console.warn(`⚠️ No predefined content found for ${mbtiType}, using AI content only`);
@@ -378,22 +379,31 @@ IMPORTANT: Ensure the response is valid JSON. Do not include any text before or 
       const mergedContent = {
         fullReport: {
           en: {},
-          zh: {}
+          zh: {},
+          'zh-CN': {}
         }
       };
 
       // Merge English content
       Object.keys(predefinedEN).forEach(field => {
-        const aiText = aiContent.fullReport.en[field] || '';
+        const aiText = aiContent?.fullReport?.en?.[field] || '';
         const predefinedText = predefinedEN[field] || '';
-        mergedContent.fullReport.en[field] = `${aiText}\n\n${predefinedText}`;
+        mergedContent.fullReport.en[field] = `${aiText}\n\n${predefinedText}`.trim();
       });
 
-      // Merge Chinese content
+      // Merge Traditional Chinese content
       Object.keys(predefinedZH).forEach(field => {
-        const aiText = aiContent.fullReport.zh[field] || '';
+        const aiText = aiContent?.fullReport?.zh?.[field] || '';
         const predefinedText = predefinedZH[field] || '';
-        mergedContent.fullReport.zh[field] = `${aiText}\n\n${predefinedText}`;
+        mergedContent.fullReport.zh[field] = `${aiText}\n\n${predefinedText}`.trim();
+      });
+
+      // Merge Simplified Chinese content
+      const zhCnSource = predefinedZH_CN && Object.keys(predefinedZH_CN).length > 0 ? predefinedZH_CN : predefinedZH;
+      Object.keys(zhCnSource).forEach(field => {
+        const aiText = aiContent?.fullReport?.['zh-CN']?.[field] || aiContent?.fullReport?.zh?.[field] || '';
+        const predefinedText = zhCnSource[field] || '';
+        mergedContent.fullReport['zh-CN'][field] = `${aiText}\n\n${predefinedText}`.trim();
       });
 
       return mergedContent;

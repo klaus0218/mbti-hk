@@ -220,6 +220,11 @@ const MBTITypes = () => {
     }
   };
 
+  const getLocalizedField = (fieldObj) => {
+    if (!fieldObj) return '';
+    return fieldObj[language] || fieldObj['zh-CN'] || fieldObj.zh || fieldObj.en || '';
+  };
+
   const renderTypeGrid = () => (
     <Container>
       <HeaderSection>
@@ -229,11 +234,15 @@ const MBTITypes = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1>{language === 'zh' ? 'MBTI 16種人格類型' : '16 MBTI Personality Types'}</h1>
+            <h1>
+              {language === 'zh-CN' ? 'MBTI 16种人格类型' : (language === 'zh' ? 'MBTI 16種人格類型' : '16 MBTI Personality Types')}
+            </h1>
             <p>
-              {language === 'zh' 
-                ? '深入了解每種人格類型的特質、優勢和挑戰。點擊任何類型以獲得詳細分析。'
-                : 'Explore the traits, strengths, and challenges of each personality type. Click on any type for detailed analysis.'}
+              {language === 'zh-CN'
+                ? '深入了解每种人格类型的特质、优势和挑战。点击任何类型以获得详细分析。'
+                : (language === 'zh'
+                  ? '深入了解每種人格類型的特質、優勢和挑戰。點擊任何類型以獲得詳細分析。'
+                  : 'Explore the traits, strengths, and challenges of each personality type. Click on any type for detailed analysis.')}
             </p>
           </motion.div>
         </Container>
@@ -256,10 +265,10 @@ const MBTITypes = () => {
                 <TypeHeader>
                   <TypeCode>{typeCode}</TypeCode>
                   <TypeName>
-                    {language === 'zh' ? typeData.name.zh : typeData.name.en}
+                    {getLocalizedField(typeData.name)}
                   </TypeName>
                   <TypeShortDesc>
-                    {language === 'zh' ? typeData.shortDescription.zh : typeData.shortDescription.en}
+                    {getLocalizedField(typeData.shortDescription)}
                   </TypeShortDesc>
                 </TypeHeader>
               </TypeCard>
@@ -274,11 +283,17 @@ const MBTITypes = () => {
     const typeData = mbtiTypesData[selectedType];
     if (!typeData) return null;
 
+    const traits = typeData.traits[language] || typeData.traits['zh-CN'] || typeData.traits.zh || typeData.traits.en || [];
+    const quotes = typeData.quotes[language] || typeData.quotes['zh-CN'] || typeData.quotes.zh || typeData.quotes.en || [];
+    const strengths = typeData.strengths[language] || typeData.strengths['zh-CN'] || typeData.strengths.zh || typeData.strengths.en || [];
+    const challenges = typeData.challenges[language] || typeData.challenges['zh-CN'] || typeData.challenges.zh || typeData.challenges.en || [];
+    const careers = typeData.careers[language] || typeData.careers['zh-CN'] || typeData.careers.zh || typeData.careers.en || [];
+
     return (
       <Container>
         <BackButton onClick={handleBack} variant="outline">
           <FontAwesomeIcon icon={faArrowLeft} />
-          {language === 'zh' ? '返回類型列表' : 'Back to Types'}
+          {language === 'zh-CN' ? '返回类型列表' : (language === 'zh' ? '返回類型列表' : 'Back to Types')}
         </BackButton>
 
         <DetailedTypeView
@@ -289,15 +304,15 @@ const MBTITypes = () => {
           <DetailCard>
             <DetailHeader>
               <LargeTypeCode>{selectedType}</LargeTypeCode>
-              <h2>{language === 'zh' ? typeData.name.zh : typeData.name.en}</h2>
-              <p>{language === 'zh' ? typeData.shortDescription.zh : typeData.shortDescription.en}</p>
+              <h2>{getLocalizedField(typeData.name)}</h2>
+              <p>{getLocalizedField(typeData.shortDescription)}</p>
             </DetailHeader>
 
             <TraitSection>
               <DetailTitle>
-                {language === 'zh' ? '核心特質' : 'Core Traits'}
+                {language === 'zh-CN' ? '核心特质' : (language === 'zh' ? '核心特質' : 'Core Traits')}
               </DetailTitle>
-              {(language === 'zh' ? typeData.traits.zh : typeData.traits.en).map((trait, index) => (
+              {traits.map((trait, index) => (
                 <TraitItem key={index}>
                   <TraitTitle>{trait.title}</TraitTitle>
                   <TraitDescription>{trait.description}</TraitDescription>
@@ -307,36 +322,36 @@ const MBTITypes = () => {
 
             <QuoteSection>
               <DetailTitle style={{ color: 'white' }}>
-                {language === 'zh' ? `${selectedType} 語句錄` : `${selectedType} Quotes`}
+                {language === 'zh-CN' ? `${selectedType} 经典语录` : (language === 'zh' ? `${selectedType} 語句錄` : `${selectedType} Quotes`)}
               </DetailTitle>
-              {(language === 'zh' ? typeData.quotes.zh : typeData.quotes.en).map((quote, index) => (
+              {quotes.map((quote, index) => (
                 <QuoteItem key={index}>{quote}</QuoteItem>
               ))}
             </QuoteSection>
 
             <ListGrid>
               <ListCard>
-                <ListTitle>{language === 'zh' ? '優勢' : 'Strengths'}</ListTitle>
+                <ListTitle>{language === 'zh-CN' ? '优势' : (language === 'zh' ? '優勢' : 'Strengths')}</ListTitle>
                 <ul>
-                  {(language === 'zh' ? typeData.strengths.zh : typeData.strengths.en).map((strength, index) => (
+                  {strengths.map((strength, index) => (
                     <ListItem key={index}>{strength}</ListItem>
                   ))}
                 </ul>
               </ListCard>
 
               <ListCard>
-                <ListTitle>{language === 'zh' ? '挑戰' : 'Challenges'}</ListTitle>
+                <ListTitle>{language === 'zh-CN' ? '挑战' : (language === 'zh' ? '挑戰' : 'Challenges')}</ListTitle>
                 <ul>
-                  {(language === 'zh' ? typeData.challenges.zh : typeData.challenges.en).map((challenge, index) => (
+                  {challenges.map((challenge, index) => (
                     <ListItem key={index}>{challenge}</ListItem>
                   ))}
                 </ul>
               </ListCard>
 
               <ListCard>
-                <ListTitle>{language === 'zh' ? '適合職業' : 'Ideal Careers'}</ListTitle>
+                <ListTitle>{language === 'zh-CN' ? '适合职业' : (language === 'zh' ? '適合職業' : 'Ideal Careers')}</ListTitle>
                 <ul>
-                  {(language === 'zh' ? typeData.careers.zh : typeData.careers.en).map((career, index) => (
+                  {careers.map((career, index) => (
                     <ListItem key={index}>{career}</ListItem>
                   ))}
                 </ul>
@@ -344,16 +359,16 @@ const MBTITypes = () => {
             </ListGrid>
 
             <TraitSection>
-              <DetailTitle>{language === 'zh' ? '在關係中' : 'In Relationships'}</DetailTitle>
+              <DetailTitle>{language === 'zh-CN' ? '在关系中' : (language === 'zh' ? '在關係中' : 'In Relationships')}</DetailTitle>
               <TraitDescription>
-                {language === 'zh' ? typeData.relationships.zh : typeData.relationships.en}
+                {getLocalizedField(typeData.relationships)}
               </TraitDescription>
             </TraitSection>
 
             <TraitSection>
-              <DetailTitle>{language === 'zh' ? '總結' : 'Summary'}</DetailTitle>
+              <DetailTitle>{language === 'zh-CN' ? '总结' : (language === 'zh' ? '總結' : 'Summary')}</DetailTitle>
               <TraitDescription>
-                {language === 'zh' ? typeData.summary.zh : typeData.summary.en}
+                {getLocalizedField(typeData.summary)}
               </TraitDescription>
             </TraitSection>
           </DetailCard>

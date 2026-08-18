@@ -103,11 +103,11 @@ router.get('/test/:sessionId', validateSession, async (req, res) => {
       section.questions.forEach(question => {
         allQuestions.push({
           ...question,
-          sectionTitle: section.title[lang] || section.title.zh,
-          sectionSubtitle: section.subtitle[lang] || section.subtitle.zh,
-          text: question.text[lang] || question.text.zh,
-          leftLabel: question.leftLabel[lang] || question.leftLabel.zh,
-          rightLabel: question.rightLabel[lang] || question.rightLabel.zh
+          sectionTitle: section.title[lang] || section.title[lang.toLowerCase()] || section.title['zh-CN'] || section.title.zh,
+          sectionSubtitle: section.subtitle[lang] || section.subtitle[lang.toLowerCase()] || section.subtitle['zh-CN'] || section.subtitle.zh,
+          text: question.text[lang] || question.text[lang.toLowerCase()] || question.text['zh-CN'] || question.text.zh,
+          leftLabel: question.leftLabel[lang] || question.leftLabel[lang.toLowerCase()] || question.leftLabel['zh-CN'] || question.leftLabel.zh,
+          rightLabel: question.rightLabel[lang] || question.rightLabel[lang.toLowerCase()] || question.rightLabel['zh-CN'] || question.rightLabel.zh
         });
       });
     });
@@ -144,8 +144,8 @@ router.get('/sections', async (req, res) => {
 
     const sections = questionsData.sections.map(section => ({
       sectionId: section.sectionId,
-      title: section.title[lang] || section.title.zh,
-      subtitle: section.subtitle[lang] || section.subtitle.zh,
+      title: section.title[lang] || section.title[lang.toLowerCase()] || section.title['zh-CN'] || section.title.zh,
+      subtitle: section.subtitle[lang] || section.subtitle[lang.toLowerCase()] || section.subtitle['zh-CN'] || section.subtitle.zh,
       questionCount: section.questions.length
     }));
     
@@ -179,11 +179,11 @@ router.get('/:questionId', async (req, res) => {
       if (found) {
         question = {
           ...found,
-          sectionTitle: section.title[lang] || section.title.zh,
-          sectionSubtitle: section.subtitle[lang] || section.subtitle.zh,
-          text: found.text[lang] || found.text.zh,
-          leftLabel: found.leftLabel[lang] || found.leftLabel.zh,
-          rightLabel: found.rightLabel[lang] || found.rightLabel.zh
+          sectionTitle: section.title[lang] || section.title[lang.toLowerCase()] || section.title['zh-CN'] || section.title.zh,
+          sectionSubtitle: section.subtitle[lang] || section.subtitle[lang.toLowerCase()] || section.subtitle['zh-CN'] || section.subtitle.zh,
+          text: found.text[lang] || found.text[lang.toLowerCase()] || found.text['zh-CN'] || found.text.zh,
+          leftLabel: found.leftLabel[lang] || found.leftLabel[lang.toLowerCase()] || found.leftLabel['zh-CN'] || found.leftLabel.zh,
+          rightLabel: found.rightLabel[lang] || found.rightLabel[lang.toLowerCase()] || found.rightLabel['zh-CN'] || found.rightLabel.zh
         };
       }
     });

@@ -131,10 +131,37 @@ const About = () => {
         title: "重要免責聲明",
         text: "此測試專為教育和自我發現目的而設計。雖然基於既定的心理學原理，但不應用於臨床診斷或作為重要人生決定的唯一依據。如需專業心理評估，請諮詢合格的心理健康從業者。"
       }
+    },
+    'zh-CN': {
+      heroTitle: "关于MBTI人格测评",
+      heroSubtitle: "通过MBTI了解人格类型",
+      whatIsMbti: {
+        title: "什么是MBTI？",
+        text: "迈尔斯-布里格斯性格指标（MBTI）是一种心理评估工具，旨在识别人们感知世界和做决定时的性格偏好。基于卡尔·荣格的心理类型理论，它将性格分为16种不同的类型。"
+      },
+      fourDimensions: {
+        title: "四个维度",
+        text: (
+          <>
+            <strong>外向型 (E) vs 内向型 (I)：</strong> 你如何引导你的能量<br/>
+            <strong>实感型 (S) vs 直觉型 (N)：</strong> 你如何接收信息<br/>
+            <strong>思考型 (T) vs 情感型 (F)：</strong> 你如何做决定<br/>
+            <strong>判断型 (J) vs 感知型 (P)：</strong> 你如何对待外部世界
+          </>
+        )
+      },
+      howItWorks: {
+        title: "我们的测试如何进行",
+        text: "我们的评估会向您呈现旨在揭示您自然偏好的情境和问题。没有对错答案——目标是了解真实的自己。结果会提供关于您的优势、沟通风格和潜在职业道路的洞察。"
+      },
+      disclaimer: {
+        title: "重要免责声明",
+        text: "此测试专为教育和自我发现目的而设计。虽然基于既定的心理学原理，但不应用于临床诊断或作为重要人生决定的唯一依据。如需专业心理评估，请咨询合格的心理健康从业人员。"
+      }
     }
   };
 
-  const currentContent = content[language];
+  const currentContent = content[language] || content['zh-CN'] || content.zh || content.en;
 
   return (
     <AboutPage>

@@ -4,26 +4,36 @@
       "sectionId": 1,
       "title": {
         "zh": "第一部分",
-        "en": "Section 1"
+        "en": "Section 1",
+        "zh-CN": "第一部分",
+        "zh_cn": "第一部分"
       },
       "subtitle": {
         "zh": "哪個答案最能貼切地描繪你一般的感受或行為？",
-        "en": "Which answer best describes your general feelings or behavior?"
+        "en": "Which answer best describes your general feelings or behavior?",
+        "zh-CN": "哪个答案最能贴切地描绘你一般的感受或行为？",
+        "zh_cn": "哪个答案最能贴切地描绘你一般的感受或行为？"
       },
       "questions": [
         {
           "questionId": 1,
           "text": {
             "zh": "當你要出外一整天，你會不會",
-            "en": "When you are going out for the whole day, do you"
+            "en": "When you are going out for the whole day, do you",
+            "zh-CN": "当你要出外一整天，你会不会",
+            "zh_cn": "当你要出外一整天，你会不会"
           },
           "leftLabel": {
             "zh": "計劃你要去做什麼和在什麼時候做",
-            "en": "plan what to do and when to do it"
+            "en": "plan what to do and when to do it",
+            "zh-CN": "计划你要去做什么和在什么时候做",
+            "zh_cn": "计划你要去做什么和在什么时候做"
           },
           "rightLabel": {
             "zh": "說走就走",
-            "en": "go with the flow"
+            "en": "go with the flow",
+            "zh-CN": "说走就走",
+            "zh_cn": "说走就走"
           },
           "category": "JP",
           "leftType": "J",
@@ -33,15 +43,21 @@
           "questionId": 2,
           "text": {
             "zh": "假如你是一位老師，你會選教",
-            "en": "If you were a teacher, would you prefer to teach"
+            "en": "If you were a teacher, would you prefer to teach",
+            "zh-CN": "假如你是一位老师，你会选教",
+            "zh_cn": "假如你是一位老师，你会选教"
           },
           "leftLabel": {
             "zh": "以事實為主的課程",
-            "en": "fact-based courses"
+            "en": "fact-based courses",
+            "zh-CN": "以事实为主的课程",
+            "zh_cn": "以事实为主的课程"
           },
           "rightLabel": {
             "zh": "設計理論的課程",
-            "en": "theory-based courses"
+            "en": "theory-based courses",
+            "zh-CN": "设计理论的课程",
+            "zh_cn": "设计理论的课程"
           },
           "category": "SN",
           "leftType": "S",
@@ -51,15 +67,21 @@
           "questionId": 3,
           "text": {
             "zh": "你通常",
-            "en": "Do you usually"
+            "en": "Do you usually",
+            "zh-CN": "你通常",
+            "zh_cn": "你通常"
           },
           "leftLabel": {
             "zh": "與人容易混熟，或是",
-            "en": "get along easily with people, or"
+            "en": "get along easily with people, or",
+            "zh-CN": "与人容易混熟，或是",
+            "zh_cn": "与人容易混熟，或是"
           },
           "rightLabel": {
             "zh": "現實的人",
-            "en": "tend to be practical"
+            "en": "tend to be practical",
+            "zh-CN": "现实的人",
+            "zh_cn": "现实的人"
           },
           "category": "EI",
           "leftType": "E",
@@ -69,15 +91,21 @@
           "questionId": 4,
           "text": {
             "zh": "你是否經常讓",
-            "en": "Do you often let"
+            "en": "Do you often let",
+            "zh-CN": "你是否经常让",
+            "zh_cn": "你是否经常让"
           },
           "leftLabel": {
             "zh": "你的情感支配你的理智",
-            "en": "your emotions rule your reason"
+            "en": "your emotions rule your reason",
+            "zh-CN": "你的情感支配你的理智",
+            "zh_cn": "你的情感支配你的理智"
           },
           "rightLabel": {
             "zh": "你的理智主宰你的情感",
-            "en": "your reason govern your emotions"
+            "en": "your reason govern your emotions",
+            "zh-CN": "你的理智主宰你的情感",
+            "zh_cn": "你的理智主宰你的情感"
           },
           "category": "FT",
           "leftType": "F",
@@ -87,15 +115,21 @@
           "questionId": 5,
           "text": {
             "zh": "處理許多事情上，你喜歡",
-            "en": "When dealing with many things, do you like to"
+            "en": "When dealing with many things, do you like to",
+            "zh-CN": "处理许多事情上，你喜欢",
+            "zh_cn": "处理许多事情上，你喜欢"
           },
           "leftLabel": {
             "zh": "憑興所至行事",
-            "en": "act on impulse"
+            "en": "act on impulse",
+            "zh-CN": "凭兴所至行事",
+            "zh_cn": "凭兴所至行事"
           },
           "rightLabel": {
             "zh": "按照計劃行事",
-            "en": "follow a plan"
+            "en": "follow a plan",
+            "zh-CN": "按照计划行事",
+            "zh_cn": "按照计划行事"
           },
           "category": "JP",
           "leftType": "P",
@@ -105,15 +139,21 @@
           "questionId": 6,
           "text": {
             "zh": "當你有一份特別的任務，你會喜歡",
-            "en": "When you have a special task, do you like to"
+            "en": "When you have a special task, do you like to",
+            "zh-CN": "当你有一份特别的任务，你会喜欢",
+            "zh_cn": "当你有一份特别的任务，你会喜欢"
           },
           "leftLabel": {
             "zh": "開始小心組織計劃",
-            "en": "carefully organize a plan"
+            "en": "carefully organize a plan",
+            "zh-CN": "开始小心组织计划",
+            "zh_cn": "开始小心组织计划"
           },
           "rightLabel": {
             "zh": "邊做邊找需要做什麼",
-            "en": "figure out what needs to be done as you go"
+            "en": "figure out what needs to be done as you go",
+            "zh-CN": "边做边找需要做什么",
+            "zh_cn": "边做边找需要做什么"
           },
           "category": "JP",
           "leftType": "J",
@@ -123,15 +163,21 @@
           "questionId": 7,
           "text": {
             "zh": "大多數人會說你是一個",
-            "en": "Most people would say that you are"
+            "en": "Most people would say that you are",
+            "zh-CN": "大多数人会说你是一个",
+            "zh_cn": "大多数人会说你是一个"
           },
           "leftLabel": {
             "zh": "重視自我隱私的人",
-            "en": "a private person"
+            "en": "a private person",
+            "zh-CN": "重视自我隐私的人",
+            "zh_cn": "重视自我隐私的人"
           },
           "rightLabel": {
             "zh": "非常坦率開朗的人",
-            "en": "a very open and candid person"
+            "en": "a very open and candid person",
+            "zh-CN": "非常坦率开朗的人",
+            "zh_cn": "非常坦率开朗的人"
           },
           "category": "EI",
           "leftType": "I",
@@ -141,15 +187,21 @@
           "questionId": 8,
           "text": {
             "zh": "你寧願被人認為是一個",
-            "en": "Would you rather be seen as"
+            "en": "Would you rather be seen as",
+            "zh-CN": "你宁愿被人认为是一个",
+            "zh_cn": "你宁愿被人认为是一个"
           },
           "leftLabel": {
             "zh": "實事求是的人",
-            "en": "a realistic person"
+            "en": "a realistic person",
+            "zh-CN": "实事求是的人",
+            "zh_cn": "实事求是的人"
           },
           "rightLabel": {
             "zh": "機靈的人",
-            "en": "a clever person"
+            "en": "a clever person",
+            "zh-CN": "机灵的人",
+            "zh_cn": "机灵的人"
           },
           "category": "SN",
           "leftType": "S",
@@ -159,15 +211,21 @@
           "questionId": 9,
           "text": {
             "zh": "你比較喜歡",
-            "en": "Do you prefer to"
+            "en": "Do you prefer to",
+            "zh-CN": "你比较喜欢",
+            "zh_cn": "你比较喜欢"
           },
           "leftLabel": {
             "zh": "靜觀事情發展才作計劃",
-            "en": "observe how things develop before making plans"
+            "en": "observe how things develop before making plans",
+            "zh-CN": "静观事情发展才作计划",
+            "zh_cn": "静观事情发展才作计划"
           },
           "rightLabel": {
             "zh": "很早就作計劃",
-            "en": "make plans well in advance"
+            "en": "make plans well in advance",
+            "zh-CN": "很早就作计划",
+            "zh_cn": "很早就作计划"
           },
           "category": "JP",
           "leftType": "P",
@@ -177,15 +235,21 @@
           "questionId": 10,
           "text": {
             "zh": "你喜歡花很多的時間",
-            "en": "Do you like to spend a lot of time"
+            "en": "Do you like to spend a lot of time",
+            "zh-CN": "你喜欢花很多的时间",
+            "zh_cn": "你喜欢花很多的时间"
           },
           "leftLabel": {
             "zh": "一個人獨處",
-            "en": "alone"
+            "en": "alone",
+            "zh-CN": "一个人独处",
+            "zh_cn": "一个人独处"
           },
           "rightLabel": {
             "zh": "和別人在一起",
-            "en": "with others"
+            "en": "with others",
+            "zh-CN": "和别人在一起",
+            "zh_cn": "和别人在一起"
           },
           "category": "EI",
           "leftType": "I",
@@ -195,15 +259,21 @@
           "questionId": 11,
           "text": {
             "zh": "計劃一個旅程時，你較喜歡",
-            "en": "When planning a trip, do you prefer to"
+            "en": "When planning a trip, do you prefer to",
+            "zh-CN": "计划一个旅程时，你较喜欢",
+            "zh_cn": "计划一个旅程时，你较喜欢"
           },
           "leftLabel": {
             "zh": "大部分時間都是跟當天的感覺行事",
-            "en": "go with the flow for most of the time"
+            "en": "go with the flow for most of the time",
+            "zh-CN": "大部分时间都是跟当天的感觉行事",
+            "zh_cn": "大部分时间都是跟当天的感觉行事"
           },
           "rightLabel": {
             "zh": "事先知道大部分的日子會做什麼",
-            "en": "know what you will be doing for most of the days in advance"
+            "en": "know what you will be doing for most of the days in advance",
+            "zh-CN": "事先知道大部分的日子会做什么",
+            "zh_cn": "事先知道大部分的日子会做什么"
           },
           "category": "JP",
           "leftType": "P",
@@ -213,15 +283,21 @@
           "questionId": 12,
           "text": {
             "zh": "在社交聚會中，你是否",
-            "en": "At social gatherings, do you"
+            "en": "At social gatherings, do you",
+            "zh-CN": "在社交聚会中，你是否",
+            "zh_cn": "在社交聚会中，你是否"
           },
           "leftLabel": {
             "zh": "有時感到煩悶",
-            "en": "sometimes feel bored"
+            "en": "sometimes feel bored",
+            "zh-CN": "有时感到烦闷",
+            "zh_cn": "有时感到烦闷"
           },
           "rightLabel": {
             "zh": "常常樂在其中？",
-            "en": "often have a great time"
+            "en": "often have a great time",
+            "zh-CN": "常常乐在其中？",
+            "zh_cn": "常常乐在其中？"
           },
           "category": "EI",
           "leftType": "I",
@@ -231,15 +307,21 @@
           "questionId": 13,
           "text": {
             "zh": "哪些人會更吸引你？",
-            "en": "Which type of person is more attractive to you?"
+            "en": "Which type of person is more attractive to you?",
+            "zh-CN": "哪些人会更吸引你？",
+            "zh_cn": "哪些人会更吸引你？"
           },
           "leftLabel": {
             "zh": "一個思想敏捷及非常聰明的人",
-            "en": "someone who is quick-witted and very intelligent"
+            "en": "someone who is quick-witted and very intelligent",
+            "zh-CN": "一个思想敏捷及非常聪明的人",
+            "zh_cn": "一个思想敏捷及非常聪明的人"
           },
           "rightLabel": {
             "zh": "實事求是，具豐富常識的人",
-            "en": "someone who is practical and knowledgeable"
+            "en": "someone who is practical and knowledgeable",
+            "zh-CN": "实事求是，具丰富常识的人",
+            "zh_cn": "实事求是，具丰富常识的人"
           },
           "category": "SN",
           "leftType": "N",
@@ -249,15 +331,21 @@
           "questionId": 14,
           "text": {
             "zh": "你認為別人一般",
-            "en": "Do you think others generally"
+            "en": "Do you think others generally",
+            "zh-CN": "你认为别人一般",
+            "zh_cn": "你认为别人一般"
           },
           "leftLabel": {
             "zh": "要花很長時間才認識你",
-            "en": "take a long time to get to know you"
+            "en": "take a long time to get to know you",
+            "zh-CN": "要花很长时间才认识你",
+            "zh_cn": "要花很长时间才认识你"
           },
           "rightLabel": {
             "zh": "用很短時間便認識你",
-            "en": "get to know you quickly"
+            "en": "get to know you quickly",
+            "zh-CN": "用很短时间便认识你",
+            "zh_cn": "用很短时间便认识你"
           },
           "category": "EI",
           "leftType": "I",
@@ -269,26 +357,36 @@
       "sectionId": 2,
       "title": {
         "zh": "第二部分",
-        "en": "Section 2"
+        "en": "Section 2",
+        "zh-CN": "第二部分",
+        "zh_cn": "第二部分"
       },
       "subtitle": {
         "zh": "在下列每一對詞語中，哪一個詞語更能反映你？",
-        "en": "In each pair of words below, which word better reflects you?"
+        "en": "In each pair of words below, which word better reflects you?",
+        "zh-CN": "在下列每一对词语中，哪一个词语更能反映你？",
+        "zh_cn": "在下列每一对词语中，哪一个词语更能反映你？"
       },
       "questions": [
         {
           "questionId": 15,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "預先安排的",
-            "en": "Pre-arranged"
+            "en": "Pre-arranged",
+            "zh-CN": "预先安排的",
+            "zh_cn": "预先安排的"
           },
           "rightLabel": {
             "zh": "無計劃的",
-            "en": "Unplanned"
+            "en": "Unplanned",
+            "zh-CN": "无计划的",
+            "zh_cn": "无计划的"
           },
           "category": "JP",
           "leftType": "J",
@@ -298,15 +396,21 @@
           "questionId": 16,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "溫柔",
-            "en": "Gentle"
+            "en": "Gentle",
+            "zh-CN": "温柔",
+            "zh_cn": "温柔"
           },
           "rightLabel": {
             "zh": "決定",
-            "en": "Decisive"
+            "en": "Decisive",
+            "zh-CN": "决定",
+            "zh_cn": "决定"
           },
           "category": "FT",
           "leftType": "F",
@@ -316,15 +420,21 @@
           "questionId": 17,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "事實",
-            "en": "Facts"
+            "en": "Facts",
+            "zh-CN": "事实",
+            "zh_cn": "事实"
           },
           "rightLabel": {
             "zh": "意念",
-            "en": "Ideas"
+            "en": "Ideas",
+            "zh-CN": "意念",
+            "zh_cn": "意念"
           },
           "category": "SN",
           "leftType": "S",
@@ -334,15 +444,21 @@
           "questionId": 18,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "熱衷",
-            "en": "Enthusiastic"
+            "en": "Enthusiastic",
+            "zh-CN": "热衷",
+            "zh_cn": "热衷"
           },
           "rightLabel": {
             "zh": "文靜",
-            "en": "Quiet"
+            "en": "Quiet",
+            "zh-CN": "文静",
+            "zh_cn": "文静"
           },
           "category": "EI",
           "leftType": "E",
@@ -352,15 +468,21 @@
           "questionId": 19,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "有系統",
-            "en": "Systematic"
+            "en": "Systematic",
+            "zh-CN": "有系统",
+            "zh_cn": "有系统"
           },
           "rightLabel": {
             "zh": "隨意",
-            "en": "Casual"
+            "en": "Casual",
+            "zh-CN": "随意",
+            "zh_cn": "随意"
           },
           "category": "JP",
           "leftType": "J",
@@ -370,15 +492,21 @@
           "questionId": 20,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "敏感",
-            "en": "Sensitive"
+            "en": "Sensitive",
+            "zh-CN": "敏感",
+            "zh_cn": "敏感"
           },
           "rightLabel": {
             "zh": "公正",
-            "en": "Fair"
+            "en": "Fair",
+            "zh-CN": "公正",
+            "zh_cn": "公正"
           },
           "category": "FT",
           "leftType": "F",
@@ -388,15 +516,21 @@
           "questionId": 21,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "聲明",
-            "en": "Statement"
+            "en": "Statement",
+            "zh-CN": "声明",
+            "zh_cn": "声明"
           },
           "rightLabel": {
             "zh": "概念",
-            "en": "Concept"
+            "en": "Concept",
+            "zh-CN": "概念",
+            "zh_cn": "概念"
           },
           "category": "SN",
           "leftType": "S",
@@ -406,15 +540,21 @@
           "questionId": 22,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "矜持",
-            "en": "Reserved"
+            "en": "Reserved",
+            "zh-CN": "矜持",
+            "zh_cn": "矜持"
           },
           "rightLabel": {
             "zh": "健談",
-            "en": "Talkative"
+            "en": "Talkative",
+            "zh-CN": "健谈",
+            "zh_cn": "健谈"
           },
           "category": "EI",
           "leftType": "I",
@@ -424,15 +564,21 @@
           "questionId": 23,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "有條不紊",
-            "en": "Methodical"
+            "en": "Methodical",
+            "zh-CN": "有条不紊",
+            "zh_cn": "有条不紊"
           },
           "rightLabel": {
             "zh": "不拘小節",
-            "en": "Carefree"
+            "en": "Carefree",
+            "zh-CN": "不拘小节",
+            "zh_cn": "不拘小节"
           },
           "category": "JP",
           "leftType": "J",
@@ -442,15 +588,21 @@
           "questionId": 24,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "同情憐憫",
-            "en": "Sympathetic"
+            "en": "Sympathetic",
+            "zh-CN": "同情怜悯",
+            "zh_cn": "同情怜悯"
           },
           "rightLabel": {
             "zh": "遠見",
-            "en": "Far-sighted"
+            "en": "Far-sighted",
+            "zh-CN": "远见",
+            "zh_cn": "远见"
           },
           "category": "FT",
           "leftType": "F",
@@ -460,15 +612,21 @@
           "questionId": 25,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "務實的",
-            "en": "Pragmatic"
+            "en": "Pragmatic",
+            "zh-CN": "务实的",
+            "zh_cn": "务实的"
           },
           "rightLabel": {
             "zh": "理論的",
-            "en": "Theoretical"
+            "en": "Theoretical",
+            "zh-CN": "理论的",
+            "zh_cn": "理论的"
           },
           "category": "SN",
           "leftType": "S",
@@ -478,15 +636,21 @@
           "questionId": 26,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "親切的",
-            "en": "Kind"
+            "en": "Kind",
+            "zh-CN": "亲切的",
+            "zh_cn": "亲切的"
           },
           "rightLabel": {
             "zh": "客觀的",
-            "en": "Objective"
+            "en": "Objective",
+            "zh-CN": "客观的",
+            "zh_cn": "客观的"
           },
           "category": "FT",
           "leftType": "F",
@@ -496,15 +660,21 @@
           "questionId": 27,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "建造",
-            "en": "Building"
+            "en": "Building",
+            "zh-CN": "建造",
+            "zh_cn": "建造"
           },
           "rightLabel": {
             "zh": "發明",
-            "en": "Inventing"
+            "en": "Inventing",
+            "zh-CN": "发明",
+            "zh_cn": "发明"
           },
           "category": "SN",
           "leftType": "S",
@@ -514,15 +684,21 @@
           "questionId": 28,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "文靜",
-            "en": "Quiet"
+            "en": "Quiet",
+            "zh-CN": "文静",
+            "zh_cn": "文静"
           },
           "rightLabel": {
             "zh": "愛合群",
-            "en": "Sociable"
+            "en": "Sociable",
+            "zh-CN": "爱合群",
+            "zh_cn": "爱合群"
           },
           "category": "EI",
           "leftType": "I",
@@ -532,15 +708,21 @@
           "questionId": 29,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "富同情",
-            "en": "Sympathetic"
+            "en": "Sympathetic",
+            "zh-CN": "富同情",
+            "zh_cn": "富同情"
           },
           "rightLabel": {
             "zh": "合邏輯",
-            "en": "Logical"
+            "en": "Logical",
+            "zh-CN": "合逻辑",
+            "zh_cn": "合逻辑"
           },
           "category": "FT",
           "leftType": "F",
@@ -550,15 +732,21 @@
           "questionId": 30,
           "text": {
             "zh": "你是",
-            "en": "You are"
+            "en": "You are",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "合情合理",
-            "en": "Rational"
+            "en": "Rational",
+            "zh-CN": "合情合理",
+            "zh_cn": "合情合理"
           },
           "rightLabel": {
             "zh": "令人著迷",
-            "en": "Fascinating"
+            "en": "Fascinating",
+            "zh-CN": "令人著迷",
+            "zh_cn": "令人著迷"
           },
           "category": "SN",
           "leftType": "S",
@@ -570,26 +758,36 @@
       "sectionId": 3,
       "title": {
         "zh": "第三部分",
-        "en": "Section 3"
+        "en": "Section 3",
+        "zh-CN": "第三部分",
+        "zh_cn": "第三部分"
       },
       "subtitle": {
         "zh": "哪個答案最能貼切地描繪你一般的感受或行為？",
-        "en": "Which answer best describes your general feelings or behavior?"
+        "en": "Which answer best describes your general feelings or behavior?",
+        "zh-CN": "哪个答案最能贴切地描绘你一般的感受或行为？",
+        "zh_cn": "哪个答案最能贴切地描绘你一般的感受或行为？"
       },
       "questions": [
         {
           "questionId": 31,
           "text": {
             "zh": "當你要在一個星期內完成一個大項目，你再開始的時候就會:",
-            "en": "When you have to complete a big project within a week, you will:"
+            "en": "When you have to complete a big project within a week, you will:",
+            "zh-CN": "当你要在一个星期内完成一个大项目，你再开始的时候就会:",
+            "zh_cn": "当你要在一个星期内完成一个大项目，你再开始的时候就会:"
           },
           "leftLabel": {
             "zh": "把要做的不同工作一次列出",
-            "en": "List out the different tasks to be done at once"
+            "en": "List out the different tasks to be done at once",
+            "zh-CN": "把要做的不同工作一次列出",
+            "zh_cn": "把要做的不同工作一次列出"
           },
           "rightLabel": {
             "zh": "馬上動工",
-            "en": "Start working immediately"
+            "en": "Start working immediately",
+            "zh-CN": "马上动工",
+            "zh_cn": "马上动工"
           },
           "category": "JP",
           "leftType": "J",
@@ -599,15 +797,21 @@
           "questionId": 32,
           "text": {
             "zh": "你剛認識的朋友能否說出你的興趣？",
-            "en": "Can your newly made friends tell your interests?"
+            "en": "Can your newly made friends tell your interests?",
+            "zh-CN": "你刚认识的朋友能否说出你的兴趣？",
+            "zh_cn": "你刚认识的朋友能否说出你的兴趣？"
           },
           "leftLabel": {
             "zh": "馬上可以",
-            "en": "Immediately"
+            "en": "Immediately",
+            "zh-CN": "马上可以",
+            "zh_cn": "马上可以"
           },
           "rightLabel": {
             "zh": "要待他們真正了解你之後才可以",
-            "en": "After they get to know you well"
+            "en": "After they get to know you well",
+            "zh-CN": "要待他们真正了解你之后才可以",
+            "zh_cn": "要待他们真正了解你之后才可以"
           },
           "category": "EI",
           "leftType": "E",
@@ -617,15 +821,21 @@
           "questionId": 33,
           "text": {
             "zh": "你通常比較喜歡的科目是",
-            "en": "Your favorite subject is usually:"
+            "en": "Your favorite subject is usually:",
+            "zh-CN": "你通常比较喜欢的科目是",
+            "zh_cn": "你通常比较喜欢的科目是"
           },
           "leftLabel": {
             "zh": "講授概念和原則的，或是",
-            "en": "One that teaches concepts and principles, or"
+            "en": "One that teaches concepts and principles, or",
+            "zh-CN": "讲授概念和原则的，或是",
+            "zh_cn": "讲授概念和原则的，或是"
           },
           "rightLabel": {
             "zh": "講授事實和數據的？",
-            "en": "One that teaches facts and data?"
+            "en": "One that teaches facts and data?",
+            "zh-CN": "讲授事实和数据的？",
+            "zh_cn": "讲授事实和数据的？"
           },
           "category": "SN",
           "leftType": "N",
@@ -635,15 +845,21 @@
           "questionId": 34,
           "text": {
             "zh": "哪個是較高的讚譽？",
-            "en": "Which one is a higher compliment?"
+            "en": "Which one is a higher compliment?",
+            "zh-CN": "哪个是较高的赞誉？",
+            "zh_cn": "哪个是较高的赞誉？"
           },
           "leftLabel": {
             "zh": "一貫感性的人",
-            "en": "Consistently emotional person"
+            "en": "Consistently emotional person",
+            "zh-CN": "一贯感性的人",
+            "zh_cn": "一贯感性的人"
           },
           "rightLabel": {
             "zh": "一貫理性的人",
-            "en": "Consistently rational person"
+            "en": "Consistently rational person",
+            "zh-CN": "一贯理性的人",
+            "zh_cn": "一贯理性的人"
           },
           "category": "FT",
           "leftType": "F",
@@ -653,15 +869,21 @@
           "questionId": 35,
           "text": {
             "zh": "在社交聚會中，你會",
-            "en": "In a social gathering, are you:"
+            "en": "In a social gathering, are you:",
+            "zh-CN": "在社交聚会中，你会",
+            "zh_cn": "在社交聚会中，你会"
           },
           "leftLabel": {
             "zh": "是說話很多的一個，還是",
-            "en": "The one who talks a lot, or"
+            "en": "The one who talks a lot, or",
+            "zh-CN": "是说话很多的一个，还是",
+            "zh_cn": "是说话很多的一个，还是"
           },
           "rightLabel": {
             "zh": "讓別人多說話",
-            "en": "Let others talk more"
+            "en": "Let others talk more",
+            "zh-CN": "让别人多说话",
+            "zh_cn": "让别人多说话"
           },
           "category": "EI",
           "leftType": "E",
@@ -671,15 +893,21 @@
           "questionId": 36,
           "text": {
             "zh": "把在週末期間要完成的事列成清單，這個主意會，",
-            "en": "Creating a to-do list for the weekend will:"
+            "en": "Creating a to-do list for the weekend will:",
+            "zh-CN": "把在周末期间要完成的事列成清单，这个主意会，",
+            "zh_cn": "把在周末期间要完成的事列成清单，这个主意会，"
           },
           "leftLabel": {
             "zh": "合你意",
-            "en": "Suit you well"
+            "en": "Suit you well",
+            "zh-CN": "合你意",
+            "zh_cn": "合你意"
           },
           "rightLabel": {
             "zh": "使你提不起勁",
-            "en": "Make you feel unenthusiastic"
+            "en": "Make you feel unenthusiastic",
+            "zh-CN": "使你提不起劲",
+            "zh_cn": "使你提不起劲"
           },
           "category": "JP",
           "leftType": "J",
@@ -689,15 +917,21 @@
           "questionId": 37,
           "text": {
             "zh": "總的來說，要做一個大型作業時，你會選",
-            "en": "Overall, when doing a large project, you prefer to:"
+            "en": "Overall, when doing a large project, you prefer to:",
+            "zh-CN": "总的来说，要做一个大型作业时，你会选",
+            "zh_cn": "总的来说，要做一个大型作业时，你会选"
           },
           "leftLabel": {
             "zh": "邊做邊想該做什麼",
-            "en": "Work and think about what to do at the same time"
+            "en": "Work and think about what to do at the same time",
+            "zh-CN": "边做边想该做什么",
+            "zh_cn": "边做边想该做什么"
           },
           "rightLabel": {
             "zh": "首先把工作按步細分",
-            "en": "First break the work into detailed steps"
+            "en": "First break the work into detailed steps",
+            "zh-CN": "首先把工作按步细分",
+            "zh_cn": "首先把工作按步细分"
           },
           "category": "JP",
           "leftType": "P",
@@ -707,15 +941,21 @@
           "questionId": 38,
           "text": {
             "zh": "你會",
-            "en": "Do you prefer to"
+            "en": "Do you prefer to",
+            "zh-CN": "你会",
+            "zh_cn": "你会"
           },
           "leftLabel": {
             "zh": "跟隨一些證明有效的方法，還是",
-            "en": "Follow established and proven methods, or"
+            "en": "Follow established and proven methods, or",
+            "zh-CN": "跟随一些证明有效的方法，还是",
+            "zh_cn": "跟随一些证明有效的方法，还是"
           },
           "rightLabel": {
             "zh": "分析還有什麼毛病，及針對尚未解決的難題？",
-            "en": "Analyze and address unresolved problems?"
+            "en": "Analyze and address unresolved problems?",
+            "zh-CN": "分析还有什么毛病，及针对尚未解决的难题？",
+            "zh_cn": "分析还有什么毛病，及针对尚未解决的难题？"
           },
           "category": "EI",
           "leftType": "E",
@@ -725,15 +965,21 @@
           "questionId": 39,
           "text": {
             "zh": "你寧替那一類上司/老師工作？",
-            "en": "Which type of boss/teacher do you prefer to work for?"
+            "en": "Which type of boss/teacher do you prefer to work for?",
+            "zh-CN": "你宁替那一类上司/老师工作？",
+            "zh_cn": "你宁替那一类上司/老师工作？"
           },
           "leftLabel": {
             "zh": "天性淳良，但通常前後不一的，還是",
-            "en": "Kind-hearted but inconsistent, or"
+            "en": "Kind-hearted but inconsistent, or",
+            "zh-CN": "天性淳良，但通常前后不一的，还是",
+            "zh_cn": "天性淳良，但通常前后不一的，还是"
           },
           "rightLabel": {
             "zh": "言詞尖銳但永遠合邏輯",
-            "en": "Sharp-tongued but always logical"
+            "en": "Sharp-tongued but always logical",
+            "zh-CN": "言词尖锐但永远合逻辑",
+            "zh_cn": "言词尖锐但永远合逻辑"
           },
           "category": "FT",
           "leftType": "F",
@@ -745,26 +991,36 @@
       "sectionId": 4,
       "title": {
         "zh": "第四部分",
-        "en": "Section 4"
+        "en": "Section 4",
+        "zh-CN": "第四部分",
+        "zh_cn": "第四部分"
       },
       "subtitle": {
         "zh": "在下列每一對詞語中，哪一個詞語更能反映你？",
-        "en": "In each pair of words below, which word better reflects you?"
+        "en": "In each pair of words below, which word better reflects you?",
+        "zh-CN": "在下列每一对词语中，哪一个词语更能反映你？",
+        "zh_cn": "在下列每一对词语中，哪一个词语更能反映你？"
       },
       "questions": [
         {
           "questionId": 40,
           "text": {
             "zh": "你是",
-            "en": "You are:"
+            "en": "You are:",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "想像的",
-            "en": "Imaginary"
+            "en": "Imaginary",
+            "zh-CN": "想像的",
+            "zh_cn": "想像的"
           },
           "rightLabel": {
             "zh": "真實的",
-            "en": "Real"
+            "en": "Real",
+            "zh-CN": "真实的",
+            "zh_cn": "真实的"
           },
           "category": "SN",
           "leftType": "N",
@@ -774,15 +1030,21 @@
           "questionId": 41,
           "text": {
             "zh": "你是",
-            "en": "You are:"
+            "en": "You are:",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "仁慈慷慨的",
-            "en": "Generous and kind-hearted"
+            "en": "Generous and kind-hearted",
+            "zh-CN": "仁慈慷慨的",
+            "zh_cn": "仁慈慷慨的"
           },
           "rightLabel": {
             "zh": "意志堅定的",
-            "en": "Strong-willed"
+            "en": "Strong-willed",
+            "zh-CN": "意志坚定的",
+            "zh_cn": "意志坚定的"
           },
           "category": "FT",
           "leftType": "F",
@@ -792,15 +1054,21 @@
           "questionId": 42,
           "text": {
             "zh": "你是",
-            "en": "You are:"
+            "en": "You are:",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "可能性",
-            "en": "Possibility"
+            "en": "Possibility",
+            "zh-CN": "可能性",
+            "zh_cn": "可能性"
           },
           "rightLabel": {
             "zh": "必然性",
-            "en": "Necessity"
+            "en": "Necessity",
+            "zh-CN": "必然性",
+            "zh_cn": "必然性"
           },
           "category": "SN",
           "leftType": "N",
@@ -810,15 +1078,21 @@
           "questionId": 43,
           "text": {
             "zh": "你是",
-            "en": "You are:"
+            "en": "You are:",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "溫柔",
-            "en": "Gentleness"
+            "en": "Gentleness",
+            "zh-CN": "温柔",
+            "zh_cn": "温柔"
           },
           "rightLabel": {
             "zh": "力量",
-            "en": "Strength"
+            "en": "Strength",
+            "zh-CN": "力量",
+            "zh_cn": "力量"
           },
           "category": "FT",
           "leftType": "F",
@@ -828,15 +1102,21 @@
           "questionId": 44,
           "text": {
             "zh": "你是",
-            "en": "You are:"
+            "en": "You are:",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "新穎的",
-            "en": "Novel"
+            "en": "Novel",
+            "zh-CN": "新颖的",
+            "zh_cn": "新颖的"
           },
           "rightLabel": {
             "zh": "已知的",
-            "en": "Known"
+            "en": "Known",
+            "zh-CN": "已知的",
+            "zh_cn": "已知的"
           },
           "category": "SN",
           "leftType": "N",
@@ -846,15 +1126,21 @@
           "questionId": 45,
           "text": {
             "zh": "你是",
-            "en": "You are:"
+            "en": "You are:",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "同情",
-            "en": "Empathy"
+            "en": "Empathy",
+            "zh-CN": "同情",
+            "zh_cn": "同情"
           },
           "rightLabel": {
             "zh": "分析",
-            "en": "Analysis"
+            "en": "Analysis",
+            "zh-CN": "分析",
+            "zh_cn": "分析"
           },
           "category": "FT",
           "leftType": "F",
@@ -864,15 +1150,21 @@
           "questionId": 46,
           "text": {
             "zh": "你是",
-            "en": "You are:"
+            "en": "You are:",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "全心投入的",
-            "en": "Fully committed"
+            "en": "Fully committed",
+            "zh-CN": "全心投入的",
+            "zh_cn": "全心投入的"
           },
           "rightLabel": {
             "zh": "有決心的",
-            "en": "Determined"
+            "en": "Determined",
+            "zh-CN": "有决心的",
+            "zh_cn": "有决心的"
           },
           "category": "FT",
           "leftType": "F",
@@ -882,15 +1174,21 @@
           "questionId": 47,
           "text": {
             "zh": "你是",
-            "en": "You are:"
+            "en": "You are:",
+            "zh-CN": "你是",
+            "zh_cn": "你是"
           },
           "leftLabel": {
             "zh": "實際",
-            "en": "Practical"
+            "en": "Practical",
+            "zh-CN": "实际",
+            "zh_cn": "实际"
           },
           "rightLabel": {
             "zh": "創新",
-            "en": "Innovative"
+            "en": "Innovative",
+            "zh-CN": "创新",
+            "zh_cn": "创新"
           },
           "category": "SN",
           "leftType": "S",
@@ -906,7 +1204,9 @@
         "value": 1,
         "label": {
           "zh": "完全偏向左邊",
-          "en": "Strongly Left"
+          "en": "Strongly Left",
+          "zh-CN": "完全偏向左边",
+          "zh_cn": "完全偏向左边"
         },
         "score": 1.0
       },
@@ -914,7 +1214,9 @@
         "value": 2,
         "label": {
           "zh": "偏向左邊",
-          "en": "Slightly Left"
+          "en": "Slightly Left",
+          "zh-CN": "偏向左边",
+          "zh_cn": "偏向左边"
         },
         "score": 0.5
       },
@@ -922,7 +1224,9 @@
         "value": 3,
         "label": {
           "zh": "偏向右邊",
-          "en": "Slightly Right"
+          "en": "Slightly Right",
+          "zh-CN": "偏向右边",
+          "zh_cn": "偏向右边"
         },
         "score": 0.5
       },
@@ -930,10 +1234,12 @@
         "value": 4,
         "label": {
           "zh": "完全偏向右邊",
-          "en": "Strongly Right"
+          "en": "Strongly Right",
+          "zh-CN": "完全偏向右边",
+          "zh_cn": "完全偏向右边"
         },
         "score": 1.0
       }
     ]
   }
-} 
+}

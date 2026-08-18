@@ -139,23 +139,23 @@ const PaymentModal = ({ isOpen, onClose, onPaymentSuccess, mbtiType }) => {
   const features = [
     {
       icon: faBrain,
-      text: language === 'zh' ? 'AI深度人格分析' : 'AI Deep Personality Analysis'
+      text: language === 'zh-CN' ? 'AI深度人格分析' : (language === 'zh' ? 'AI深度人格分析' : 'AI Deep Personality Analysis')
     },
     {
       icon: faCheck,
-      text: language === 'zh' ? '專業心理學見解' : 'Professional Psychological Insights'
+      text: language === 'zh-CN' ? '专业心理学见解' : (language === 'zh' ? '專業心理學見解' : 'Professional Psychological Insights')
     },
     {
       icon: faCheck,
-      text: language === 'zh' ? '職業發展建議' : 'Career Development Advice'
+      text: language === 'zh-CN' ? '职业发展建议' : (language === 'zh' ? '職業發展建議' : 'Career Development Advice')
     },
     {
       icon: faCheck,
-      text: language === 'zh' ? '個人成長指導' : 'Personal Growth Guidance'
+      text: language === 'zh-CN' ? '个人成长指导' : (language === 'zh' ? '個人成長指導' : 'Personal Growth Guidance')
     },
     {
       icon: faCheck,
-      text: language === 'zh' ? '完整PDF報告下載' : 'Complete PDF Report Download'
+      text: language === 'zh-CN' ? '完整PDF报告下载' : (language === 'zh' ? '完整PDF報告下載' : 'Complete PDF Report Download')
     }
   ];
 
@@ -167,13 +167,13 @@ const PaymentModal = ({ isOpen, onClose, onPaymentSuccess, mbtiType }) => {
         </CloseButton>
         
         <ModalTitle>
-          {language === 'zh' ? '解鎖高級分析' : 'Unlock Premium Analysis'}
+          {language === 'zh-CN' ? '解锁高级分析' : (language === 'zh' ? '解鎖高級分析' : 'Unlock Premium Analysis')}
         </ModalTitle>
         
         <PriceDisplay>
           <Price>HK$ 99</Price>
           <PriceDescription>
-            {language === 'zh' ? '一次性付款，永久解鎖' : 'One-time payment, unlock forever'}
+            {language === 'zh-CN' ? '一次性付款，永久解锁' : (language === 'zh' ? '一次性付款，永久解鎖' : 'One-time payment, unlock forever')}
           </PriceDescription>
         </PriceDisplay>
         
@@ -190,11 +190,11 @@ const PaymentModal = ({ isOpen, onClose, onPaymentSuccess, mbtiType }) => {
         
         <PaymentButton onClick={handlePayment} disabled={isProcessing}>
           {isProcessing ? (
-            language === 'zh' ? '處理中...' : 'Processing...'
+            language.startsWith('zh') ? '处理中...' : 'Processing...'
           ) : (
             <>
               <FontAwesomeIcon icon={faCreditCard} style={{ marginRight: '8px' }} />
-              {language === 'zh' ? '立即購買' : 'Buy Now'}
+              {language === 'zh-CN' ? '立即购买' : (language === 'zh' ? '立即購買' : 'Buy Now')}
             </>
           )}
         </PaymentButton>

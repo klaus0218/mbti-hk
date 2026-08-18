@@ -89,6 +89,18 @@ app.use(express.urlencoded({ extended: true }));
     
     await sequelize.sync(syncOptions);
     
+    try {
+      await sequelize.query(`ALTER TYPE "enum_responses_language" ADD VALUE IF NOT EXISTS 'zh-CN';`);
+    } catch (error) {
+      console.warn('⚠️ Could not alter enum_responses_language (may not exist yet or not supported):', error.message);
+    }
+
+    try {
+      await sequelize.query(`ALTER TYPE "enum_ai_analyses_userLanguage" ADD VALUE IF NOT EXISTS 'zh-CN';`);
+    } catch (error) {
+      console.warn('⚠️ Could not alter enum_ai_analyses_userLanguage (may not exist yet or not supported):', error.message);
+    }
+    
     // Create GIN index for demographics JSONB field (if it doesn't exist)
     try {
       const Result = require('./models/Result');

@@ -516,8 +516,269 @@ const translations = {
       submit: '提交',
       close: '關閉'
     }
+  },
+
+  ZH_CN: {
+    // Header/Navigation
+    nav: {
+      home: '首页',
+      takeTest: '开始测试',
+      types: '人格类型',
+      articles: '文章',
+      contact: '联系我们',
+      about: '关于我们',
+      instagram: '关注我们的 Instagram'
+    },
+
+    // Home page
+    home: {
+      heroTitle: '发现你的真实性格类型',
+      heroSubtitle: '参加我们全面的MBTI测试，深入了解自己和你独特的世界体验方式。',
+      startTest: '立即开始测试',
+      learnMore: '了解更多',
+      whyTakeTest: '为什么要做我们的MBTI测试？',
+      scientificTitle: '科学方法',
+      scientificDesc: '基于卡尔·荣格的心理学理论和数十年的人格心理学研究。',
+      typesTitle: '16种人格类型',
+      typesDesc: '发现16种不同人格类型中哪一种最能描述你的偏好和行为。',
+      resultsTitle: '详细结果',
+      resultsDesc: '获得对你的优势、挑战和潜在职业道路的全面洞察。',
+      trustedBy: '受数万人信赖',
+      testsCompleted: '完成测试',
+      personalityTypes: '人格类型',
+      accuracyRate: '准确率',
+      available: '全天候可用',
+      ctaTitle: '准备好发现你的人格类型了吗？',
+      ctaDesc: '加入万千名对自己有了宝贵洞察的人群。你的自我发现之旅从这里开始。',
+      whatYoullGain: '你将获得什么',
+      benefits: {
+        selfUnderstanding: {
+          title: '自我认知',
+          description: '深入了解你的自然偏好和行为模式。'
+        },
+        careerGuidance: {
+          title: '职业指导',
+          description: '发现与你的性格类型和优势相符的职业道路。'
+        },
+        improvedRelationships: {
+          title: '改善关系',
+          description: '更好地理解你如何与他人互动并更有效地沟通。'
+        },
+        personalGrowth: {
+          title: '个人成长',
+          description: '识别发展领域并制定个人提升策略。'
+        }
+      }
+    },
+
+    // Test pages
+    test: {
+      title: '准备好发现你的人格类型了吗？',
+      description: '参加我们全面的MBTI评估，获得对你的人格偏好、优势和潜在职业道路的宝贵洞察。',
+      duration: '大约需要10-15分钟完成',
+      questions: '16个精心设计的问题',
+      personalized: '个性化结果和洞察',
+      startFreeTest: '开始免费测试',
+      loading: '正在准备您的个性化评估...'
+    },
+
+    // Statement page
+    statement: {
+      title: '测试说明',
+      description: '你的答案有助于展现你对不同事情的看法及如何做决定。因此每一道题目没有所谓的对与错。',
+      benefit: '通过了解自己的喜好及认识他人的偏向，可以让你更加清楚自己的长处，在职场上、感情上也会有很大的帮助。',
+      privacy: '测试结果只会通知相对应的测试者，未经允许不会分享测试结果。',
+      instructions: '请大家回答时留意以下4点：',
+      point1: '1. 请用一种不是在家里、不是在公司、不是在见客户，而是去度假非常轻松、不需要顾及任何人的心情来作答',
+      point2: '2. 不要去设想具体情境，只需选择哪一句话更能描述你',
+      point3: '3. 每道题尽量不要思考超过15秒，快速选出你认为更合适的选项，思考过久反而不准确',
+      point4: '4. 没有中间的中立选项，请尽可能选择偏左或偏右',
+      startTest: '开始免费测试',
+      retrieveResults: '找回之前的测试结果',
+      emailLabel: '邮箱地址',
+      emailPlaceholder: '请输入您的邮箱地址',
+      emailRequired: '请输入您的邮箱地址',
+      findResults: '查找我的测试结果',
+      retrieving: '查询中...',
+      noRecordFound: '未找到此邮箱地址的测试结果',
+      retrieveError: '查询测试结果失败，请重试。'
+    },
+
+    // Questions
+    questions: {
+      section: '第',
+      of: '部分',
+      total: '共',
+      parts: '部分',
+      question: '问题',
+      previous: '上一页',
+      continue: '继续',
+      submit: '提交',
+      completeSection: '请完成本部分的所有问题才能继续。',
+      loading: '正在加载问题...',
+      answerSelected: '已选择答案',
+      incompleteTitle: '未完成的问题',
+      incompleteMessage: '请先回答以下问题再继续：',
+      questionNumber: '问题',
+      closeModal: '关闭',
+      understood: '我知道了'
+    },
+
+    // Demographics form
+    demographics: {
+      title: '即将完成！',
+      subtitle: '请提供一些信息以个性化您的结果',
+      name: '姓名',
+      nameRequired: '姓名为必填项',
+      gender: '性别',
+      genderRequired: '请选择您的性别',
+      male: '男性',
+      female: '女性',
+      other: '其他',
+      preferNotToSay: '不愿透露',
+      ageRange: '年龄范围',
+      ageRequired: '请选择您的年龄范围',
+      under18: '18岁以下',
+      age18to25: '18-25岁',
+      age26to35: '26-35岁',
+      age36to45: '36-45岁',
+      age46to55: '46-55岁',
+      over55: '55岁以上',
+      industry: '工作行业',
+      industryRequired: '请选择您的行业',
+      industries: {
+        technology: '科技/信息技术',
+        healthcare: '医疗保健',
+        education: '教育',
+        finance: '金融/银行',
+        marketing: '市场营销/广告',
+        sales: '销售',
+        engineering: '工程',
+        creative: '创意/艺术',
+        legal: '法律',
+        government: '政府',
+        nonprofit: '非营利组织',
+        retail: '零售',
+        manufacturing: '制造业',
+        consulting: '顾问咨询',
+        realEstate: '房地产',
+        student: '学生',
+        unemployed: '待业中',
+        other: '其他'
+      },
+      email: '电子邮件（可选）',
+      contact: '联系方式（可选）',
+      getResults: '获取我的结果',
+      submitting: '处理中...',
+      emailHelp: '输入您的邮箱地址，以便稍后离开页面时可以找回您的结果'
+    },
+
+    // Results
+    results: {
+      title: '您的人格类型',
+      type: '类型',
+      description: '描述',
+      strengths: '优势',
+      challenges: '挑战',
+      careers: '建议职业',
+      relationships: '在关系中',
+      share: '分享结果',
+      retake: '重新测试',
+      downloadReport: '下载报告',
+      contactConsultantTitle: '想获得个性化指导？',
+      contactConsultantDescription:
+        '我们的 MBTI 顾问可协助你更深入解读结果，并规划实际可行的下一步。',
+      contactConsultantButton: '联系我们'
+    },
+
+    // Articles
+    articles: {
+      title: "MBTI 文章与洞察",
+      subtitle: "探索关于人格类型、应用和个人发展的深度文章",
+      searchPlaceholder: "搜索文章...",
+      categories: "分类",
+      popularTags: "热门标签",
+      featuredArticles: "精选文章",
+      latestArticles: "最新文章",
+      readMore: "阅读更多",
+      readTime: "分钟阅读",
+      author: "作者",
+      publishedOn: "发布于",
+      relatedArticles: "相关文章",
+      backToArticles: "返回文章列表",
+      shareArticle: "分享文章",
+      noResults: "未找到文章",
+      loadMore: "加载更多文章",
+      filters: {
+        all: "全部",
+        clear: "清除筛选"
+      }
+    },
+
+    // Contact
+    contact: {
+      title: "联系我们",
+      subtitle: "由专业 MBTI 顾问为你提供深入分析与清晰方向，助你在个人与职涯上持续成长。",
+      serviceTitle: "专业 MBTI 咨询服务",
+      serviceDescription: "我们的顾问团队具备丰富专业经验，能把 MBTI 分析转化为实际可行的成长方向。我们定期举办顾问活动，并已为超过 300 位客户提供一对一咨询，同时亦具备小组课程带领经验，协助不同背景人士深入理解人格特质与沟通模式。",
+      servicePoint1: "深入分析你的 MBTI 类型、优势、盲点与沟通风格。",
+      servicePoint2: "一对一咨询经验超过 300 位客户，涵盖职涯规划、团队协作、领导发展与关系提升。",
+      servicePoint3: "定期举办顾问活动与工作坊，帮助你更有系统地应用 MBTI 洞察。",
+      servicePoint4: "具备小组课程带领经验，协助团队提升沟通效率、理解差异并建立更佳合作。",
+      reachUsTitle: "WhatsApp",
+      reachUsDescription:
+        "欢迎通过 WhatsApp 或邮件与我们联系。你可放心提出需求，我们会以专业、务实的方式尽快回复并提供建议。",
+      reachUsPoint1:
+        "你可直接通过 WhatsApp 报名一对一 MBTI 顾问服务，我们会按你的需要建议最合适的形式。",
+      reachUsPoint2:
+        "你亦可查询 MBTI 课程与工作坊时间，包括个人、团队与小组学习安排。",
+      reachUsPoint3:
+        "若你在职涯、沟通或关系上感到卡住，欢迎先在对话中描述情况，我们的专业顾问会先给你清晰可行的第一步建议。",
+      whatsappNumber: "85262387745",
+      whatsappLabel: "WhatsApp",
+      whatsappDisplay: "+852 6238 7745",
+      whatsappTapHint: "点击开启对话",
+      consultantEmail: "cpspatrick@mbtihk.com",
+      emailLabel: "邮箱",
+      emailCopyHint: "点击复制",
+      emailCopiedHint: "已复制"
+    },
+
+    // Footer
+    footer: {
+      title: 'HK MBTI',
+      description: '通过我们全面的MBTI测试，发现您的性格类型。更好地了解自己，释放您的潜能。',
+      quickLinks: '快速链接',
+      home: '首页',
+      about: '关于MBTI',
+      takeTest: '开始测试',
+      articles: '文章',
+      contact: '联系我们',
+      resources: '资源',
+      aboutSection: '关于',
+      aboutText: '这个MBTI测试旨在帮助您了解自己的性格偏好以及您与周围世界的互动方式。',
+      disclaimer: '免责声明：',
+      disclaimerText: '此测试仅供教育和娱乐目的。如需专业心理评估，请咨询合格的从业人员。',
+      copyright: 'MBTI测试。用',
+      copyrightEnd: '制作，为性格发现而生。',
+      socialLabel: '关注我们的Instagram'
+    },
+
+    // Common
+    common: {
+      loading: '加载中...',
+      error: '发生错误',
+      tryAgain: '重试',
+      back: '返回',
+      next: '下一步',
+      submit: '提交',
+      close: '关闭'
+    }
   }
 };
+
+// Aliases
+translations['ZH-CN'] = translations.ZH_CN;
 
 // Helper function to get nested translation
 const getTranslation = (translations, path, fallback = '') => {
@@ -526,11 +787,11 @@ const getTranslation = (translations, path, fallback = '') => {
 
 // Custom hook for translations with both old and new style support
 const useTranslations = (language = 'EN') => {
-  // Convert language code to uppercase to match our translation keys
-  const langKey = language.toUpperCase();
+  const langUpper = (language || 'EN').toUpperCase();
+  const normalizedKey = langUpper.replace('-', '_');
   
-  // Fallback to EN if the language key doesn't exist
-  const translationData = translations[langKey] || translations['EN'];
+  // Match ZH_CN, ZH-CN, ZH, EN, etc.
+  const translationData = translations[normalizedKey] || translations[langUpper] || translations['EN'];
   
   const t = (path, fallback = '') => getTranslation(translationData, path, fallback);
   

@@ -21,7 +21,7 @@ import {
 } from '@mui/icons-material';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { createAnalysisPackage, downloadReport, getAnalysisFromDatabase } from '../../services/enhancedAIAnalysisService';
-import { formatAnalysisForLanguage } from '../../utils/languageUtils';
+import { formatAnalysisForLanguage, getLanguageLabel } from '../../utils/languageUtils';
 import { formatPreviewContent, formatFullReportContent } from '../../utils/contentFormatter';
 
 const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
@@ -212,13 +212,15 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
           <Box display="flex" alignItems="center" mb={2}>
             <PsychologyIcon sx={{ mr: 2, color: 'primary.main' }} />
             <Typography variant="h5" component="h2">
-              {language === 'zh' ? 'AI 驅動的 MBTI 分析' : 'AI-Powered MBTI Analysis'}
+              {language === 'zh-CN' ? 'AI 驱动的 MBTI 分析' : (language === 'zh' ? 'AI 驅動的 MBTI 分析' : 'AI-Powered MBTI Analysis')}
             </Typography>
           </Box>
           <Typography variant="body1" color="text.secondary">
-            {language === 'zh' 
-              ? '使用先進的 AI 分析，基於您的 MBTI 測試結果獲得個性化見解和詳細報告。'
-              : 'Get personalized insights and detailed reports based on your MBTI results using advanced AI analysis.'
+            {language === 'zh-CN'
+              ? '使用先进的 AI 分析，基于您的 MBTI 测试结果获得个性化见解和详细报告。'
+              : (language === 'zh' 
+                  ? '使用先進的 AI 分析，基於您的 MBTI 測試結果獲得個性化見解和詳細報告。'
+                  : 'Get personalized insights and detailed reports based on your MBTI results using advanced AI analysis.')
             }
           </Typography>
         </CardContent>
@@ -228,7 +230,7 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
       <Card sx={{ mb: 3 }}>
         <CardContent>
           <Typography variant="h6" gutterBottom>
-            {language === 'zh' ? '您的 MBTI 結果：' : 'Your MBTI Results: '}{mbtiResult.type}
+            {language === 'zh-CN' ? '您的 MBTI 结果：' : (language === 'zh' ? '您的 MBTI 結果：' : 'Your MBTI Results: ')}{mbtiResult.type}
           </Typography>
           <Box sx={{ mb: 2 }}>
             {formatMBTIScores(mbtiResult.scores)}
@@ -249,10 +251,10 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
           />
           <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
             {progress < 50 
-              ? (language === 'zh' ? '分析您的人格...' : 'Analyzing your personality...')
+              ? (language === 'zh-CN' ? '分析您的人格...' : (language === 'zh' ? '分析您的人格...' : 'Analyzing your personality...'))
               : progress < 80 
-                ? (language === 'zh' ? '生成見解...' : 'Generating insights...')
-                : (language === 'zh' ? '完成中...' : 'Finalizing...')
+                ? (language === 'zh-CN' ? '生成见解...' : (language === 'zh' ? '生成見解...' : 'Generating insights...'))
+                : (language === 'zh-CN' ? '完成中...' : (language === 'zh' ? '完成中...' : 'Finalizing...'))
             }
           </Typography>
         </Box>
@@ -277,7 +279,7 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
             startIcon={loading ? <CircularProgress size={16} /> : <PsychologyIcon />}
             sx={{ py: 1, px: 2, fontSize: '0.875rem' }}
           >
-            {loading ? (language === 'zh' ? '分析中...' : 'Analyzing...') : (language === 'zh' ? '生成 AI 分析' : 'Generate AI Analysis')}
+            {loading ? (language.startsWith('zh') ? '分析中...' : 'Analyzing...') : (language === 'zh-CN' ? '生成 AI 分析' : (language === 'zh' ? '生成 AI 分析' : 'Generate AI Analysis'))}
           </Button>
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -290,7 +292,7 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
             startIcon={loading ? <CircularProgress size={16} /> : <DescriptionIcon />}
             sx={{ py: 1, px: 2, fontSize: '0.875rem' }}
           >
-            {loading ? (language === 'zh' ? '生成中...' : 'Generating...') : (language === 'zh' ? '生成 PDF 報告' : 'Generate PDF Report')}
+            {loading ? (language.startsWith('zh') ? '生成中...' : 'Generating...') : (language === 'zh-CN' ? '生成 PDF 报告' : (language === 'zh' ? '生成 PDF 報告' : 'Generate PDF Report'))}
           </Button>
         </Grid>
       </Grid>
@@ -300,7 +302,7 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
         <Card sx={{ mb: 3 }}>
           <CardContent>
             <Typography variant="h6" gutterBottom sx={{ color: 'primary.main', fontWeight: 600 }}>
-              {language === 'zh' ? 'AI 分析結果' : 'AI Analysis Results'}
+              {language === 'zh-CN' ? 'AI 分析结果' : (language === 'zh' ? 'AI 分析結果' : 'AI Analysis Results')}
             </Typography>
             <Divider sx={{ mb: 2 }} />
             <Box sx={{ 
@@ -316,17 +318,17 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
             </Box>
             <Box sx={{ mt: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
               <Typography variant="caption" color="text.secondary">
-                {language === 'zh' ? '生成時間：' : 'Generated on: '}
+                {language === 'zh-CN' ? '生成时间：' : (language === 'zh' ? '生成時間：' : 'Generated on: ')}
                 {new Date(analysis.timestamp).toLocaleString()}
               </Typography>
               <Chip 
-                label={`${language === 'zh' ? '模型：' : 'Model: '}${analysis.model || 'gemini-2.5-flash'}`} 
+                label={`${language.startsWith('zh') ? '模型：' : 'Model: '}${analysis.model || 'gemini-2.5-flash'}`} 
                 size="small" 
                 variant="outlined"
                 color="primary"
               />
               <Chip 
-                label={language === 'zh' ? '繁體中文' : 'English'} 
+                label={getLanguageLabel(language)} 
                 size="small" 
                 variant="outlined"
                 color="secondary"
@@ -341,16 +343,16 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
         <Card sx={{ mb: 3 }}>
           <CardContent>
             <Typography variant="h6" gutterBottom>
-              {language === 'zh' ? 'PDF 報告已生成' : 'PDF Report Generated'}
+              {language === 'zh-CN' ? 'PDF 报告已生成' : (language === 'zh' ? 'PDF 報告已生成' : 'PDF Report Generated')}
             </Typography>
             <Divider sx={{ mb: 2 }} />
             <Box display="flex" alignItems="center" justifyContent="space-between">
               <Box>
                 <Typography variant="body2" color="text.secondary">
-                  {language === 'zh' ? '檔案名：' : 'Filename: '}{reportStatus.filename}
+                  {language === 'zh-CN' ? '文件名：' : (language === 'zh' ? '檔案名：' : 'Filename: ')}{reportStatus.filename}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {language === 'zh' ? '大小：' : 'Size: '}{(reportStatus.size / 1024).toFixed(1)} KB
+                  {language === 'zh-CN' ? '大小：' : (language === 'zh' ? '大小：' : 'Size: ')}{(reportStatus.size / 1024).toFixed(1)} KB
                 </Typography>
               </Box>
               <Button
@@ -359,7 +361,7 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
                 onClick={handleDownloadReport}
                 color="success"
               >
-                {language === 'zh' ? '下載報告' : 'Download Report'}
+                {language === 'zh-CN' ? '下载报告' : (language === 'zh' ? '下載報告' : 'Download Report')}
               </Button>
             </Box>
           </CardContent>
@@ -369,9 +371,11 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
       {/* Information */}
       <Paper sx={{ p: 2, bgcolor: 'grey.50' }}>
         <Typography variant="body2" color="text.secondary">
-          <strong>{language === 'zh' ? '注意：' : 'Note:'}</strong> {language === 'zh' 
-            ? 'AI 分析基於全面的 MBTI 研究和您的具體測試結果。報告會在 24 小時後自動清理，以確保安全性和存儲效率。'
-            : 'The AI analysis is based on comprehensive MBTI research and your specific test results. Reports are automatically cleaned up after 24 hours for security and storage efficiency.'
+          <strong>{language.startsWith('zh') ? '注意：' : 'Note:'}</strong> {language === 'zh-CN'
+            ? 'AI 分析基于全面的 MBTI 研究和您的具体测试结果。报告会在 24 小时后自动清理，以确保安全性和存储效率。'
+            : (language === 'zh' 
+                ? 'AI 分析基於全面的 MBTI 研究和您的具體測試結果。報告會在 24 小時後自動清理，以確保安全性和存儲效率。'
+                : 'The AI analysis is based on comprehensive MBTI research and your specific test results. Reports are automatically cleaned up after 24 hours for security and storage efficiency.')
           }
         </Typography>
       </Paper>
@@ -397,18 +401,20 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
             textAlign: 'center'
           }}>
             <Typography variant="h6" sx={{ mb: 2, color: 'primary.main' }}>
-              {language === 'zh' ? '電子郵件確認' : 'Email Confirmation'}
+              {language === 'zh-CN' ? '电子邮件确认' : (language === 'zh' ? '電子郵件確認' : 'Email Confirmation')}
             </Typography>
             <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-              {language === 'zh' 
-                ? '請確認或更新您的電子郵件地址，AI分析報告將發送到此郵箱。'
-                : 'Please confirm or update your email address. The AI analysis report will be sent to this email.'
+              {language === 'zh-CN'
+                ? '请确认或更新您的电子邮件地址，AI分析报告将发送到此邮箱。'
+                : (language === 'zh' 
+                    ? '請確認或更新您的電子郵件地址，AI分析報告將發送到此郵箱。'
+                    : 'Please confirm or update your email address. The AI analysis report will be sent to this email.')
               }
             </Typography>
             <Box sx={{ mb: 2 }}>
               <input
                 type="email"
-                placeholder={language === 'zh' ? '輸入您的電子郵件' : 'Enter your email'}
+                placeholder={language.startsWith('zh') ? '输入您的电子邮件' : 'Enter your email'}
                 value={analysisEmail}
                 onChange={(e) => setAnalysisEmail(e.target.value)}
                 style={{
@@ -428,13 +434,23 @@ const AIAnalysis = ({ mbtiResult, onAnalysisComplete }) => {
                   setAnalysisEmail('');
                 }}
               >
-                {language === 'zh' ? '取消' : 'Cancel'}
+                {language.startsWith('zh') ? '取消' : 'Cancel'}
               </Button>
               <Button
                 variant="contained"
                 onClick={() => {
                   if (analysisEmail.trim()) {
                     setShowEmailModal(false);
+                    handleGenerateAnalysis();
+                  }
+                }}
+              >
+                {language === 'zh-CN' ? '生成分析' : (language === 'zh' ? '生成分析' : 'Generate Analysis')}
+              </Button>
+            </Box>
+          </Paper>
+        </Box>
+      )}
                     handleGenerateAnalysis();
                   }
                 }}

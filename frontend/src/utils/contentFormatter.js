@@ -104,7 +104,6 @@ export const formatMarkdownText = (text, language = 'en') => {
 
 // Format the preview content with simplified styling
 export const formatPreviewContent = (previewData, language = 'en') => {
-  console.log(language)
   if (!previewData) return null;
   
   // Handle both structured and unstructured data
@@ -112,7 +111,7 @@ export const formatPreviewContent = (previewData, language = 'en') => {
     return formatMarkdownText(previewData, language);
   }
   
-  const data = previewData[language] || previewData;
+  const data = previewData[language] || (language === 'zh-CN' ? (previewData['zh-CN'] || previewData['zh_cn']) : (language === 'zh' ? previewData['zh'] : previewData['en'])) || previewData['zh'] || previewData['zh-CN'] || previewData['en'] || previewData;
   
   if (!data) return null;
   
@@ -179,7 +178,7 @@ export const formatPreviewContent = (previewData, language = 'en') => {
             fontWeight: '600',
             textAlign: 'center'
           }}>
-            {language === 'zh' ? '🔬 研究亮點' : '🔬 Research Highlights'}
+            {language === 'zh-CN' ? '🔬 研究亮点' : (language === 'zh' ? '🔬 研究亮點' : '🔬 Research Highlights')}
           </h4>
           <div style={{ lineHeight: '1.6', color: '#4a5568' }}>
             {formatMarkdownText(data.researchHighlights, language)}
@@ -202,7 +201,7 @@ export const formatPreviewContent = (previewData, language = 'en') => {
             fontSize: '1.2rem',
             fontWeight: '600'
           }}>
-            {language === 'zh' ? '📋 核心分析預覽' : '📋 Core Analysis Preview'}
+            {language === 'zh-CN' ? '📋 核心分析预览' : (language === 'zh' ? '📋 核心分析預覽' : '📋 Core Analysis Preview')}
           </h4>
           <div style={{ color: '#4a5568', lineHeight: '1.6' }}>
             {formatMarkdownText(data.coreAnalysisPreview, language)}
@@ -224,8 +223,7 @@ export const formatFullReportContent = (reportData, language = 'en') => {
   }
   
   // Handle structured data
-  const lang = language === 'zh' ? 'zh' : 'en';
-  const data = reportData[lang] || reportData;
+  const data = reportData[language] || (language === 'zh-CN' ? (reportData['zh-CN'] || reportData['zh_cn']) : (language === 'zh' ? reportData['zh'] : reportData['en'])) || reportData['zh'] || reportData['zh-CN'] || reportData['en'] || reportData;
   
   if (!data) return null;
   
@@ -260,7 +258,7 @@ export const formatFullReportContent = (reportData, language = 'en') => {
             fontSize: '1.3rem',
             fontWeight: '600'
           }}>
-            {language === 'zh' ? '📊 執行摘要' : '📊 Executive Summary'}
+            {language === 'zh-CN' ? '📊 执行摘要' : (language === 'zh' ? '📊 執行摘要' : '📊 Executive Summary')}
           </h3>
           {formatMarkdownText(data.executiveSummary, language)}
         </div>
@@ -281,7 +279,7 @@ export const formatFullReportContent = (reportData, language = 'en') => {
             fontSize: '1.3rem',
             fontWeight: '600'
           }}>
-            {language === 'zh' ? '🔍 詳細分析' : '🔍 Detailed Analysis'}
+            {language === 'zh-CN' ? '🔍 详细分析' : (language === 'zh' ? '🔍 詳細分析' : '🔍 Detailed Analysis')}
           </h3>
           {formatMarkdownText(data.detailedAnalysis, language)}
         </div>
@@ -302,7 +300,7 @@ export const formatFullReportContent = (reportData, language = 'en') => {
             fontSize: '1.3rem',
             fontWeight: '600'
           }}>
-            {language === 'zh' ? '🔬 最新研究洞察' : '🔬 Latest Research Insights'}
+            {language === 'zh-CN' ? '🔬 最新研究洞察' : (language === 'zh' ? '🔬 最新研究洞察' : '🔬 Latest Research Insights')}
           </h3>
           {formatMarkdownText(data.latestResearchInsights, language)}
         </div>
@@ -323,7 +321,7 @@ export const formatFullReportContent = (reportData, language = 'en') => {
             fontSize: '1.3rem',
             fontWeight: '600'
           }}>
-            {language === 'zh' ? '📊 視覺元素' : '📊 Visual Elements'}
+            {language === 'zh-CN' ? '📊 视觉元素' : (language === 'zh' ? '📊 視覺元素' : '📊 Visual Elements')}
           </h3>
           {formatMarkdownText(data.visualElements, language)}
         </div>
@@ -344,7 +342,7 @@ export const formatFullReportContent = (reportData, language = 'en') => {
             fontSize: '1.3rem',
             fontWeight: '600'
           }}>
-            {language === 'zh' ? '📋 行動計劃' : '📋 Action Plan'}
+            {language === 'zh-CN' ? '📋 行动计划' : (language === 'zh' ? '📋 行動計劃' : '📋 Action Plan')}
           </h3>
           {formatMarkdownText(data.actionPlan, language)}
         </div>
@@ -365,7 +363,7 @@ export const formatFullReportContent = (reportData, language = 'en') => {
             fontSize: '1.3rem',
             fontWeight: '600'
           }}>
-            {language === 'zh' ? '📚 資源' : '📚 Resources'}
+            {language === 'zh-CN' ? '📚 资源' : (language === 'zh' ? '📚 資源' : '📚 Resources')}
           </h3>
           {formatMarkdownText(data.resources, language)}
         </div>
@@ -393,7 +391,7 @@ const formatKeyInsights = (insights, language) => {
         fontWeight: '600',
         textAlign: 'center'
       }}>
-        {language === 'zh' ? '💡 關鍵洞察' : '💡 Key Insights'}
+        {language === 'zh-CN' ? '💡 关键洞察' : (language === 'zh' ? '💡 關鍵洞察' : '💡 Key Insights')}
       </h4>
       <ul style={{
         margin: '0.5rem 0',

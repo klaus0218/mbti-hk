@@ -143,13 +143,6 @@ const Footer = () => {
         <FooterSection>
           <FooterTitle>{t.footer.resources}</FooterTitle>
           <FooterExternalLink 
-            href="https://www.16personalities.com/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            16Personalities
-          </FooterExternalLink>
-          <FooterExternalLink 
             href="https://en.wikipedia.org/wiki/Myers%E2%80%93Briggs_Type_Indicator" 
             target="_blank" 
             rel="noopener noreferrer"

@@ -487,7 +487,7 @@ class HTMLReportGenerator {
         </div>
     </div>
 
-    ${analysis && analysis.fullReport ? this.generateComprehensiveReportSections(analysis.fullReport[language], language) : ''}
+    ${analysis && analysis.fullReport ? this.generateComprehensiveReportSections(analysis.fullReport[language] || analysis.fullReport['zh-CN'] || analysis.fullReport.zh || analysis.fullReport.en || analysis.fullReport, language) : ''}
 
     <div class="section force-page-break">
         <div class="section-title">💡 ${content.recommendations}</div>
@@ -537,7 +537,7 @@ class HTMLReportGenerator {
     // Create dimension data with proper scoring
     const dimensionsData = [
       { 
-        name: language === 'zh' ? '外向 (E) vs 內向 (I)' : 'Extroversion (E) vs Introversion (I)', 
+        name: language === 'zh-CN' ? '外向 (E) vs 内向 (I)' : (language === 'zh' ? '外向 (E) vs 內向 (I)' : 'Extroversion (E) vs Introversion (I)'), 
         left: 'E', 
         right: 'I', 
         leftScore: scores?.EI?.E || 0, 
@@ -546,7 +546,7 @@ class HTMLReportGenerator {
         confidence: confidence?.EI || 0
       },
       { 
-        name: language === 'zh' ? '感覺 (S) vs 直覺 (N)' : 'Sensing (S) vs Intuition (N)', 
+        name: language === 'zh-CN' ? '感觉 (S) vs 直觉 (N)' : (language === 'zh' ? '感覺 (S) vs 直覺 (N)' : 'Sensing (S) vs Intuition (N)'), 
         left: 'S', 
         right: 'N', 
         leftScore: scores?.SN?.S || 0, 
@@ -555,7 +555,7 @@ class HTMLReportGenerator {
         confidence: confidence?.SN || 0
       },
       { 
-        name: language === 'zh' ? '思考 (T) vs 情感 (F)' : 'Thinking (T) vs Feeling (F)', 
+        name: language === 'zh-CN' ? '思考 (T) vs 情感 (F)' : (language === 'zh' ? '思考 (T) vs 情感 (F)' : 'Thinking (T) vs Feeling (F)'), 
         left: 'T', 
         right: 'F', 
         leftScore: scores?.TF?.T || 0, 
@@ -564,7 +564,7 @@ class HTMLReportGenerator {
         confidence: confidence?.TF || 0
       },
       { 
-        name: language === 'zh' ? '判斷 (J) vs 感知 (P)' : 'Judging (J) vs Perceiving (P)', 
+        name: language === 'zh-CN' ? '判断 (J) vs 感知 (P)' : (language === 'zh' ? '判斷 (J) vs 感知 (P)' : 'Judging (J) vs Perceiving (P)'), 
         left: 'J', 
         right: 'P', 
         leftScore: scores?.JP?.J || 0, 
@@ -578,12 +578,12 @@ class HTMLReportGenerator {
       const preferredScore = dim.pref === dim.left ? dim.leftScore : dim.rightScore;
       const oppositeScore = dim.pref === dim.left ? dim.rightScore : dim.leftScore;
       const confidenceText = language === 'zh' ? 
-        (dim.confidence > 60 ? '強烈偏好' : dim.confidence > 30 ? '中等偏好' : '輕微偏好') :
+        (dim.confidence > 60 ? (language === 'zh-CN' ? '强烈偏好' : '強烈偏好') : dim.confidence > 30 ? '中等偏好' : (language === 'zh-CN' ? '轻微偏好' : '輕微偏好')) :
         (dim.confidence > 60 ? 'Strong' : dim.confidence > 30 ? 'Moderate' : 'Slight');
       
       return `${dim.name}\n` +
         `${dim.pref}: ${preferredScore}% | ${dim.pref === dim.left ? dim.right : dim.left}: ${oppositeScore}%\n` +
-        `${language === 'zh' ? '偏好' : 'Preference'}: ${dim.pref} (${confidenceText} - ${dim.confidence}%)\n`;
+        `${language.startsWith('zh') ? '偏好' : 'Preference'}: ${dim.pref} (${confidenceText} - ${dim.confidence}%)\n`;
     }).join('\n');
   }
 
@@ -593,7 +593,7 @@ class HTMLReportGenerator {
     // Create dimension data with proper scoring
     const dimensionsData = [
       { 
-        name: language === 'zh' ? '外向 (E) vs 內向 (I)' : 'Extroversion (E) vs Introversion (I)', 
+        name: language === 'zh-CN' ? '外向 (E) vs 内向 (I)' : (language === 'zh' ? '外向 (E) vs 內向 (I)' : 'Extroversion (E) vs Introversion (I)'), 
         left: 'E', 
         right: 'I', 
         leftScore: scores?.E || 0, 
@@ -602,7 +602,7 @@ class HTMLReportGenerator {
         confidence: confidence?.EI || 0
       },
       { 
-        name: language === 'zh' ? '感覺 (S) vs 直覺 (N)' : 'Sensing (S) vs Intuition (N)', 
+        name: language === 'zh-CN' ? '感觉 (S) vs 直觉 (N)' : (language === 'zh' ? '感覺 (S) vs 直覺 (N)' : 'Sensing (S) vs Intuition (N)'), 
         left: 'S', 
         right: 'N', 
         leftScore: scores?.S || 0, 
@@ -611,7 +611,7 @@ class HTMLReportGenerator {
         confidence: confidence?.SN || 0
       },
       { 
-        name: language === 'zh' ? '思考 (T) vs 情感 (F)' : 'Thinking (T) vs Feeling (F)', 
+        name: language === 'zh-CN' ? '思考 (T) vs 情感 (F)' : (language === 'zh' ? '思考 (T) vs 情感 (F)' : 'Thinking (T) vs Feeling (F)'), 
         left: 'T', 
         right: 'F', 
         leftScore: scores?.T || 0, 
@@ -620,7 +620,7 @@ class HTMLReportGenerator {
         confidence: confidence?.TF || 0
       },
       { 
-        name: language === 'zh' ? '判斷 (J) vs 感知 (P)' : 'Judging (J) vs Perceiving (P)', 
+        name: language === 'zh-CN' ? '判断 (J) vs 感知 (P)' : (language === 'zh' ? '判斷 (J) vs 感知 (P)' : 'Judging (J) vs Perceiving (P)'), 
         left: 'J', 
         right: 'P', 
         leftScore: scores?.J || 0, 
@@ -649,7 +649,7 @@ class HTMLReportGenerator {
       // Create confidence indicator
       const confidenceLevel = dim.confidence > 60 ? '🔴' : dim.confidence > 30 ? '🟡' : '🟢';
       const confidenceText = language === 'zh' ? 
-        (dim.confidence > 60 ? '強烈偏好' : dim.confidence > 30 ? '中等偏好' : '輕微偏好') :
+        (dim.confidence > 60 ? (language === 'zh-CN' ? '强烈偏好' : '強烈偏好') : dim.confidence > 30 ? '中等偏好' : (language === 'zh-CN' ? '轻微偏好' : '輕微偏好')) :
         (dim.confidence > 60 ? 'Strong' : dim.confidence > 30 ? 'Moderate' : 'Slight');
       
       return `
@@ -665,7 +665,7 @@ class HTMLReportGenerator {
             <strong>${preferredTrait}</strong> (${preferredScore}%) vs ${oppositeTrait} (${oppositeScore}%)
           </div>
           <div style="margin-top: 10px; font-size: 14px; color: #495057;">
-            ${language === 'zh' ? '偏好強度' : 'Preference Strength'}: ${dim.confidence}%
+            ${language === 'zh-CN' ? '偏好强度' : (language === 'zh' ? '偏好強度' : 'Preference Strength')}: ${dim.confidence}%
           </div>
         </div>
       `;
@@ -678,46 +678,46 @@ class HTMLReportGenerator {
     const content = this.getLanguageContent(language);
     
     let summary = `<div class="highlight-box">
-      <div class="highlight-title">${language === 'zh' ? '歡迎開始您的個人MBTI之旅！' : 'Welcome to Your Personal MBTI Journey!'}</div>
-      <p>${language === 'zh' ? '恭喜！您剛剛解鎖了一個強大的工具來更好地了解自己。這份綜合報告是您個人和職業成功的路線圖。' : 'Congratulations! You\'ve just unlocked a powerful tool for understanding yourself better. This comprehensive report is your roadmap to personal and professional success.'}</p>
+      <div class="highlight-title">${language === 'zh-CN' ? '欢迎开始您的个人MBTI之旅！' : (language === 'zh' ? '歡迎開始您的個人MBTI之旅！' : 'Welcome to Your Personal MBTI Journey!')}</div>
+      <p>${language === 'zh-CN' ? '恭喜！您刚刚解锁了一个强大的工具来更好地了解自己。这份综合报告是您个人和职业成功的路线图。' : (language === 'zh' ? '恭喜！您剛剛解鎖了一個強大的工具來更好地了解自己。這份綜合報告是您個人和職業成功的路線圖。' : 'Congratulations! You\'ve just unlocked a powerful tool for understanding yourself better. This comprehensive report is your roadmap to personal and professional success.')}</p>
     </div>`;
     
-    summary += `<p><strong>${language === 'zh' ? '您的MBTI類型：' : 'Your MBTI Type:'}</strong> <span style="color: #667eea; font-weight: 600; font-size: 18px;">${type}</span></p>`;
+    summary += `<p><strong>${language === 'zh-CN' ? '您的MBTI类型：' : (language === 'zh' ? '您的MBTI類型：' : 'Your MBTI Type:')}</strong> <span style="color: #667eea; font-weight: 600; font-size: 18px;">${type}</span></p>`;
     
     if (confidence) {
       const avgConfidence = Object.values(confidence).reduce((a, b) => a + b, 0) / 4;
       if (avgConfidence > 60) {
-        summary += `<p>${language === 'zh' ? '檢測到強烈偏好：' : 'Strong Preferences Detected:'} <strong>${language === 'zh' ? '您的性格顯示出清晰、明確的特徵。這意味著您對自己是誰以及生活中想要什麼有強烈的感覺。' : 'Your personality shows clear, well-defined characteristics. This means you have a strong sense of who you are and what you want in life.'}</strong></p>`;
+        summary += `<p>${language === 'zh-CN' ? '检测到强烈偏好：' : (language === 'zh' ? '檢測到強烈偏好：' : 'Strong Preferences Detected:')} <strong>${language === 'zh-CN' ? '您的性格显示出清晰、明确的特征。这意味着您对自己是谁以及生活中想要什么有强烈的感觉。' : (language === 'zh' ? '您的性格顯示出清晰、明確的特徵。這意味著您對自己是誰以及生活中想要什麼有強烈的感覺。' : 'Your personality shows clear, well-defined characteristics. This means you have a strong sense of who you are and what you want in life.')}</strong></p>`;
       } else if (avgConfidence > 30) {
-        summary += `<p>⚖️ <strong>${language === 'zh' ? '平衡偏好：' : 'Balanced Preferences:'}</strong> ${language === 'zh' ? '您在性格方面顯示出適度的清晰度，這表明您在不同情況下具有靈活性和適應性。' : 'You show moderate clarity in your personality, suggesting flexibility and adaptability across different situations.'}</p>`;
+        summary += `<p>⚖️ <strong>${language.startsWith('zh') ? '平衡偏好：' : 'Balanced Preferences:'}</strong> ${language === 'zh-CN' ? '您在性格方面显示出适度的清晰度，这表明您在不同情况下具有灵活性和适应性。' : (language === 'zh' ? '您在性格方面顯示出適度的清晰度，這表明您在不同情況下具有靈活性和適應性。' : 'You show moderate clarity in your personality, suggesting flexibility and adaptability across different situations.')}</p>`;
       } else {
-        summary += `<p>${language === 'zh' ? '適應性強的天性：' : 'Adaptable Nature:'} <strong>${language === 'zh' ? '您的偏好顯示出平衡的特徵，表明您可以輕鬆適應不同的環境和挑戰。' : 'Your preferences show balanced characteristics, indicating you can easily adjust to different environments and challenges.'}</strong></p>`;
+        summary += `<p>${language === 'zh-CN' ? '适应性强的天性：' : (language === 'zh' ? '適應性強的天性：' : 'Adaptable Nature:')} <strong>${language === 'zh-CN' ? '您的偏好显示出平衡的特征，表明您可以轻松适应不同的环境和挑战。' : (language === 'zh' ? '您的偏好顯示出平衡的特徵，表明您可以輕鬆適應不同的環境和挑戰。' : 'Your preferences show balanced characteristics, indicating you can easily adjust to different environments and challenges.')}</strong></p>`;
       }
     }
     
     summary += `<div class="two-column">
       <div>
-        <div class="subsection-title">${language === 'zh' ? '您將發現什麼' : 'What You\'ll Discover'}</div>
+        <div class="subsection-title">${language === 'zh-CN' ? '您将发现什么' : (language === 'zh' ? '您將發現什麼' : 'What You\'ll Discover')}</div>
         <ul class="bullet-list">
-          <li>${language === 'zh' ? '適合您性格的完美職業道路' : 'Perfect career paths for your personality'}</li>
-          <li>${language === 'zh' ? '理想的朋友和伴侶類型' : 'Ideal friend and partner types'}</li>
-          <li>${language === 'zh' ? '心理健康洞察和應對策略' : 'Mental health insights and coping strategies'}</li>
-          <li>${language === 'zh' ? '日常生活改善技巧' : 'Daily life improvement tips'}</li>
+          <li>${language === 'zh-CN' ? '适合您性格的完美职业道路' : (language === 'zh' ? '適合您性格的完美職業道路' : 'Perfect career paths for your personality')}</li>
+          <li>${language === 'zh-CN' ? '理想的朋友和伴侣类型' : (language === 'zh' ? '理想的朋友和伴侶類型' : 'Ideal friend and partner types')}</li>
+          <li>${language === 'zh-CN' ? '心理健康洞察和应对策略' : (language === 'zh' ? '心理健康洞察和應對策略' : 'Mental health insights and coping strategies')}</li>
+          <li>${language.startsWith('zh') ? '日常生活改善技巧' : 'Daily life improvement tips'}</li>
         </ul>
       </div>
       
       <div>
-        <div class="subsection-title">${language === 'zh' ? '如何使用這份報告' : 'How to Use This Report'}</div>
+        <div class="subsection-title">${language === 'zh-CN' ? '如何使用这份报告' : (language === 'zh' ? '如何使用這份報告' : 'How to Use This Report')}</div>
         <ul class="bullet-list">
-          <li>${language === 'zh' ? '仔細閱讀每個部分' : 'Read through each section carefully'}</li>
-          <li>${language === 'zh' ? '記錄關鍵見解' : 'Take notes on key insights'}</li>
-          <li>${language === 'zh' ? '制定改進行動計劃' : 'Create action plans for improvement'}</li>
-          <li>${language === 'zh' ? '與值得信賴的朋友分享相關部分' : 'Share relevant parts with trusted friends'}</li>
+          <li>${language === 'zh-CN' ? '仔细阅读每个部分' : (language === 'zh' ? '仔細閱讀每個部分' : 'Read through each section carefully')}</li>
+          <li>${language === 'zh-CN' ? '记录关键见解' : (language === 'zh' ? '記錄關鍵見解' : 'Take notes on key insights')}</li>
+          <li>${language === 'zh-CN' ? '制定改进计划' : (language === 'zh' ? '制定改進行動計劃' : 'Create action plans for improvement')}</li>
+          <li>${language === 'zh-CN' ? '与值得信赖的朋友分享相关部分' : (language === 'zh' ? '與值得信賴的朋友分享相關部分' : 'Share relevant parts with trusted friends')}</li>
         </ul>
       </div>
     </div>`;
     
-    summary += `<p><strong>${language === 'zh' ? '準備好改變您的生活了嗎？' : 'Ready to transform your life?'}</strong> ${language === 'zh' ? '讓我們深入了解細節，發現您獨特的性格如何成為您最大的資產！' : 'Let\'s dive into the details and discover how your unique personality can be your greatest asset!'}</p>`;
+    summary += `<p><strong>${language === 'zh-CN' ? '准备好改变您的生活了吗？' : (language === 'zh' ? '準備好改變您的生活了嗎？' : 'Ready to transform your life?')}</strong> ${language === 'zh-CN' ? '让我们深入了解细节，发现您独特的性格如何成为您最大的资产！' : (language === 'zh' ? '讓我們深入了解細節，發現您獨特的性格如何成為您最大的資產！' : 'Let\'s dive into the details and discover how your unique personality can be your greatest asset!')}</p>`;
     
     return summary;
   }
@@ -728,57 +728,57 @@ class HTMLReportGenerator {
     const content = this.getLanguageContent(language);
     
     return `<div class="highlight-box force-">
-      <div class="highlight-title">${language === 'zh' ? `${type} 的快速行動計劃` : `Quick Action Plan for ${type}`}</div>
-      <p>${language === 'zh' ? '以下是您立即採取的下一步行動，以最大化您的性格優勢：' : 'Here are your immediate next steps to maximize your personality strengths:'}</p>
+      <div class="highlight-title">${language === 'zh-CN' ? `${type} 的快速行动计划` : (language === 'zh' ? `${type} 的快速行動計劃` : `Quick Action Plan for ${type}`)}</div>
+      <p>${language === 'zh-CN' ? '以下是您立即采取的下一步行动，以最大化您的性格优势：' : (language === 'zh' ? '以下是您立即採取的下一步行動，以最大化您的性格優勢：' : 'Here are your immediate next steps to maximize your personality strengths:')}</p>
     </div>
 
     <div class="two-column">
       <div>
-        <div class="subsection-title">${language === 'zh' ? '職業與工作' : 'Career & Work'}</div>
+        <div class="subsection-title">${language === 'zh-CN' ? '职业与工作' : (language === 'zh' ? '職業與工作' : 'Career & Work')}</div>
         <ul class="bullet-list">
-          <li>${language === 'zh' ? '研究符合您' : 'Research job roles that match your '}${type} ${language === 'zh' ? '偏好的工作角色' : 'preferences'}</li>
-          <li>${language === 'zh' ? '識別與您的價值觀一致的公司文化' : 'Identify companies with cultures that align with your values'}</li>
-          <li>${language === 'zh' ? '發展補充您自然優勢的技能' : 'Develop skills that complement your natural strengths'}</li>
-          <li>${language === 'zh' ? '與具有相似性格特徵的專業人士建立網絡' : 'Network with professionals who share similar personality traits'}</li>
+          <li>${language === 'zh-CN' ? '研究符合您' : (language === 'zh' ? '研究符合您' : 'Research job roles that match your ')}${type} ${language.startsWith('zh') ? '偏好的工作角色' : 'preferences'}</li>
+          <li>${language === 'zh-CN' ? '识别与您的价值观一致的公司文化' : (language === 'zh' ? '識別與您的價值觀一致的公司文化' : 'Identify companies with cultures that align with your values')}</li>
+          <li>${language === 'zh-CN' ? '发展补充您自然优势的技能' : (language === 'zh' ? '發展補充您自然優勢的技能' : 'Develop skills that complement your natural strengths')}</li>
+          <li>${language === 'zh-CN' ? '与具有相似性格特征的专业人士建立人际网络' : (language === 'zh' ? '與具有相似性格特徵的專業人士建立網絡' : 'Network with professionals who share similar personality traits')}</li>
         </ul>
       </div>
       
       <div>
-        <div class="subsection-title">❤️ ${language === 'zh' ? '關係與社交' : 'Relationships & Social'}</div>
+        <div class="subsection-title">❤️ ${language === 'zh-CN' ? '关系与社交' : (language === 'zh' ? '關係與社交' : 'Relationships & Social')}</div>
         <ul class="bullet-list">
-          <li>${language === 'zh' ? '尋求與您性格互補的友誼' : 'Seek friendships with people who complement your personality'}</li>
-          <li>${language === 'zh' ? '練習適用於不同類型人的溝通風格' : 'Practice communication styles that work for different types'}</li>
-          <li>${language === 'zh' ? '加入與您的興趣一致的團體或活動' : 'Join groups or activities that align with your interests'}</li>
-          <li>${language === 'zh' ? '發展情商和同理心技能' : 'Develop emotional intelligence and empathy skills'}</li>
+          <li>${language === 'zh-CN' ? '寻求与您性格互补的友谊' : (language === 'zh' ? '尋求與您性格互補的友誼' : 'Seek friendships with people who complement your personality')}</li>
+          <li>${language === 'zh-CN' ? '练习适用于不同类型人的沟通风格' : (language === 'zh' ? '練習適用於不同類型人的溝通風格' : 'Practice communication styles that work for different types')}</li>
+          <li>${language === 'zh-CN' ? '加入与您的兴趣一致的团体或活动' : (language === 'zh' ? '加入與您的興趣一致的團體或活動' : 'Join groups or activities that align with your interests')}</li>
+          <li>${language === 'zh-CN' ? '发展情商和同理心技能' : (language === 'zh' ? '發展情商和同理心技能' : 'Develop emotional intelligence and empathy skills')}</li>
         </ul>
       </div>
     </div>
 
     <div class="two-column">
       <div>
-        <div class="subsection-title">${language === 'zh' ? '心理健康與成長' : 'Mental Health & Growth'}</div>
+        <div class="subsection-title">${language === 'zh-CN' ? '心理健康与成长' : (language === 'zh' ? '心理健康與成長' : 'Mental Health & Growth')}</div>
         <ul class="bullet-list">
-          <li>${language === 'zh' ? '每天練習壓力管理技巧' : 'Practice stress management techniques daily'}</li>
-          <li>${language === 'zh' ? '設定與您的性格一致的現實目標' : 'Set realistic goals that align with your personality'}</li>
-          <li>${language === 'zh' ? '為挑戰發展健康的應對機制' : 'Develop healthy coping mechanisms for challenges'}</li>
-          <li>${language === 'zh' ? '如果需要，考慮專業發展或諮詢' : 'Consider professional development or counseling if needed'}</li>
+          <li>${language === 'zh-CN' ? '每天练习压力管理技巧' : (language === 'zh' ? '每天練習壓力管理技巧' : 'Practice stress management techniques daily')}</li>
+          <li>${language === 'zh-CN' ? '设定与您的性格一致的现实目标' : (language === 'zh' ? '設定與您的性格一致的現實目標' : 'Set realistic goals that align with your personality')}</li>
+          <li>${language === 'zh-CN' ? '为挑战发展健康的应对机制' : (language === 'zh' ? '為挑戰發展健康的應對機制' : 'Develop healthy coping mechanisms for challenges')}</li>
+          <li>${language === 'zh-CN' ? '如果需要，考虑专业发展或咨询' : (language === 'zh' ? '如果需要，考慮專業發展或諮詢' : 'Consider professional development or counseling if needed')}</li>
         </ul>
       </div>
       
       <div>
-        <div class="subsection-title">${language === 'zh' ? '學習與發展' : 'Learning & Development'}</div>
+        <div class="subsection-title">${language === 'zh-CN' ? '学习与发展' : (language === 'zh' ? '學習與發展' : 'Learning & Development')}</div>
         <ul class="bullet-list">
-          <li>${language === 'zh' ? '使用符合您學習風格的學習方法' : 'Use study methods that match your learning style'}</li>
-          <li>${language === 'zh' ? '專注於發展您較少主導的功能' : 'Focus on developing your less dominant functions'}</li>
-          <li>${language === 'zh' ? '從值得信賴的導師或朋友那裡尋求反饋' : 'Seek feedback from trusted mentors or friends'}</li>
-          <li>${language === 'zh' ? '跟蹤您的進度並慶祝小勝利' : 'Track your progress and celebrate small wins'}</li>
+          <li>${language === 'zh-CN' ? '使用符合您学习风格的学习方法' : (language === 'zh' ? '使用符合您學習風格的學習方法' : 'Use study methods that match your learning style')}</li>
+          <li>${language === 'zh-CN' ? '专注于发展您较少主导的功能' : (language === 'zh' ? '專注於發展您較少主導的功能' : 'Focus on developing your less dominant functions')}</li>
+          <li>${language === 'zh-CN' ? '从值得信赖的导师或朋友那里寻求反馈' : (language === 'zh' ? '從值得信賴的導師或朋友那裡尋求反饋' : 'Seek feedback from trusted mentors or friends')}</li>
+          <li>${language === 'zh-CN' ? '跟踪您的进度并庆祝小胜利' : (language === 'zh' ? '跟蹤您的進度並慶祝小勝利' : 'Track your progress and celebrate small wins')}</li>
         </ul>
       </div>
     </div>
 
     <div class="highlight-box">
-      <div class="highlight-title">${language === 'zh' ? '記住' : 'Remember'}</div>
-      <p>${language === 'zh' ? '您的MBTI類型是一個起點，而不是限制。使用這些見解來更好地了解自己，並對您的未來做出明智的決定。最成功的人是那些了解自己的優勢並致力於成長領域的人。' : 'Your MBTI type is a starting point, not a limitation. Use these insights to understand yourself better and make informed decisions about your future. The most successful people are those who understand their strengths and work on their areas for growth.'}</p>
+      <div class="highlight-title">${language === 'zh-CN' ? '记住' : (language === 'zh' ? '記住' : 'Remember')}</div>
+      <p>${language === 'zh-CN' ? '您的MBTI类型是一个起点，而不是限制。使用这些见解来更好地了解自己，并对您的未来做出明智的决定。最成功的人是那些了解自己的优势并致力于成长领域的人。' : (language === 'zh' ? '您的MBTI類型是一個起點，而不是限制。使用這些見解來更好地了解自己，並對您的未來做出明智的決定。最成功的人是那些了解自己的優勢並致力於成長領域的人。' : 'Your MBTI type is a starting point, not a limitation. Use these insights to understand yourself better and make informed decisions about your future. The most successful people are those who understand their strengths and work on their areas for growth.')}</p>
     </div>`;
   }
 
@@ -871,7 +871,37 @@ class HTMLReportGenerator {
       'actionPlan': '行動計劃',
     };
     
-    // Return Chinese or English based on language parameter
+    const keyMapZhCn = {
+      'executiveSummary': '执行摘要',
+      'detailedPersonalityAnalysis': '详细性格分析',
+      'strengthsAndDevelopment': '优势与发展领域',
+      'careerInsights': '职业洞察',
+      'relationshipDynamics': '人际关系动态',
+      'personalGrowthRecommendations': '个人成长建议',
+      'latestResearchInsights': '最新研究洞察',
+      'practicalApplications': '实际应用',
+      'careerPath': '职业路径与工作建议',
+      'friendshipCompatibility': '友谊兼容性',
+      'romanticCompatibility': '恋爱关系兼容性',
+      'mentalHealthInsights': '心理健康与福祉',
+      'selfImprovement': '自我提升策略',
+      'dailyLifeApplications': '日常生活应用',
+      'recentResearch': '最新研究发现',
+      'careerTrends': '职业趋势与市场洞察',
+      'workplaceDynamics': '职场动态',
+      'relationshipPsychology': '关系心理学',
+      'personalDevelopment': '个人发展',
+      'culturalDifferences': '文化差异',
+      'technologyImpact': '科技影响',
+      'futureTrends': '未来趋势与预测',
+      'coverPage': '封面页',
+      'detailedAnalysis': '详细分析',
+      'actionPlan': '行动计划',
+    };
+
+    if (language === 'zh-CN' || language === 'zh_cn') {
+      return keyMapZhCn[key] || key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+    }
     if (language === 'zh') {
       return keyMapZh[key] || key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
     }
@@ -898,10 +928,19 @@ class HTMLReportGenerator {
         assessmentResults: 'MBTI 評估結果',
         comprehensiveReport: '綜合分析報告',
         recommendations: '可操作建議'
+      },
+      'zh-CN': {
+        title: 'MBTI 性格分析报告',
+        typeLabel: '类型',
+        generatedOn: '生成时间',
+        executiveSummary: '执行摘要',
+        assessmentResults: 'MBTI 评估结果',
+        comprehensiveReport: '综合分析报告',
+        recommendations: '行动建议'
       }
     };
     
-    return content[language] || content.en;
+    return content[language] || content[language === 'zh-CN' ? 'zh-CN' : 'zh'] || content.en;
   }
 
   // Text generation methods for generateTextReport
